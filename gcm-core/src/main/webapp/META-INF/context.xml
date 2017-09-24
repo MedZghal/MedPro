@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/GCM" reloadable="false">
+  <ResourceLink global="jdbc/gcm" name="jdbc/gcm" override="false" type="javax.sql.DataSource"/>
+</Context>

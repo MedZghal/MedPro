@@ -1,0 +1,39 @@
+/* Cubic Bezier Transition */
+/***
+Login page
+***/
+/* logo page */
+
+
+.login  .content{
+  background: url(./img/bg-white-lock.png) repeat;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px; }
+
+.login .content h3 {
+  color: #eee; }
+
+.login .content h4 {
+  color: #eee; }
+
+.login .content p,
+.login .content label {
+  color: #fff; }
+
+.login .mt-checkbox > span:after {
+  border-color: #eee; }
+
+
+.login .content .form-control {
+  background-color: #fff; }
+
+/* footer copyright */
+.login .copyright {
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  color: #eee;
+  font-size: 13px; }

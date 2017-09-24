@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="gcmPu" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.csys.gcm.model.Antecedents</class>
+    <class>com.csys.gcm.model.Medicament</class>
+    <class>com.csys.gcm.model.Dci</class>
+    <class>com.csys.gcm.model.Diagnostic</class>
+    <class>com.csys.gcm.model.Lettre</class>
+    <class>com.csys.gcm.model.Examen</class>
+    <class>com.csys.gcm.model.ActeMedicaux</class>
+    <class>com.csys.gcm.model.Acte</class>
+    <class>com.csys.gcm.model.PrescriptionOrd</class>
+    <class>com.csys.gcm.model.BianBioGly</class>
+    <class>com.csys.gcm.model.BilanBioHemostase</class>
+    <class>com.csys.gcm.model.BilanBioHepatique</class>
+    <class>com.csys.gcm.model.BilanBiolipidique</class>
+    <class>com.csys.gcm.model.BilanBioRenal</class>
+    <class>com.csys.gcm.model.BilanBioNFS</class>
+    <class>com.csys.gcm.model.BilanBioinflam</class>
+    <class>com.csys.gcm.model.BilanAECBU</class>
+    <class>com.csys.gcm.model.BilanAAutre</class>
+    <class>com.csys.gcm.model.BilanAECG</class>
+    <class>com.csys.gcm.model.Param</class>
+    <class>com.csys.gcm.model.Ville</class>
+    <class>com.csys.gcm.model.TraitementAPCI</class>
+    <class>com.csys.gcm.model.DossierPatientPartage</class>
+    <class>com.csys.gcm.model.MotifConsult</class>
+    <class>com.csys.gcm.model.Motif</class>
+    <class>com.csys.gcm.model.Ordonnance</class>
+    <class>com.csys.gcm.model.CabinetMedical</class>
+    <class>com.csys.gcm.model.SalleAttente</class>
+    <class>com.csys.gcm.model.Rdv</class>
+    <class>com.csys.gcm.model.Utilisateur</class>
+    <class>com.csys.gcm.model.FileUpload</class>
+    <class>com.csys.gcm.model.Consultation</class>
+    <class>com.csys.gcm.model.Recette</class>
+    <class>com.csys.gcm.model.FichPatient</class>
+    <class>com.csys.gcm.model.Patient</class>
+    <class>com.csys.gcm.model.AssuranceCNAM</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+    <validation-mode>NONE</validation-mode>
+    <non-jta-data-source>java:/comp/env/jdbc/gcm</non-jta-data-source>
+  </persistence-unit>
+</persistence>

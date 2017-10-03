@@ -1098,6 +1098,18 @@ public class GcmEventWS {
     public List<Recette> GetRecettebyMedecinDate(@WebParam(name = "code_med_trait") int code_med_trait,@WebParam(name = "DateAu") Date DateAu,@WebParam(name = "Datedu") Date Datedu)  {
         return new RecetteDao().GetRecettebyMedecinDate(code_med_trait,DateAu,Datedu);
     }
+    
+    /**
+     *
+     * @param code_med_trait
+     * @param DateAu
+     * @param Datedu
+     * @return
+     */
+    @WebMethod(operationName = "GetRecetteCnambyMedecinDate")
+    public List<Recette> GetRecetteCnambyMedecinDate(@WebParam(name = "code_med_trait") int code_med_trait,@WebParam(name = "DateAu") Date DateAu,@WebParam(name = "Datedu") Date Datedu)  {
+        return new RecetteDao().GetRecetteCnambyMedecinDate(code_med_trait,DateAu,Datedu);
+    }
     /**
      *
      * @param total

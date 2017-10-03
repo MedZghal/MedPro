@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -41,9 +43,21 @@ public class RecetteDao {
     }
     
     public List<Recette> GetRecettebyMedecinDate( int code_med_trait,Date d1 ,Date d2){
-        Utilisateur u = GetUtilisateurbyCodeMedTrit(code_med_trait);
         em.getTransaction().begin();
+        Utilisateur u = GetUtilisateurbyCodeMedTrit(code_med_trait);
         Query query =em.createNamedQuery("Recette.findByMedecinDte",Recette.class).setParameter("codeMedTrait", u).setParameter("d1",d1).setParameter("d2",d2);
+        em.getTransaction().commit();
+        return query.getResultList();
+    }
+    
+    public List<Recette> GetRecetteCnambyMedecinDate( int code_med_trait,Date d1 ,Date d2){
+        //Utilisateur u = GetUtilisateurbyCodeMedTrit(code_med_trait);
+        em.getTransaction().begin();
+        Format formatter = new SimpleDateFormat("yyyy/MM/dd");
+        String datestart = formatter.format(d1);
+        String dateend= formatter.format(d2);
+        //Query query =em.createNamedQuery("Recette.findByMedecinDte",Recette.class).setParameter("codeMedTrait", u).setParameter("d1",d1).setParameter("d2",d2);
+        Query query =em.createNativeQuery("select r.* from recette r join Patient p on r.num_patient=p.num_fich_patient where r.type IN ('CS','AT')and r.code_med_trait= ?1 and p.AssurCnam IS NOT NULL and r.date_trans between ?2 and ?3 ",Recette.class).setParameter(1,code_med_trait).setParameter(2,datestart).setParameter(3,dateend);
         em.getTransaction().commit();
         return query.getResultList();
     }

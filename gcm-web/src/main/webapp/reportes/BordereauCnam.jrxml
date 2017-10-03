@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98c4587d-7f42-4538-ba8c-68fbf6e0052d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFEFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="dateStart" class="java.lang.String"/>
+	<parameter name="dateEnd" class="java.lang.String"/>
+	<parameter name="medecin" class="java.lang.String"/>
+	<parameter name="codeConv" class="java.lang.String"/>
+	<parameter name="codeMed" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Recette."num_trans" AS Recette_num_trans,
+     Recette."total" AS Recette_total,
+     Recette."date_trans" AS Recette_date_trans,
+     Recette."libelle" AS Recette_libelle,
+     Recette."type" AS Recette_type,
+     Recette."num_consult" AS Recette_num_consult,
+     Recette."num_patient" AS Recette_num_patient,
+     Recette."tiers" AS Recette_tiers,
+     Recette."codeActe" AS Recette_codeActe,
+     Recette."tiketModérateur" AS Recette_tiketModérateur,
+     Recette."cnam" AS Recette_cnam,
+     Recette."code_med_trait" AS Recette_code_med_trait,
+     Patient."num_fich_patient" AS Patient_num_fich_patient,
+     Patient."nom" AS Patient_nom,
+     Patient."prenom" AS Patient_prenom,
+     Patient."sexe" AS Patient_sexe,
+     Patient."datenaiss" AS Patient_datenaiss,
+     Patient."sut_fam" AS Patient_sut_fam,
+     Patient."profession" AS Patient_profession,
+     Patient."adresse" AS Patient_adresse,
+     Patient."fixe" AS Patient_fixe,
+     Patient."gsm" AS Patient_gsm,
+     Patient."ville" AS Patient_ville,
+     Patient."poids" AS Patient_poids,
+     Patient."fichpapier" AS Patient_fichpapier,
+     Patient."AutreAssur" AS Patient_AutreAssur,
+     Patient."code_apci" AS Patient_code_apci,
+     Patient."type_apci" AS Patient_type_apci,
+     Patient."date_valid" AS Patient_date_valid,
+     Patient."AssurCnam" AS Patient_AssurCnam,
+     AssuranceCNAM."num_Assur" AS AssuranceCNAM_num_Assur,
+     AssuranceCNAM."regime_affi" AS AssuranceCNAM_regime_affi,
+     AssuranceCNAM."qualite" AS AssuranceCNAM_qualite,
+     AssuranceCNAM."ident_unique" AS AssuranceCNAM_ident_unique,
+     AssuranceCNAM."rang_Assur" AS AssuranceCNAM_rang_Assur,
+     AssuranceCNAM."date_valid" AS AssuranceCNAM_date_valid,
+     AssuranceCNAM."type" AS AssuranceCNAM_type,
+     AssuranceCNAM."nom_medc" AS AssuranceCNAM_nom_medc,
+     AssuranceCNAM."cod_cnam" AS AssuranceCNAM_cod_cnam,
+     (select sum(CONVERT(float,total)) from recette
+WHERE
+     Recette."date_trans" >= $P{dateStart}
+     and Recette."date_trans" <= $P{dateEnd}
+     and Recette."code_med_trait" = $P{codeMed}
+) AS TOTAL
+FROM
+     "dbo"."Patient" Patient INNER JOIN "dbo"."Recette" Recette ON Patient."num_fich_patient" = Recette."num_patient"
+     INNER JOIN "dbo"."AssuranceCNAM" AssuranceCNAM ON Patient."AssurCnam" = AssuranceCNAM."num_Assur"
+WHERE
+     Recette."date_trans" >= $P{dateStart}
+     and Recette."date_trans" <= $P{dateEnd}
+     and Recette."code_med_trait" = $P{codeMed}]]>
+	</queryString>
+	<field name="Recette_num_trans" class="java.lang.Integer"/>
+	<field name="Recette_total" class="java.lang.String"/>
+	<field name="Recette_date_trans" class="java.sql.Date"/>
+	<field name="Recette_libelle" class="java.lang.String"/>
+	<field name="Recette_type" class="java.lang.String"/>
+	<field name="Recette_num_consult" class="java.lang.Integer"/>
+	<field name="Recette_num_patient" class="java.lang.Integer"/>
+	<field name="Recette_tiers" class="java.lang.String"/>
+	<field name="Recette_codeActe" class="java.lang.String"/>
+	<field name="Recette_tiketModérateur" class="java.lang.String"/>
+	<field name="Recette_cnam" class="java.lang.String"/>
+	<field name="Recette_code_med_trait" class="java.lang.Integer"/>
+	<field name="Patient_num_fich_patient" class="java.lang.Integer"/>
+	<field name="Patient_nom" class="java.lang.String"/>
+	<field name="Patient_prenom" class="java.lang.String"/>
+	<field name="Patient_sexe" class="java.lang.String"/>
+	<field name="Patient_datenaiss" class="java.sql.Date"/>
+	<field name="Patient_sut_fam" class="java.lang.String"/>
+	<field name="Patient_profession" class="java.lang.String"/>
+	<field name="Patient_adresse" class="java.lang.String"/>
+	<field name="Patient_fixe" class="java.lang.String"/>
+	<field name="Patient_gsm" class="java.lang.String"/>
+	<field name="Patient_ville" class="java.lang.String"/>
+	<field name="Patient_poids" class="java.lang.String"/>
+	<field name="Patient_fichpapier" class="java.lang.String"/>
+	<field name="Patient_AutreAssur" class="java.lang.String"/>
+	<field name="Patient_code_apci" class="java.lang.String"/>
+	<field name="Patient_type_apci" class="java.lang.String"/>
+	<field name="Patient_date_valid" class="java.sql.Date"/>
+	<field name="Patient_AssurCnam" class="java.lang.Integer"/>
+	<field name="AssuranceCNAM_num_Assur" class="java.lang.Integer"/>
+	<field name="AssuranceCNAM_regime_affi" class="java.lang.String"/>
+	<field name="AssuranceCNAM_qualite" class="java.lang.String"/>
+	<field name="AssuranceCNAM_ident_unique" class="java.lang.String"/>
+	<field name="AssuranceCNAM_rang_Assur" class="java.lang.Integer"/>
+	<field name="AssuranceCNAM_date_valid" class="java.sql.Date"/>
+	<field name="AssuranceCNAM_type" class="java.lang.String"/>
+	<field name="AssuranceCNAM_nom_medc" class="java.lang.String"/>
+	<field name="AssuranceCNAM_cod_cnam" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement x="105" y="10" width="592" height="44" uuid="05c78bda-1a18-4734-a6a3-d77df33e8613"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTE D ' HONORAIRES DES CONSULTATIONS ET DES ACTES AMBULATOIRE EFFECTUES
+PAR MEDECIN CONVENTIONNE DANS LE CADRE DU TIERS PAYANT]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="653" y="64" width="144" height="20" forecolor="#000000" uuid="99405bb8-3666-4eeb-8c4d-1bac3c398dba"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="84" width="55" height="20" uuid="dbb28bb6-8586-4144-a376-dbfb69caf5c2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Médecin :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="84" width="117" height="20" uuid="bd38a233-01c8-4486-a76c-338e8b838992"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code Conventionnel :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="111" width="66" height="20" uuid="bf9617d7-31d2-4ff4-8770-5c42d7f267fb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periode du]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="71" y="111" width="78" height="20" uuid="547d65d8-f28a-4b0f-9ec9-377524e5be0b"/>
+				<textFieldExpression><![CDATA[$P{dateStart}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="149" y="111" width="23" height="20" uuid="00aae842-cee0-44a3-980b-c0412c1b4556"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="172" y="111" width="100" height="20" uuid="5d0a63ae-f934-4b58-9dd4-48c407125b23"/>
+				<textFieldExpression><![CDATA[$P{dateEnd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="84" width="163" height="20" uuid="f3630af1-8af0-42fb-90ef-d04fe0ff78f5"/>
+				<textFieldExpression><![CDATA[$P{medecin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="84" width="100" height="20" uuid="74ad25d7-ee4d-4ae9-b32a-ea8ebf69a3b0"/>
+				<textFieldExpression><![CDATA[$P{codeConv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="7" width="76" height="20" uuid="ba457eef-606c-4c86-887a-0c5c562f71fb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date des soins]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="7" width="75" height="20" uuid="47a0985e-db0e-4c4a-aebe-11b328636f87"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[I.U de l'assuré]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="15" width="90" height="20" uuid="a2636289-cfca-477e-8776-eeee583f1e1a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Prénom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="15" width="53" height="20" uuid="1b65a0f6-26fb-49b8-94a2-a684e87cee90"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Qualité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="15" width="59" height="20" uuid="95950d99-86ba-4135-abe5-78cf8dec6d0e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Code Acte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="15" width="48" height="20" uuid="85c57a5d-d89f-4e03-84d7-3f043fa81bf6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cotation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="524" y="5" width="56" height="30" uuid="06c6d27d-ac22-498d-bf7e-fcde7e88e03e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Montant Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="587" y="5" width="65" height="30" uuid="2bf64fd9-6811-4524-961e-0ea7238348c7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ticket
+modérateur
+Perçu de l'assuré]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="656" y="5" width="63" height="30" uuid="f0882817-935b-4f69-8e3c-e844e446ed0d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Montant à la
+charge de la]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="723" y="5" width="75" height="30" uuid="44c64747-15b3-4fc2-8929-203277859544"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Code Conventionnel
+du médecin de famille
+ou du médecin
+traitant (APCI)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="15" width="59" height="20" uuid="fbfa7633-a7f4-4216-8ef5-565208dda3c0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Code APCI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="36" width="802" height="1" uuid="f5a85cd0-6cd4-4d6a-b514-f962c976fd91"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="802" height="1" uuid="72b4ba53-27a9-497a-9524-5f335d074eca"/>
+			</line>
+			<staticText>
+				<reportElement x="174" y="2" width="218" height="13" uuid="d9911728-72eb-4398-823c-e1c067f447df"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[L'identité du bénéficiaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="2" width="114" height="13" uuid="6942fcc0-faa4-447c-819f-9a5b06ca6a11"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Acte effectué]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="5" y="7" width="76" height="20" uuid="854e19be-da34-4bf3-b121-acbca15cf5fb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Recette_date_trans}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="7" width="75" height="20" uuid="f9621cd9-5486-4981-8390-06d4ba727981"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AssuranceCNAM_ident_unique}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="7" width="45" height="20" uuid="0838bb32-dd08-473f-9635-6e0d898fb778"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Patient_prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="7" width="45" height="20" uuid="4e1da4ee-0443-4357-9850-a730ef00e61a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Patient_nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="7" width="53" height="20" uuid="12bb8802-b6ea-4167-8558-5a41a76e8e50"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AssuranceCNAM_qualite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="7" width="59" height="20" uuid="b9acc45b-04e7-41f3-a8b0-c2b33f138699"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Recette_type}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.000">
+				<reportElement x="524" y="7" width="56" height="20" uuid="2b0ec5da-58d7-4aaf-9cdf-41861f0610e7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Recette_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.000">
+				<reportElement x="587" y="7" width="65" height="20" uuid="cee8fecb-70fc-43ca-9339-4086d519e15a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Recette_tiketModérateur}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.000">
+				<reportElement x="656" y="7" width="63" height="20" uuid="f9e4a46e-1160-4f27-b052-e29dd35a67d1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Recette_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="722" y="7" width="75" height="20" uuid="e3de39ac-c460-40ed-b0cd-06d04c00dcb1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AssuranceCNAM_cod_cnam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="7" width="59" height="20" uuid="c94787d5-9eac-4e32-bb5a-b007272efd6c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Patient_code_apci}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="802" height="1" uuid="0b5dca33-4797-445a-b7ed-434694bfbc3d"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="619" y="0" width="100" height="20" uuid="567e6266-5f30-4a2c-befd-8596c292e916"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL REPORT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="723" y="0" width="74" height="20" uuid="45fd5bcc-2116-4103-b76a-4490c0afeb0a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="623" y="20" width="100" height="20" uuid="67ce8faf-759f-451e-851d-5686e751558b"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total à payer :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="724" y="20" width="74" height="20" uuid="f83905b5-5a2b-40e0-9016-6f0c83cc8ce2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="0" width="66" height="20" uuid="5c672c1c-3525-49c0-8dad-1976efda78ee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NB Facture :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="71" y="0" width="100" height="20" uuid="f7e215d5-b0c7-4f8a-9f1a-1e61a70c5998"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="777" y="0" width="40" height="20" forecolor="#000000" uuid="12daa4ae-82b1-4a05-ba04-5aec7e75e428"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" /" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="697" y="0" width="80" height="20" forecolor="#000000" uuid="39bd0f61-29ae-47a9-a099-35624fd93392"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" REPORT   "+
+"Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

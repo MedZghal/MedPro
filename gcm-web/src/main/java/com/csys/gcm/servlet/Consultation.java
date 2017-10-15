@@ -511,6 +511,19 @@ public class Consultation extends HttpServlet {
                                 out.println(gson.toJson(WS.PortCltWS.ajRecette(total, dateC, libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam)));
                                 break;
                             }
+                        case "UpdateRecetteDate":
+                            {
+                                
+                                String date_trans=request.getParameter("date_trans");
+                                Date date_trans_ = sdf.parse(date_trans);
+                                GregorianCalendar c = new GregorianCalendar();
+                                c.setTime(date_trans_);
+                                XMLGregorianCalendar dateC = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+                                
+                                int num_trans=Integer.parseInt(request.getParameter("num_trans"));
+                                out.println(gson.toJson(WS.PortCltWS.updateRecetteDate(num_trans,dateC)));
+                                break;
+                            }
                         case "SuppRecette":
                             {
                                 String id=request.getParameter("id");

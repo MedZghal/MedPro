@@ -3,6 +3,7 @@
 
 $(function (){
     /*init*/
+//    window.location.reload(true);
     $('#content').scrollTop(0);
     if(!window.parent.$("#menuback").hasClass('hide'))
         window.parent.$("#menuback").toggleClass('hide');

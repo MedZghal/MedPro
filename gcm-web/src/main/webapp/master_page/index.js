@@ -220,58 +220,9 @@ $(function () {
     });
     
     $("#confirmerconsultpatient").click(function (){
-        if($("#select2-patient2").val()!==null){
-            
-        var Consults =GetListConsultationByPatient($("#select2-patient2").val());
-        var type="Consultation";
-        
-         if(Object.keys(Consults).length>0){
-//             if(Consults[0].numPatient.codeApci!==""){
-//             
-//             window.parent.$.SmartMessageBox({
-//                    title : "<img src='../img/apci_logo_600w.png' style='width: 80px;'>  Type Ordonnance!",
-//                    content : "Le Patient "+Consults[0].numPatient.nom+" "+Consults[0].numPatient.prenom+" à un APCI Remboursement. <br/> Voulez vous utilisez l'ordonnance APCI(OUI) ou Normal(NON)",
-//                    buttons : '[OUI][NON]'
-//                    }, function(ButtonPressed) {
-//                        if (ButtonPressed === "OUI") {
-//                             type="Consultation APCI";
-//                        }
-//                        $("#anuulerconsultpatient").trigger("click");
-//                        localStorage.setItem("num_conslt",GetCptParamByCode("CptConsult"));
-//                        localStorage.setItem("Prescp",JSON.stringify([]));
-//                        localStorage.setItem("Ordonnance","false");
-//                        localStorage.setItem("UpdateConsult","false");
-//                        localStorage.setItem("Consults",JSON.stringify(Consults));
-//                        localStorage.setItem("typeConsult",type);
-//                        localStorage.setItem("numFichPatient",$("#select2-patient2").val());
-//                        $('#iframe_cloturee').contents().get(0).location.href="../body_page/Consultation.jsp";
-//                        $("#select2-patient2").empty().trigger('change');
-//                }); 
-//                 }else{
-                        $("#anuulerconsultpatient").trigger("click");
-                        localStorage.setItem("num_conslt",GetCptParamByCode("CptConsult"));
-                        localStorage.setItem("Prescp",JSON.stringify([]));
-                        localStorage.setItem("Ordonnance","false");
-                        localStorage.setItem("UpdateConsult","false");
-                        localStorage.setItem("Consults",JSON.stringify(Consults));
-                        localStorage.setItem("typeConsult",type);
-                        localStorage.setItem("numFichPatient",$("#select2-patient2").val());
-                        $('#iframe_cloturee').contents().get(0).location.href="../body_page/Consultation.jsp";
-                        $("#select2-patient2").empty().trigger('change');
-//                        }
-         }else{
-                $("#anuulerconsultpatient").trigger("click");
-                localStorage.setItem("num_conslt",GetCptParamByCode("CptConsult"));
-                localStorage.setItem("Prescp",JSON.stringify([]));
-                localStorage.setItem("Ordonnance","false");
-                localStorage.setItem("UpdateConsult","false");
-                localStorage.setItem("Consults",JSON.stringify([]));
-                localStorage.setItem("typeConsult","Consultation");
-                localStorage.setItem("numFichPatient",$("#select2-patient2").val());
-                $('#iframe_cloturee').contents().get(0).location.href="../body_page/Consultation.jsp";
-                $("#select2-patient2").empty().trigger('change');
-            }
-        }else
+        if($("#select2-patient2").val()!==null)
+            CallConsult($("#select2-patient2").val());
+        else
             window.parent.toastr.error("il faut choisir un patient d'abord?",'Error',option);
     });
     
@@ -400,8 +351,39 @@ $(function () {
  
 });
 
+function CallConsulttAtt(patient){
+    $("#salleAttBtt")[0].click();
+    CallConsult(patient);
+}
+function CallConsult(patient){
+    var Consults =GetListConsultationByPatient(patient);
+        var type="Consultation";
+        
+        if(Object.keys(Consults).length>0){
+                        $("#anuulerconsultpatient").trigger("click");
+                        localStorage.setItem("num_conslt",GetCptParamByCode("CptConsult"));
+                        localStorage.setItem("Prescp",JSON.stringify([]));
+                        localStorage.setItem("Ordonnance","false");
+                        localStorage.setItem("UpdateConsult","false");
+                        localStorage.setItem("Consults",JSON.stringify(Consults));
+                        localStorage.setItem("typeConsult",type);
+                        localStorage.setItem("numFichPatient",patient);
+                        $('#iframe_cloturee').contents().get(0).location.href="../body_page/Consultation.jsp";
+                        $("#select2-patient2").empty().trigger('change');
 
-
+        }else{
+                $("#anuulerconsultpatient").trigger("click");
+                localStorage.setItem("num_conslt",GetCptParamByCode("CptConsult"));
+                localStorage.setItem("Prescp",JSON.stringify([]));
+                localStorage.setItem("Ordonnance","false");
+                localStorage.setItem("UpdateConsult","false");
+                localStorage.setItem("Consults",JSON.stringify([]));
+                localStorage.setItem("typeConsult","Consultation");
+                localStorage.setItem("numFichPatient",patient);
+                $('#iframe_cloturee').contents().get(0).location.href="../body_page/Consultation.jsp";
+                $("#select2-patient2").empty().trigger('change');
+            }
+}
 function AjRecette(total,date_trans,libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam)
 {
     var reponse;
@@ -607,17 +589,24 @@ function toggleChat(){
 }
 function addListeAttendeWS(eventObjMenu){
     var listeAttende="";
+    var tab =[];
     $.each(eventObjMenu,function (i){
-    listeAttende+='<li class="media" >';
-    listeAttende+='<div class="pull-right">';
-    listeAttende+='<small>'+eventObjMenu[i].numRdv.startDate.hour+':'+eventObjMenu[i].numRdv.startDate.minute+'</small>&nbsp;';
-    listeAttende+='<a class="pull-right" href="javascript:SuppSalleAttentes('+eventObjMenu[i].numligneAttend+');"><img class="media-object" src="../img/delete.png" style="width: 20px; position: relative; " alt="..."></a></div>';
-    listeAttende+='<img onclick="toggleChat();" class="media-object" src="'+ImgProfile(eventObjMenu[i].numRdv.fichPatient.patient.datenaiss,eventObjMenu[i].numRdv.fichPatient.patient.sexe)+'" alt="...">';
-    listeAttende+='<div class="media-body">';                                          
-    listeAttende+='<h4 class="media-heading"> Rendez-Vous N°'+eventObjMenu[i].numRdv.numRDV+'</h4> ';                                       
-    listeAttende+='<div class="media-heading-sub">'+eventObjMenu[i].numRdv.descpRDV+'</div>';                                        
-    listeAttende+='</div></li>';  
+        tab.push({
+            'numligneAttend':eventObjMenu[i].numligneAttend,
+            'numRdv':eventObjMenu[i].numRdv.numRDV,
+            'numPatient':eventObjMenu[i].numRdv.fichPatient.fichPatientPK.numPatient
+        });
+        listeAttende+='<li class="media" onclick="CallConsulttAtt('+eventObjMenu[i].numRdv.fichPatient.fichPatientPK.numPatient+')">';
+        listeAttende+='<div class="pull-right">';
+        listeAttende+='<small>'+eventObjMenu[i].numRdv.startDate.hour+':'+eventObjMenu[i].numRdv.startDate.minute+'</small>&nbsp;';
+        listeAttende+='<a class="pull-right" href="javascript:SuppSalleAttentes('+eventObjMenu[i].numligneAttend+');"><img class="media-object" src="../img/delete.png" style="width: 20px; position: relative; " alt="..."></a></div>';
+        listeAttende+='<img onclick="toggleChat();" class="media-object" src="'+ImgProfile(eventObjMenu[i].numRdv.fichPatient.patient.datenaiss,eventObjMenu[i].numRdv.fichPatient.patient.sexe)+'" alt="...">';
+        listeAttende+='<div class="media-body">';                                          
+        listeAttende+='<h4 class="media-heading"> Rendez-Vous N°'+eventObjMenu[i].numRdv.numRDV+'</h4> ';                                       
+        listeAttende+='<div class="media-heading-sub">'+eventObjMenu[i].numRdv.descpRDV+'</div>';                                        
+        listeAttende+='</div></li>';  
     });
+    localStorage.setItem('listeAttend',JSON.stringify(tab));
     window.parent.$("#listeDattende").empty().append(listeAttende);
     
                                         
@@ -3103,5 +3092,9 @@ function BuildCourbeConsult(Consults ,containerPouls,containerTEMP,containerPOID
             }
 });
 
+}
+
+function format2_8_2(ch){
+    return ch.substr(0,2)+"/"+ch.substr(2,8)+"/"+ch.substr(8,2);
 }
      

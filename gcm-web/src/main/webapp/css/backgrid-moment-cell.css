@@ -7,9 +7,9 @@
 */
 
 .backgrid .moment-cell {
-  text-align: right;
+  text-align: center;
 }
 
 .backgrid .moment-cell.editor input[type=text] {
-  text-align: right;
+  text-align: center;
 }

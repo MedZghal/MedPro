@@ -237,6 +237,7 @@ function createBackGrid() {
             label: "Date Naissance",
             editable: false,
             cell: Backgrid.StringCell.extend({
+                className: 'date-cell',
                 render: function (e) {
                     
 		this.$el.empty();
@@ -349,6 +350,7 @@ function createBackGrid() {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
                 //template: _.template('<ul class="social-icons"> <li><a id="edit" data-tooltip="tooltip" title="" href="javascript:void(0);" data-placement="top"  data-original-title="Modifier" class="tooltips myspace"> </a> </li><li><a id="Consult" href="javascript:;" data-original-title="Conultation" class="last-fm"> </a></li><li><a id="delete" href="javascript:;" data-original-title="Supprimer" class="dropbox"> </a></li><li><a id="File" href="#" data-original-title="File" class="last-fm"> </a></li><li><a id="Partage" href="#" data-original-title="Partage" class="last-fm"> </a></li></ul>'),
 //                template: _.template('<ul class="action-icons"> <li><a id="edit"  data-tooltip="tooltip" title="Modifier" data-placement="top"   class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userM.png" ></i></a></li><li><a id="Consult" data-tooltip="tooltip" title="Observation" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userC.png" ></i></a></li><li><a id="delete" data-tooltip="tooltip" title="Supprimer" data-placement="top" class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userDel.png" ></i></a></li><li><a id="File" data-tooltip="tooltip" title="File" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userF.png" ></i></a></li><li><a id="Partage" data-tooltip="tooltip" title="Partager" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userP.png" ></i></a></li></ul>'),
             template: _.template('<div class="btn-group">'+
@@ -578,7 +580,8 @@ function createBackGrid() {
         columns: columns,
         collection: territories,
         //row: FocusableRow,
-        className: 'table table-bordered  table-editable no-margin table-hover full-height-content full-height-content-scrollable'
+//        className: 'table table-bordered  table-editable no-margin table-hover full-height-content full-height-content-scrollable'
+        className: 'backgrid table-hover table-bordered'
         //body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['name', 'value'] })
     });
     
@@ -745,7 +748,7 @@ function createBackGridDossierPar() {
                     }
                  
                  
-                    return IMG+'<img class="tooltips" data-tooltip="tooltip" title="'+partage+'" src="../img/BMR.gif" width="20" alt="" style=" margin-top: -91px; margin-left: -5px;cursor: pointer;" />';
+                    return IMG+'<img class="tooltips" data-tooltip="tooltip" title="'+partage+'" src="../img/BMR.gif" width="20" alt="" style="margin-top: -30px;margin-left: -10px;cursor: pointer;" />';
                
 		
 	  }
@@ -819,6 +822,7 @@ function createBackGridDossierPar() {
             label: "Date Naissance",
             editable: false,
             cell: Backgrid.DateCell.extend({
+                className: 'date-cell',
                 render: function (e) {
                     
 		this.$el.empty();
@@ -911,6 +915,7 @@ function createBackGridDossierPar() {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
             template1: _.template('<div class="btn-group">'+
                     '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">'+
                     '<i class="fa fa-gear fa-lg"></i> <span class="caret"></span>'+
@@ -951,7 +956,7 @@ function createBackGridDossierPar() {
         columns: columns,
         collection: territories,
         //row: FocusableRow,
-        className: 'table table-striped table-bordered table-hover'
+        className: 'backgrid table-hover table-bordered'
         //body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['name', 'value'] })
     });
   
@@ -1092,7 +1097,7 @@ function createBackGridDossierPar() {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
-            className: "image-cell",
+            className: 'action-cell',
                 //template: _.template('<ul class="social-icons"> <li><a id="edit" data-tooltip="tooltip" title="" href="javascript:void(0);" data-placement="top"  data-original-title="Modifier" class="tooltips myspace"> </a> </li><li><a id="Consult" href="javascript:;" data-original-title="Conultation" class="last-fm"> </a></li><li><a id="delete" href="javascript:;" data-original-title="Supprimer" class="dropbox"> </a></li><li><a id="File" href="#" data-original-title="File" class="last-fm"> </a></li><li><a id="Partage" href="#" data-original-title="Partage" class="last-fm"> </a></li></ul>'),
 //                template: _.template('<ul class="action-icons"> <li><a id="edit"  data-tooltip="tooltip" title="Modifier" data-placement="top"   class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userM.png" ></i></a></li><li><a id="Consult" data-tooltip="tooltip" title="Observation" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userC.png" ></i></a></li><li><a id="delete" data-tooltip="tooltip" title="Supprimer" data-placement="top" class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userDel.png" ></i></a></li><li><a id="File" data-tooltip="tooltip" title="File" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userF.png" ></i></a></li><li><a id="Partage" data-tooltip="tooltip" title="Partager" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userP.png" ></i></a></li></ul>'),
             template: _.template('<div class="btn-group">'+
@@ -1180,7 +1185,7 @@ function createBackGridDossierPar() {
         columns: columns,
         collection: territories,
         //row: FocusableRow,
-        className: 'table table-striped table-bordered table-hover'
+        className: 'backgrid table-hover table-bordered'
         //body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['name', 'value'] })
     });
   
@@ -1358,6 +1363,7 @@ function createBackGridDossierPar() {
             label: "Date Naissance",
             editable: false,
             cell: Backgrid.DateCell.extend({
+                className: 'date-cell',
                 render: function (e) {
                     
 		this.$el.empty();
@@ -1450,6 +1456,7 @@ function createBackGridDossierPar() {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
                 //template: _.template('<ul class="social-icons"> <li><a id="edit" data-tooltip="tooltip" title="" href="javascript:void(0);" data-placement="top"  data-original-title="Modifier" class="tooltips myspace"> </a> </li><li><a id="Consult" href="javascript:;" data-original-title="Conultation" class="last-fm"> </a></li><li><a id="delete" href="javascript:;" data-original-title="Supprimer" class="dropbox"> </a></li><li><a id="File" href="#" data-original-title="File" class="last-fm"> </a></li><li><a id="Partage" href="#" data-original-title="Partage" class="last-fm"> </a></li></ul>'),
 //                template: _.template('<ul class="action-icons"> <li><a id="edit"  data-tooltip="tooltip" title="Modifier" data-placement="top"   class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userM.png" ></i></a></li><li><a id="Consult" data-tooltip="tooltip" title="Observation" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userC.png" ></i></a></li><li><a id="delete" data-tooltip="tooltip" title="Supprimer" data-placement="top" class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userDel.png" ></i></a></li><li><a id="File" data-tooltip="tooltip" title="File" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userF.png" ></i></a></li><li><a id="Partage" data-tooltip="tooltip" title="Partager" data-placement="top"  class="btn btn-icon-only red tooltips"><i ><img style=" margin-top: -4px;width:25px;" src="../img/userP.png" ></i></a></li></ul>'),
             template: _.template('<div class="btn-group">'+
@@ -1665,7 +1672,7 @@ function createBackGridDossierPar() {
         columns: columns,
         collection: territories,
         //row: FocusableRow,
-        className: 'table table-striped table-bordered table-hover'
+        className: 'backgrid table-hover table-bordered'
         //body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['name', 'value'] })
     });
     

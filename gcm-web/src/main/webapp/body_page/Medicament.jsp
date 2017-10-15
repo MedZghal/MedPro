@@ -53,10 +53,13 @@
                                </div>
                             </div>
                         </div>
-        
-        <h1 class="page-title" style="font-family: Courier;"> Gestion des Médicaments
+        <fieldset>
+                    <legend style=" width: auto; background-color: transparent; ">
+                        <h1 class="page-title" style="font-family: Courier;"> Gestion des Médicaments
                             <small style=" margin-left: -15px; font-family: Courier; ">Liste des Médicaments</small>
                         </h1>
+                    </legend>
+        
                         <!-- END PAGE BAR -->
                         <div class="full-height-content full-height-content-scrollable">
                             <div class="full-height-content-body">
@@ -106,7 +109,7 @@
 					<!-- widget content -->
 					<div class="widget-body">
 						
-                                            <div id="contents">
+                                            <div id="contents"  class="backgrid-container">
                                                 
                                             </div>
 	
@@ -122,6 +125,8 @@
                          </div>
                             </div>
                         </div>
+                         <div class="clearfix"></div>
+        </fieldset>
           <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
           
           <script src="../js/attrchange/attrchange.js"></script>

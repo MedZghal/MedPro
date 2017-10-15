@@ -86,11 +86,11 @@ function createBackGridMedic() {
             label: "Prix HT",
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
-            cell: Backgrid.StringCell.extend({
+            cell: Backgrid.NumberCell.extend({
                render: function (e) {
                     
 		this.$el.empty();
-		this.$el.append(this.model.get("prix") +" DT");
+		this.$el.append(parseFloat(this.model.get("prix")).toFixed(3) +" DT");
                     
 		return this;
             }
@@ -141,12 +141,13 @@ function createBackGridMedic() {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
                 template: _.template('<div class="btn-group">'+
                     '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">'+
                     '<i class="fa fa-gear fa-lg"></i> <span class="caret"></span>'+
                     '</button>'+
                         '<ul class="dropdown-menu" style="right: 0; left: auto;">'+
-                            '<li><a id="delete" ><i ><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/delete.png" ><div style=" margin-top: -22px; margin-left: 22px; "><strong>Supprimer</strong></div></i></a></li>'+
+                            '<li><a id="delete" ><i ><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/if_folder_delete_48768.png" ><div style=" margin-top: -22px; margin-left: 22px; "> Supprimer </div></i></a></li>'+
                             
                         '</ul></div>'),
                 events: {
@@ -224,7 +225,7 @@ function createBackGridMedic() {
         columns: columns,
         collection: territories,
         //row: FocusableRow,
-        className: 'table table-bordered  table-editable no-margin table-hover full-height-content full-height-content-scrollable'
+        className: 'backgrid table-hover table-bordered full-height-content full-height-content-scrollable table-editable no-margin'
         //body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['name', 'value'] })
     });
     

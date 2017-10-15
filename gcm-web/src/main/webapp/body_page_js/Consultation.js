@@ -45,7 +45,7 @@ $(function(){
                     });
                 });
     $("#Motif").select2({
-                    placeholder: "sélectionnez Motif",
+                    placeholder: "Sélectionnez Motif",
                     width: '100%',
                     data :motifsTAB,
                     tags: true,
@@ -88,14 +88,14 @@ $(function(){
     
     
     $("#Diag").select2({
-                    placeholder: "sélectionnez Diagnostic",
+                    placeholder: "Sélectionnez Diagnostic",
                     width: '100%'
                 });
                 
     var diags =GetListDiagnostic();
     remplir_Diag(diags);
     $("#select2-Diag-container").css("margin-left","30px");
-    $("[role='combobox']").css("padding-left","30px");
+    $("[role='combobox']").css("padding-left","15px");
     $("[role='combobox']").css("background-color","#eef1f5");
     $("#Diag").val('').trigger('change');
                 

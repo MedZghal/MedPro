@@ -156,9 +156,9 @@ function handleValidation() {
                     minlength :8
                 },
                 Code: {
-                    number: true,
-                    minlength: 10,
-                    maxlength:10,
+//                    number: true,
+//                    minlength: 12,
+//                    maxlength:12,
                     required: true
                 },
                 TVA: {

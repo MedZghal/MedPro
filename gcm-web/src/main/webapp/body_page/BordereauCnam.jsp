@@ -13,6 +13,7 @@
         <title>Gestion des Bordereau</title>
         <jsp:include page="../body_page/css_declare.jsp"/>
         <link href="../js/daterange/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
+        
         <style>
             /*Scroll hide*/
             html {
@@ -224,7 +225,7 @@ h1 a:hover {
     <body id="BCPage" style="font-family: cursive">
          <!-- BEGIN PAGE BAR -->
                         <div class="page-bar" style="padding-top: 5px">
-                            <ul class="page-breadcrumb">
+                            <ul class="page-breadcrumb" style=" margin-top: -10px; ">
                                 <li>
                                     <i class="icon-home"></i>
                                     <a href="javascript:window.location.reload();">Home</a>
@@ -284,57 +285,90 @@ h1 a:hover {
                                         <legend>Bordereau</legend>
                                         <div class="row">
                                                     <div class="col-md-4">
-                                                        
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="nbordereau">N°Bordereau</label>
+                                                            <div class="input-icon">
+                                                                 <i style=" margin-top: 9px; " class="icon-layers" aria-hidden="true"></i>
+                                                                <input id="nbordereau" name="nbordereau" type="text" class="form-control" placeholder="Numéro de bordereau" >
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="nbordereau" name="nbordereau" type="text" class="form-control" placeholder="Numéro de bordereau" >
                                                                 <label for="nbordereau">N°Bordereau</label>
                                                                 <span class="help-block">Entrer numéro de bordereau</span>
                                                                  <i class="icon-layers" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="datedepot">Date Dépot</label>
+                                                            <div class="input-icon">
+                                                                 <i style=" margin-top: 9px; " class="fa fa-calendar"></i>
+                                                                <input id="datedepot" name="datedepot" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Dépot">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="datedepot" name="datedepot" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Dépot">
                                                                 <label for="datedepot">Date Dépot</label>
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-
-                                                                <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="nbfacture">Nombre Facture</label>
+                                                            <div class="input-icon">
+                                                                 <i style=" margin-top: 9px; " class="icon-layers" aria-hidden="true"></i>
+                                                                <input id="nbfacture" disabled name="nbfacture" type="text" class="form-control" placeholder="Entrer Nombre Facture" >
+                                                            </div>
+                                                        </div>
+<!--                                                                <div class="form-group form-md-line-input has-success ">
                                                                     <div class="input-icon">
                                                                         <input id="nbfacture" disabled name="nbfacture" type="text" class="form-control" placeholder="Entrer Nombre Facture" >
                                                                         <label for="nbfacture">Nombre Facture</label>
                                                                         <span class="help-block">Entrer Nombre Facture</span>
                                                                          <i class="icon-layers" aria-hidden="true"></i>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                     </div>  
                                                     
                                         </div>
                                         <div class="row" id="sandbox-container">
                                             <div class="input-daterange input-group" id="datepicker">
                                                     <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                             <label style="color: #27a4b0;" for="datedepot">Date Début Péroide</label>
                                                             <div class="input-icon">
-                                                                <input style=" text-align: left; " id="datedebutp" name="datedebutp" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date début péroide">
+                                                                 <i style=" margin-top: 9px; "  class="fa fa-calendar"></i>
+                                                                <input style="text-align: left;border-radius: 4px;" id="datedebutp" name="datedebutp" class="form-control  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date début péroide">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
+                                                            <div class="input-icon">
+                                                                <input style=" text-align: left; " id="datedebutp" name="datedebutp" class="form-control  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date début péroide">
                                                                <label for="datedepot">Date Début Péroide</label>
                                                                 <i style="bottom: -35px;" class="fa fa-calendar"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="datedepot">Date fin Péroide</label>
+                                                            <div class="input-icon">
+                                                                 <i  style=" margin-top: 9px; " class="fa fa-calendar"></i>
+                                                                 <input style="text-align: left;border-radius: 4px;" id="datedebutf" name="datedebutf" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date  fin péroide">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input style=" text-align: left; " id="datedebutf" name="datedebutf" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date  fin péroide">
                                                                <label for="datedepot">Date fin Péroide</label>
                                                                 <i style="bottom: -35px;" class="fa fa-calendar"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                             </div>
                                                   
@@ -372,11 +406,11 @@ h1 a:hover {
 					</div>
 					<!-- end widget edit box -->
 					<!-- widget content -->
-                                        <div class="widget-body " style=" padding-bottom: 1px; ">
+                                        <div class="widget-body" style=" padding-bottom: 1px; ">
                                             <div style="col-lg-12 col-xs-12 col-sm-12">
                                                 <fieldset style=" margin: 10px;">
                                                     <legend>Liste des Factures</legend>
-                                                        <div id="contents" >
+                                                        <div id="contents" class="backgrid-container">
 
                                                         </div>
                                                 </fieldset>
@@ -399,25 +433,33 @@ h1 a:hover {
                                     </div>
         </div>
          </fieldset>
-          <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-          
-          <script src="../js/attrchange/attrchange.js"></script>
-        <script src="../js/attrchange/attrchange_ext.js"></script>
+ 
+    <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+  
+    <script src="../js/attrchange/attrchange.js"></script>
+    <script src="../js/attrchange/attrchange_ext.js"></script>
         
     <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
     <script src="../assets/global/plugins/moment.min.js" type="text/javascript"></script>
     <script src="../assets/global/plugins/fr.js" type="text/javascript"></script>
+    <script src="../js/moment-timezone.js"></script>
+    
     <script src="../js/backbone_backgrid/underscore.js"></script>
     <script src="../js/backbone_backgrid/backbone-min.js"></script>
     <script src="../js/backbone_backgrid/backbone-pageable.js"></script>
     <script src="../js/backbone_backgrid/backgrid.js"></script>
+    <script src="../js/backbone_backgrid/backgrid-moment-cell.js"></script>
     <script src="../js/backbone_backgrid/backbone-dotattr.js"></script>
     <script src="../js/backbone_backgrid/backgrid-paginator.js"></script>
     <script src="../js/backbone_backgrid/backgrid-responsiveGrid.min.js"></script>
     <script src="../js/backbone_backgrid/backgrid-filter.js"></script>
     <script src="../js/backbone_backgrid/backgrid-sum.js"></script>
+    
+    
+    
     <!--<script src="../js/jquery-ui.js"></script>-->
+    <script src="../js/bootstrap-datetimepicker.js" type="text/javascript"></script>
     <script src="../js/daterange/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="../js/daterange/locales/bootstrap-datepicker.fr.min.js" type="text/javascript"></script>
 

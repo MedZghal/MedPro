@@ -154,7 +154,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <div id="contents">
+                                            <div id="contents" class="backgrid-container">
                                                 
                                             </div>
 	

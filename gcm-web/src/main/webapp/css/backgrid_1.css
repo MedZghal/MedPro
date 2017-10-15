@@ -7,19 +7,19 @@
 */
 
 .backgrid-container {
-/*  position: relative;
+  position: relative;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 465px;
   padding: 0;
   overflow: auto;
-  border: 0;*/
+  border: 0;
 }
 
 .backgrid {
   width: 100%;
   max-width: 100%;
-  background-color: white;
+  background-color: transparent;
   border-collapse: collapse;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -28,11 +28,11 @@
 
 .backgrid th,
 .backgrid td {
-  /*display: none;*/
-  height: auto;
-  /*max-width: 250px;*/
+  display: none;
+  height: 20px;
+  max-width: 250px;
   padding: 4px 5px;
-  /*overflow: hidden;*/
+  overflow: hidden;
   line-height: 20px;
   text-align: left;
   text-overflow: ellipsis;
@@ -41,25 +41,20 @@
   border-bottom: 1px solid #DDD;
 }
 
-.backgrid td.date-cell,
-.backgrid td.action-cell{
-    text-align: center;
-}
 .backgrid th.renderable,
 .backgrid td.renderable {
   display: table-cell;
 }
 
 .backgrid th {
-    font-weight: bold;
-    text-align: center;
-    color: #337ab7;
+  font-weight: bold;
+  text-align: center;
 }
 
 .backgrid th.sortable a {
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .backgrid thead th {
@@ -69,11 +64,11 @@
 
 .backgrid thead th button {
   display: block;
-  border: none;
-  background: none;
   padding: 0;
+  background: none;
+  border: none;
 }
-/**/
+
 .backgrid.backgrid-striped tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }

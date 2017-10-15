@@ -101,7 +101,7 @@
                              
                             <div class="full-height-content-body">
                                 
-                                    <div  id="wid-id-3" data-widget-colorbutton="true" data-widget-editbutton="false" data-widget-togglebutton="true" data-widget-deletebutton="true" >
+                                    <div  id="wid-id-3" data-widget-colorbutton="true" data-widget-editbutton="false" data-widget-togglebutton="true" data-widget-deletebutton="true" style=" padding-bottom: 10px; " >
 				
 				
 
@@ -121,7 +121,7 @@
 <!--                                            <div><span id="detail">Au :</span><input class="form-control" id="FilterAu" style="width: 300px; margin-left: 30px; margin-top: -20px;" type="text" ></div>
                                             <div  style="margin-left: 340px; margin-top: -33px;"><span id="detail">Du :</span><input class="form-control" id="Filterdu"  style="width: 300px; margin-left: 30px; margin-top: -20px;" type="text" ></div>
                                             -->
-                                            <div id="contents" style=" margin-left: 10px; margin-right: 10px; ">
+                                            <div id="contents" class="backgrid-container" >
                                                 
                                             </div>
 	

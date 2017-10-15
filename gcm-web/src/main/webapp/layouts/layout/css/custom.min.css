@@ -3,6 +3,15 @@
 /*html{
     transform: scale(0.0); 
 }*/
+
+body {
+font-family: cursive;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 15.4px;
+} 
 .txt-color-orangeDark {
     color: #a57225!important;
 }

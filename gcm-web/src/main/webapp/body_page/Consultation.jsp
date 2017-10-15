@@ -378,123 +378,187 @@
                                                                     
                                                                     <div class="col-md-3">
 
-                                                                        <div class="form-group form-md-line-input has-success ">
+<!--                                                                        <div class="form-group form-md-line-input has-success ">
                                                                             <div class="input-icon">
                                                                                 <input id="TA" name="TA" type="text" class="form-control" placeholder="TA"  >
                                                                                 <label for="TA">TA</label>
                                                                                 <span class="help-block"> Enter TA </span>
                                                                                  <i class="fa fa-tint" aria-hidden="true"></i>
                                                                             </div>
+                                                                        </div>-->
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                                                                <input id="TA" name="TA" type="text" class="form-control" placeholder="TA"  >
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                                                                <input id="Pouls" name="Pouls" type="text" class="form-control" placeholder="Pouls">
+                                                                            </div>
 
-                                                                        <div class="form-group form-md-line-input has-success ">
+                                                                        </div>
+<!--                                                                        <div class="form-group form-md-line-input has-success ">
                                                                             <div class="input-icon">
                                                                                 <input id="Pouls" name="Pouls" type="text" class="form-control" placeholder="Pouls" >
                                                                                 <label for="form_control_1">Pouls</label>
                                                                                 <span class="help-block">Entrer Pouls</span>
                                                                                  <i class="fa fa-tint" aria-hidden="true"></i>
                                                                             </div>
-                                                                        </div>
+                                                                        </div>-->
                                                                     </div>
                                                                     <div class="col-md-3">
-
-                                                                        <div class="form-group form-md-line-input has-success ">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-thermometer" aria-hidden="true"></i>
+                                                                                <input id="Température" name="Température" type="text" class="form-control" placeholder="Température" >
+                                                                            </div>
+                                                                        </div>
+<!--                                                                        <div class="form-group form-md-line-input has-success ">
                                                                             <div class="input-icon">
                                                                                 <input id="Température" name="Température" type="text" class="form-control" placeholder="Température" >
                                                                                 <label for="form_control_1">Température</label>
                                                                                 <span class="help-block">Entrer Température</span>
                                                                                  <i class="fa fa-thermometer" aria-hidden="true"></i>
                                                                             </div>
-                                                                        </div>
+                                                                        </div>-->
                                                                     </div>
                                                                     <div class="col-md-3">
-
-                                                                        <div class="form-group form-md-line-input has-success ">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-anchor" aria-hidden="true"></i>
+                                                                                <input id="Poids" name="Poids" type="text" class="form-control" placeholder="Poids" >
+                                                                            </div>
+                                                                        </div>
+<!--                                                                        <div class="form-group form-md-line-input has-success ">
                                                                             <div class="input-icon">
                                                                                 <input id="Poids" name="Poids" type="text" class="form-control" placeholder="Poids" >
                                                                                 <label for="form_control_1">Poids</label>
                                                                                 <span class="help-block">Entrer Poids</span>
                                                                                  <i class="fa fa-anchor" aria-hidden="true"></i>
                                                                             </div>
-                                                                        </div>
+                                                                        </div>-->
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-user-md" aria-hidden="true"></i>
+                                                                                <textarea id="Exphy" name ="Exphy" class="form-control" rows="3" placeholder="Enter les Détails de l'examen physique"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="Exphy" name ="Exphy" class="form-control" rows="3" placeholder="Enter les Détails de l'examen physique"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Examen physique </label>
                                                                           <span class="help-block">Enter les Détails de l'examen physique </span>
                                                                           <i class="fa fa-user-md" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-user-md" aria-hidden="true"></i>
+                                                                                <textarea id="Etgeneral" name ="Etgeneral" class="form-control" rows="3" placeholder="Enter les détails de l'etat Général"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="Etgeneral" name ="Etgeneral" class="form-control" rows="3" placeholder="Enter les détails de l'etat Général"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Etat Général </label>
                                                                           <span class="help-block">Enter les détails de l'etat Général </span>
                                                                           <i class="fa fa-user-md" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-heartbeat" aria-hidden="true"></i>
+                                                                                <textarea id="AusCar" name ="AusCar" class="form-control" rows="3" placeholder="Enter les Détails de l'ausculation Caradiaque "></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="AusCar" name ="AusCar" class="form-control" rows="3" placeholder="Enter les Détails de l'ausculation Caradiaque "></textarea>
                                                                          <label for="form_control_1" class="has-success"> Ausculation Caradiaque </label>
                                                                           <span class="help-block">Enter les Détails de l'ausculation Caradiaque </span>
                                                                           <i class="fa fa-heartbeat" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-medkit" aria-hidden="true"></i>
+                                                                                <textarea id="AusPleuro" name ="AusPleuro" class="form-control" rows="3" placeholder="Enter les détails de l'ausculation Pleuro-plumonaire"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="AusPleuro" name ="AusPleuro" class="form-control" rows="3" placeholder="Enter les détails de l'ausculation Pleuro-plumonaire"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Ausculation Pleuro-plumonaire </label>
                                                                           <span class="help-block">Enter les détails de l'ausculation Pleuro-plumonaire </span>
                                                                           <i class="fa fa-medkit" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                                                                                <textarea id="ExORL" name ="ExORL" class="form-control" rows="3" placeholder="Enter les Détails de l'examen ORL"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="ExORL" name ="ExORL" class="form-control" rows="3" placeholder="Enter les Détails de l'examen ORL"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Examen ORL </label>
                                                                           <span class="help-block">Enter les Détails de l'examen ORL </span>
                                                                           <i class="fa fa-stethoscope" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                                                <textarea id="AirGan" name ="AirGan" class="form-control" rows="3" placeholder="Enter les détails de l'aires Ganglison-naires"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="AirGan" name ="AirGan" class="form-control" rows="3" placeholder="Enter les détails de l'aires Ganglison-naires"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Aires Ganglison-naires </label>
                                                                           <span class="help-block">Enter les détails de l'aires Ganglison-naires </span>
                                                                           <i class="fa fa-plus-square" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                        <div class="form-group form-input has-success ">
+                                                                            <div class="input-icon">
+                                                                                <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                                                                                <textarea id="ExAbd" name ="ExAbd" class="form-control" rows="3" placeholder="Enter les détails de l'examen Abdominal"></textarea>
+                                                                            </div>
+                                                                        </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="ExAbd" name ="ExAbd" class="form-control" rows="3" placeholder="Enter les détails de l'examen Abdominal"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Examen Abdominal </label>
                                                                           <span class="help-block">Enter les détails de l'examen Abdominal </span>
                                                                           <i class="fa fa-stethoscope" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                 </div>
                                                                                         </div>
@@ -521,36 +585,43 @@
                                                                                             
                                                                                             <div class="row">
                                                                                                 <div class="col-md-3 pull-right">
-                                                                                                     <div class="form-group form-md-line-input has-success ">
+                                                                                                    <div class="form-group form-input has-success ">
+                                                                                                        <label style="color: #27a4b0;" for="date_consult">Date de Consultation</label>
+                                                                                                        <div class="input-icon">
+                                                                                                            <i  style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                                                            <input id="date_consult" name="date_consult" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date">
+                                                                                                        </div>
+                                                                                                    </div>
+<!--                                                                                                     <div class="form-group form-md-line-input has-success ">
                                                                                                         <div class="input-icon">
                                                                                                             <input id="date_consult" name="date_consult" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date">
                                                                                                             <label for="form_control_1">Date de Consultation</label>
                                                                                                             <i class="fa fa-calendar"></i>
                                                                                                         </div>
-                                                                                                     </div>
+                                                                                                     </div>-->
                                                                                                 </div>
                                                                                             </div>
                                                                                             
-                                                                                            <div class="col-md-6 row" style="margin-left: 20px">
-                                                                                                <img class="pull-left" src="../img/hospitaldetails.png" alt="Details">
-                                                                                                <div class="col-md-12 pull-left">
+                                                                                            <div class="col-md-6 row" style="margin-left: 10px">
+                                                                                                <div><img class="pull-left" src="../img/hospitaldetails.png" alt="Details"><label style="color: #27a4b0;margin: 5px;" for="Motif">Motif Consultation</label></div>
+                                                                                                <div class="col-md-12 pull-left" style=" margin-top: -16px; ">
                                                                                                      <div class="form-group form-md-line-input has-success ">
                                                                                                         <div class="input-icon">
                                                                                                             <select id="Motif" name="Motif" class="form-control select2-multiple" multiple></select>
-                                                                                                            <label for="form_control_1">Motif Consultation</label>
+                                                                                                            
                                                                                                             <i class="fa fa-stethoscope" aria-hidden="true"></i>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
 
-                                                                                            <div class="col-md-5 row" style="margin-left: 20px">
-                                                                                                <img class="pull-left" src="../img/cardiog.png" alt="Details">
-                                                                                                <div class="col-md-12 pull-left">
+                                                                                            <div class="col-md-6 row" style="margin-left: 10px">
+                                                                                                <div><img class="pull-left" src="../img/cardiog.png" alt="Details"><label  style="color: #27a4b0;margin: 5px;" for="Diag">Diagnostic</label></div>
+                                                                                                <div class="col-md-12 pull-left"  style=" margin-top: -16px; ">
                                                                                                      <div class="form-group form-md-line-input has-success ">
                                                                                                         <div class="input-icon">
                                                                                                             <select id="Diag" name="Diag" class="form-control select2-selection--single"></select>
-                                                                                                            <label for="form_control_1">Diagnostic</label>
+                                                                                                            
                                                                                                             <i class="fa fa-medkit" aria-hidden="true"></i>
                                                                                                         </div>
                                                                                                     </div>

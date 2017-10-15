@@ -17,6 +17,8 @@ $(function(){
             var Medic =GetListMedicament();
             remplir_Medicament(Medic);
             $("#codecnam").inputmask({"mask": "99/99999999/99"});
+            $("#ident_unique").inputmask({"mask": "99/99999999/99"});
+            
             
 /*commande*/
           $("#hidecnam").click( function (){
@@ -182,7 +184,7 @@ $(function(){
 
                                    if($("#collapse_2").hasClass('in')){
                                            CptAssurCnam = GetCptParamByCode("CptAssurCnam");   
-                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val(),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
+                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),""),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
                                        }
                                        else
                                            Err="true";
@@ -225,10 +227,10 @@ $(function(){
                                     
                                     if($("#collapse_2").hasClass('in')){   
                                         if(!$('#SuppCnam').hasClass('hide'))
-                                           Err = UpdateAssuranceCNAM(CptAssurCnam,$("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val(),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
+                                           Err = UpdateAssuranceCNAM(CptAssurCnam,$("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),""),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
                                        else{
                                            CptAssurCnam = GetCptParamByCode("CptAssurCnam");   
-                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val(),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
+                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),""),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
                                        }
                                            
                                        }

@@ -1,6 +1,25 @@
 
 
-/* global App, Backbone, Backgrid, paramater, codeConv, output, typer, MIME_TYPE, container, DateServeur, bourdereauCnamtxt, bourdereauCnamtxt, recettetoday, dd, tiketModérateur, recette */
+/* global App, Backbone, Backgrid, paramater, codeConv, output, typer, MIME_TYPE, container, DateServeur, bourdereauCnamtxt, bourdereauCnamtxt, recettetoday, dd, tiketModérateur, recette, option */
+
+function UpdateRecetteDate(num_trans, date_trans)
+{
+    var reponse;
+    $.ajax({
+        url: "../Consultation?type=update&function=UpdateRecetteDate&num_trans="+num_trans+"&date_trans="+date_trans,
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+        },
+        success: function (data, texStatus, jqXHR)
+        {
+            reponse = data;
+        }
+    });
+    return reponse;
+}
 
 function numberX(nb,lengh){
     var lenghnb =nb.toString().length;
@@ -60,7 +79,7 @@ function GetPrintBC()
     var dateEnd = $("#datedebutf").val();
     var medecin ="Dr."+paramater.prenomMedecin+" "+paramater.nomMedecin;
     var ch =paramater.codeConvent.toString();
-    var codeConv = ch.substr(0,2)+"/"+ch.substr(2,8)+"/"+ch.substr(8,2);
+    var codeConv = format2_8_2(ch);
     
     var html ='<embed width="100%" height="750px" name="plugin" id="plugin" src="/'+GetUrl()+'/gcm-web/BordereauCnam?codeMed='+paramater.codeMedTrit.codeMedTrit+'&amp;dateStart='+dateStart+'&amp;dateEnd='+dateEnd+'&amp;codeConv='+codeConv+'&amp;medecin='+medecin+'" type="application/pdf" internalinstanceid="96">';
     $('#firebrtxt')[0].click();
@@ -85,13 +104,18 @@ function createBackGridRecetteCnam(d1,d2) {
             window.setTimeout(function() {
                 App.stopPageLoading();
             }, 2000);
-    var bourdereauCnamtxt1 =$("<p></p>").text("I-");
-    var bourdereauCnamtxt2 =$("<p></p>").text("II-");
-    var bourdereauCnamtxt3 =$("<p></p>").text("III-");
-    var Territory = Backbone.Model.extend({});
-    var dd =($("#datedebutp").val()+$("#datedebutf").val()+DateServeur).toString().replace(/\//g, '') ;
-    bourdereauCnamtxt1.append('1'+paramater.codeConvent+dd+"00000000000000000000"+numberX(recette.length,5)+numberX(recettetoday,10)+numberX(tiketModérateur,10)+numberX((recettetoday-tiketModérateur),10));
-        
+    
+    var Territory = Backbone.Model.extend({
+//       initialize: function () {
+//            Backbone.Model.prototype.initialize.apply(this, arguments);
+//            this.on("change", function (model, options) {
+//                console.log("Saving change " + JSON.stringify(options) );
+//                if (options && options.save === false) return;
+//                model.save();
+//            });
+//          } 
+    });
+     
     var Territories = Backbone.PageableCollection.extend({
         model: Territory,
         url: "../Consultation?type=consult&function=GetRecetteCnambyMedecinDate&code_med_trait="+paramater.codeMedTrit.codeMedTrit+"&dateAu="+d1+"&datedu="+d2,
@@ -105,7 +129,102 @@ function createBackGridRecetteCnam(d1,d2) {
     var territories = new Territories();
     var Somme=0;
     var tab=[];
-      
+    // Editor for the datetime picker cell.
+    var DatetimePickerCellEditor = Backgrid.InputCellEditor.extend({
+    events: {},
+    initialize: function() {
+        
+        Backgrid.InputCellEditor.prototype.initialize.apply(this, arguments);
+        var input = this;
+        
+        var timezone = 'America/Lima',
+            format = 'DD/MM/YYYY';
+
+        this.$el.datetimepicker({
+            format: format,
+            timeZone: timezone,
+            showClose: true,
+            showTodayButton: true,
+            focusOnShow: true,
+            keepOpen: true,
+            showClear: true,
+            allowInputToggle: true
+        }).on('dp.show', function(event) {
+            event.stopPropagation();
+            var column = input.column.get('name'),
+            date = input.model.get(column);
+            input.$el.data("DateTimePicker").date(moment(date));
+        }).on('dp.hide', function(event) {
+            event.preventDefault();
+            
+            var aborted = !window.confirm('Êtes-vous sûr de vouloir modifier ce date ?');
+            var column = input.column.get("name"),
+            date = input.model.get(column),
+            dateLocal = null,
+            dateObj;
+    
+            if(!aborted){
+                dateObj = event.date;
+                
+                if (dateObj) {
+                    var dateString = dateObj.format(format);
+                    dateLocal = moment.tz(dateString, timezone);
+                }
+                
+                input.model.set(column, dateLocal._i);
+                
+                var err = UpdateRecetteDate(input.model.get("numTrans"),dateLocal._i);
+                if(err)
+                    window.parent.toastr.success('Date de ligne facture mise à jour !!','Notification',option);
+                else
+                    window.parent.toastr.error('Vérifiez que tous les champs sont remplis correctement?','Error',option);
+            }else
+                input.model.set(column,date);
+           
+            
+            var command = new Backgrid.Command({});  
+               
+            // Save date in model as string in local time.
+            
+            
+            input.model.trigger("backgrid:edited",
+                                input.model,
+                                input.column,
+                                command);
+            command = input = null;
+            
+        }).on('dp.error', function(error) {
+            console.log(error);
+        });
+    }
+    ,
+
+    render: function () {
+        this.$el.empty();
+        var rawValue = this.model.get(this.column.get("name"));
+        var formattedValue = this.formatter.fromRaw(rawValue, this.model);
+        this.$el.append(formattedValue);
+        this.delegateEvents();
+        return this;
+    }
+});
+    var DatetimePickerCell = Backgrid.Cell.extend({
+        className: 'date-cell',
+        editor: DatetimePickerCellEditor
+        ,
+            render: function () {
+                this.$el.empty();
+                var date =this.model.get("dateTrans");
+                var formattedValue = this.formatter.fromRaw(date, this.model);
+                if(typeof(date) ==='string')
+                    this.$el.append(formattedValue);
+                else
+                    this.$el.append(VerifDateDD_MM_YYYY(formattedValue));
+                
+                this.delegateEvents();
+                return this;
+            }
+    });
     var columns = [
         {
             name: "type",
@@ -149,29 +268,31 @@ function createBackGridRecetteCnam(d1,d2) {
                 } 
                 else
                     this.$el.append(this.model.get("type"));
-                bourdereauCnamtxt2.append("2-201703");    
+                  
 		return this;
+            }
+           })
+       } ,
+        {
+            name: "",
+            label: "I.U de l'assuré",
+            editable: false,
+            cell: Backgrid.StringCell.extend({
+                render: function (e) {
+                this.$el.empty();
+                var caisse =this.model.get("numConsult").numPatient.assurCnam.identUnique;
+                
+                    this.$el.html('<strong>'+format2_8_2(caisse.toString())+'</strong>');
+                return this;
             }
            })
        },
-        {
+       {
             name: "dateTrans",
             label: "Date Prescription",
-            editable: false,
-//              cell: Backgrid.DateCell.extend({
-//    })
-            cell: Backgrid.DateCell.extend({
-                render: function (e) {
-                    
-		this.$el.empty();
-                var date =this.model.get("dateTrans");
-		this.$el.append(VerifDateDD_MM_YYYY(date));
-                    
-		return this;
-            }
-           })
-       }
-       ,
+            cell: DatetimePickerCell
+          },
+     
         {
             name: "",
             label: "C.Caisse",
@@ -183,11 +304,9 @@ function createBackGridRecetteCnam(d1,d2) {
                 
                 if(caisse.toString() === "CNRPS"){
                     this.$el.html('<strong>2</strong>');
-                    bourdereauCnamtxt2.append("2");
                 }else
                     if(caisse.toString() === "CNSS"){
                      this.$el.html('<strong>1</strong>');
-                     bourdereauCnamtxt2.append("1");
                  }
                 return this;
             }
@@ -207,31 +326,26 @@ function createBackGridRecetteCnam(d1,d2) {
                         case "Assuré":
                             {
                                 this.$el.html('<strong>0</strong>');
-                                bourdereauCnamtxt2.append("0");
                                 break;
                             }
                         case "Conjoint":
                             {
                                 this.$el.html('<strong>1</strong>');
-                                bourdereauCnamtxt2.append("1");
                                 break;
                             }
                         case "Enfant à charge":
                             {
                                 this.$el.html('<strong>2</strong>');
-                                bourdereauCnamtxt2.append("2");
                                 break;
                             }
                         case "Pére à charge":
                             {
                                 this.$el.html('<strong>3</strong>');
-                                bourdereauCnamtxt2.append("3");
                                 break;
                             }
                         case "Mére à charge":
                             {
                                 this.$el.html('<strong>4</strong>');
-                                bourdereauCnamtxt2.append("4");
                                 break;
                             }
                         default:
@@ -254,13 +368,10 @@ function createBackGridRecetteCnam(d1,d2) {
                 
                 if(qualite.toString() === "Enfant à charge"){
                     this.$el.html('<strong>01</strong>');
-                    bourdereauCnamtxt2.append("01");
                 }else{
                     this.$el.html('<strong>00</strong>');
-                    bourdereauCnamtxt2.append("00");
                 }
-                var Patient =this.model.get("numPatient");
-                    bourdereauCnamtxt2.append(textX(Patient.nom +" "+Patient.prenom ,60)+ Patient.datenaiss.year + Patient.datenaiss.month + Patient.datenaiss.day+this.model.get("numConsult").numPatient.assurCnam.codCnam.toString().replace("/","")+this.model.get("numConsult").dateConsult.year+this.model.get("numConsult").dateConsult.month+this.model.get("numConsult").dateConsult.day +numberX(recette.length,5)+this.model.get("total")+numberX(recettetoday,10)+numberX(tiketModérateur,10)+numberX((recettetoday-tiketModérateur),10)+Patient.codeApci);
+               
                 return this;
             }
            })
@@ -322,13 +433,14 @@ function createBackGridRecetteCnam(d1,d2) {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
                 template: _.template('<div class="btn-group">'+
                     '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">'+
                     '<i class="fa fa-gear fa-lg"></i> <span class="caret"></span>'+
                     '</button>'+
                         '<ul class="dropdown-menu" style="right: 0; left: auto;">'+
-                            '<li><a id="modifier" ><i ><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/if_document_edit_48757.png" ><div style=" margin-top: -22px; margin-left: 22px; "> Modifier </div></i></a></li>'+
-                            '<li><a id="delete" ><i ><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/if_folder_delete_48768.png" ><div style=" margin-top: -22px; margin-left: 22px; "> Supprimer </div></i></a></li>'+
+                            '<li style=" margin-top: -10px; " ><a id="modifier" ><i><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/if_document_edit_48757.png" ><div style=" margin-top: -22px; margin-left: 22px; "> Modifier </div></i></a></li>'+
+                            '<li style=" margin-top: -10px; " ><a id="delete" ><i><img style=" margin-top: -4px;width:25px;margin-left: -10px;" src="../img/if_folder_delete_48768.png" ><div style=" margin-top: -22px; margin-left: 22px; "> Supprimer </div></i></a></li>'+
                             
                         '</ul></div>'),
                 events: {
@@ -353,7 +465,7 @@ function createBackGridRecetteCnam(d1,d2) {
                 var numTrans = this.model.get("numTrans");
                 window.parent.$.SmartMessageBox({
                     title : "<img src='../img/ERR.png'></img>  Attention!",
-                    content : "Etes Vous Sûre De La Suppression de Cette Dépense",
+                    content : "Etes Vous Sûre De La Suppression de Cette Facture",
                     buttons : '[Annuler][Valider]'
                     }, function(ButtonPressed) {
                         if (ButtonPressed === "Valider") {
@@ -361,7 +473,7 @@ function createBackGridRecetteCnam(d1,d2) {
                               
                                   if(Err.toString()==="true"){
                                     window.location.reload();
-                                    window.parent.swal("Notification !", "Dépense Supprimé Avec Succès", "success");
+                                    window.parent.swal("Notification !", "Facture Supprimé Avec Succès", "success");
                                     Model.collection.remove(Model);
                                 }else
                                     window.parent.swal("Notification !!! ", "Error lors de la supprission!!", "error");
@@ -384,7 +496,7 @@ function createBackGridRecetteCnam(d1,d2) {
     var CaptionFooter = Backgrid.Footer.extend({
 
             render: function () {
-              this.el.innerHTML = '<tr colspan="10"><td colspan="8" style="color:#23527c;">Mnt Total Factures</td><td colspan="1">'+(recettetoday).toFixed(3)+' DT</td><td></td></tr>';
+              this.el.innerHTML = '<tr colspan="11"><td colspan="9" style="color:#23527c;">Mnt Total Factures</td><td colspan="1">'+(recettetoday).toFixed(3)+' DT</td><td></td></tr>';
               return this;
             }
 
@@ -400,7 +512,7 @@ function createBackGridRecetteCnam(d1,d2) {
         collection: territories,
 //        row: FocusableRow,
 //        row: window.Backgrid.SummedRow.extend({ columnsToSum: ['total'], multiplier: 'total' }),
-        className: 'table table-bordered  table-editable no-margin table-hover full-height-content full-height-content-scrollable',
+        className: 'backgrid table-hover table-bordered',
 //        body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['total'] })
     footer: CaptionFooter 
     });
@@ -432,8 +544,6 @@ function createBackGridRecetteCnam(d1,d2) {
 
 
     territories.fetch({reset: true});
-    $('#contextbrtxt').empty().append(bourdereauCnamtxt1);
-    $('#contextbrtxt').append(bourdereauCnamtxt2);
-    $('#contextbrtxt').append(bourdereauCnamtxt3);
+    
       return columns.length;
   }

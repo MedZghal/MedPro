@@ -567,7 +567,7 @@
                                                                                     <div id="collapse_2" class="panel-collapse collapse in" aria-expanded="true" >
                                                                                         <div class="panel-body" >
                                             
-                                                                   <div class="table-responsive">
+                                                                   <div >
                                                                        <div class="col-sm-6 pull-left">
                                                                                                 <div class="form-group form-md-line-input has-success " style="margin-bottom: 10px;margin-left: -15px;">
                                                                                                         <div class="input-icon">

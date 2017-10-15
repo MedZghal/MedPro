@@ -153,7 +153,7 @@ function createBackGridRecette(d1,d2) {
             name: "",
             label: "Mt Débit",
             editable: false,
-            cell: Backgrid.StringCell.extend({
+            cell: Backgrid.NumberCell.extend({
                 render: function (e) {
 		this.$el.empty();
                 if(this.model.get("type")!=="AT" && this.model.get("type")!=="CS")
@@ -169,7 +169,7 @@ function createBackGridRecette(d1,d2) {
             name: "",
             label: "Mt Crédit",
             editable: false,
-            cell: Backgrid.StringCell.extend({
+            cell: Backgrid.NumberCell.extend({
                 render: function (e) {
 		this.$el.empty();
                 if(this.model.get("type")!=="AT" && this.model.get("type")!=="CS")
@@ -207,6 +207,7 @@ function createBackGridRecette(d1,d2) {
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.Cell.extend({
+                className: 'action-cell',
                 template: _.template('<div class="btn-group">'+
                     '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">'+
                     '<i class="fa fa-gear fa-lg"></i> <span class="caret"></span>'+
@@ -259,7 +260,7 @@ function createBackGridRecette(d1,d2) {
     var CaptionFooter = Backgrid.Footer.extend({
 
             render: function () {
-              this.el.innerHTML = '<tr colspan="7"><td colspan="4" style="color:#23527c;">Total</td><td>'+(recettetoday-depense).toFixed(3)+' DT</td><td>'+depense.toFixed(3)+' DT</td></td><td>'+((recettetoday-depense)-depense).toFixed(3)+' DT</td><td></td></tr>';
+              this.el.innerHTML = '<tr colspan="7"><td colspan="4" style="color:#23527c;">Total</td><td ><span class="pull-right">'+(recettetoday-depense).toFixed(3)+' DT</span></td><td><span class="pull-right">'+depense.toFixed(3)+' DT </span></td><td><span class="pull-right">'+((recettetoday-depense)-depense).toFixed(3)+' DT</span></td><td></td></tr>';
               return this;
             }
 
@@ -275,7 +276,7 @@ function createBackGridRecette(d1,d2) {
         collection: territories,
 //        row: FocusableRow,
 //        row: window.Backgrid.SummedRow.extend({ columnsToSum: ['total'], multiplier: 'total' }),
-        className: 'table table-bordered  table-editable no-margin table-hover full-height-content full-height-content-scrollable',
+        className: 'backgrid table-hover table-bordered',
 //        body: window.Backgrid.SummedColumnBody.extend({ columnsToSum: ['total'] })
     footer: CaptionFooter 
     });

@@ -12,8 +12,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Acte Médicale</title>
         <jsp:include page="../body_page/css_declare.jsp"/>
+        <style>
+            /*Scroll hide*/
+            html {
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+            ::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+                background: transparent;  /* optional: just make scrollbar invisible */
+            }
+            /* optional: show position indicator in red */
+            ::-webkit-scrollbar-thumb {
+                background: #FF0000;
+            }
+        </style>
     </head>
-    <body style="font-family: cursive">
+    <body >
            <!-- BEGIN PAGE BAR -->
                         <div class="page-bar" style="padding-top: 5px">
                             <ul class="page-breadcrumb">
@@ -92,36 +107,56 @@
                                                                 </div>
                                                              <div class="row">
                                                                 <div class="col-md-6">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Montant">Montant Acte</label>
+                                                                        <div class="input-icon">
+                                                                            <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                                             <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Acte" >
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Acte" >
                                                                             <label for="form_control_1">Montant Acte</label>
                                                                             <span class="help-block">Entrer Montant</span>
                                                                              <i class="fa fa-dollar" aria-hidden="true"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                     <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="date_Acte">Date Acte Médicale</label>
+                                                                        <div class="input-icon">
+                                                                            <i style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                             <input id="date_Acte" name="date_Acte" class="form-control form-control-inline  date-picker" type="text" size="120" value="" placeholder="Entrez la date">
+                                                                        </div>
+                                                                    </div>
+<!--                                                                     <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="date_Acte" name="date_Acte" class="form-control form-control-inline  date-picker" type="text" size="120" value="" placeholder="Entrez la date">
                                                                             <label for="form_control_1">Date Acte Médicale</label>
                                                                             <i class="fa fa-calendar"></i>
                                                                         </div>
-                                                                     </div>
+                                                                     </div>-->
                                                                 </div>
                                                     </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="dspacte">Description de l'Acte Médical</label>
+                                                                        <div class="input-icon">
+                                                                             <i class="fa fa-user-md" aria-hidden="true"></i>
+                                                                             <textarea id="dspacte" name="dspacte" class="form-control" rows="3" placeholder="Enter Description de l'Acte Médical"></textarea>
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="dspacte" name="dspacte" class="form-control" rows="3" placeholder="Enter Description de l'Acte Médical"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Description de l'Acte Médical </label>
                                                                           <span class="help-block">Enter description de l'acte </span>
                                                                           <i class="fa fa-user-md" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
                                                                 </div>
                                                             <!-- End Acte body -->

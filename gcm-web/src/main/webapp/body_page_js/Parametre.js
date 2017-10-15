@@ -9,11 +9,10 @@ if(!window.parent.$("#menubackRc").hasClass('hide'))
         window.parent.$("#menubackRc").toggleClass('hide');
     paramater = JSON.parse(localStorage.getItem("paramater"));
     $("#date").append(FUllDateString(GetDateServeur()));
-    
+     $("#Code").inputmask({"mask": "99/99999999/99"});
     var ville =GetListVilleDistinct();
     remplir_VILLE(ville);
     if(paramater!==null){
-        console.log(paramater);
         $("#nom").val(paramater.nomMedecin);
         $("#prenom").val(paramater.prenomMedecin);
         $("#datnaiss").val(DateMM_DD_YYYY(paramater.dateNaiss));
@@ -57,7 +56,7 @@ if(!window.parent.$("#menubackRc").hasClass('hide'))
                 handleValidation();
                 if( $('#FormVAL').valid() ){
                     //AjParametre($("#nom").val(),$("#prenom").val(),$("#datnaiss").val(),$("#Salutation").val(),$("#Inscription").val(),$("#adr").val(),$("#ville").val(),$("#fixe").val(),$("#gsm").val(),$("#email").val(),$("#Titre").val(),$("#Sépecialité").val(),0,$("#Code").val(),$("#Tiket").val(),$("#TVA").val(),$("#Montant").val(),$("#Type").val(),$("#Montant").val(),paramater.codeMedTrit.codeMedTrit);
-                    var Err = UpdateParametre(paramater.numCab,$("#nom").val(),$("#prenom").val(),$("#datnaiss").val(),$("#Salutation").val(),$("#Inscription").val(),$("#adr").val(),CodeVille,$("#fixe").val(),$("#gsm").val(),$("#email").val(),$("#Titre").val(),$("#Sépecialité").val(),$("#Gouvernorat").val(),$("#Code").val(),$("#Tiket").val(),$("#TVA").val(),$("#Montant").val(),$("#Type").val(),parseInt($("#Montant").val())-parseInt($("#Tiket").val()),paramater.codeMedTrit.codeMedTrit);
+                    var Err = UpdateParametre(paramater.numCab,$("#nom").val(),$("#prenom").val(),$("#datnaiss").val(),$("#Salutation").val(),$("#Inscription").val(),$("#adr").val(),CodeVille,$("#fixe").val(),$("#gsm").val(),$("#email").val(),$("#Titre").val(),$("#Sépecialité").val(),$("#Gouvernorat").val(),$("#Code").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),""),$("#Tiket").val(),$("#TVA").val(),$("#Montant").val(),$("#Type").val(),parseInt($("#Montant").val())-parseInt($("#Tiket").val()),paramater.codeMedTrit.codeMedTrit);
                     if(Err.toString() ==="true"){
                         window.parent.swal("Notification !", "Paramétres Modifié Avec Succès ", "success");
                         paramater =GetParemetrebyCodeMedTrit(paramater.codeMedTrit.codeMedTrit);

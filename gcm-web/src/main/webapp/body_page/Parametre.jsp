@@ -12,6 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Paramétres Cabinet</title>
         <jsp:include page="../body_page/css_declare.jsp"/>
+        <style>
+            /*Scroll hide*/
+            html {
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+            ::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+                background: transparent;  /* optional: just make scrollbar invisible */
+            }
+            /* optional: show position indicator in red */
+            ::-webkit-scrollbar-thumb {
+                background: #FF0000;
+            }
+        </style>
     </head>
     <body style="font-family: cursive" >
         
@@ -66,41 +81,72 @@
                                                     
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="nom">Nom Médecin</label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-users" aria-hidden="true"></i>
+                                                                <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom Médecin" >
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom Médecin" >
                                                                 <label for="form_control_1">Nom Médecin</label>
                                                                 <span class="help-block">Entrer nom de Médecin</span>
                                                                  <i class="fa fa-users" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="prenom">Prénom Médecin</label>
+                                                            <div class="input-icon">
+                                                                  <i class="fa fa-user"></i>
+                                                                 <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom Médecin">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom Médecin">
                                                                 <label for="form_control_1">Prénom Médecin</label>
                                                                 <span class="help-block">Entrer prénom de Médecin</span>
                                                                 <i class="fa fa-user"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="datnaiss">Date de Naissance</label>
+                                                            <div class="input-icon">
+                                                                <i style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                 <input id="datnaiss" name="datnaiss" class="form-control form-control-inline  date-picker" type="text" size="120" value="" placeholder="Entrez la date de naissance du patient">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="datnaiss" name="datnaiss" class="form-control form-control-inline  date-picker" type="text" size="120" value="" placeholder="Entrez la date de naissance du patient">
                                                                 <label for="form_control_1">Date de Naissance</label>
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row">
                                                     
                                                      <div class="col-md-4">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="Salutation">Salutation</label>
+                                                            <div class="input-icon">
+                                                                <i class="fa fa-cogs"></i>
+                                                                 <select id="Salutation" name="Salutation" class="form-control">
+                                                            <option value>sélectionnez Salutation</option>
+                                                            <option value="Doctor">Doctor</option>
+                                                            <option value="Doctor">Doctor</option>
+                                                        </select>
+                                                            </div>
+                                                        </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="Salutation" name="Salutation" class="form-control">
                                                             <option value>sélectionnez Salutation</option>
@@ -110,20 +156,67 @@
                                                                 <label for="form_control_1">Salutation</label>
                                                                 <i class="fa fa-cogs"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="Inscription">N°Inscription Ordre Médecins</label>
+                                                            <div class="input-icon">
+                                                                <i class="fa fa-address-book-o"></i>
+                                                                 <input type="number" id="Inscription" name="Inscription" class="form-control" placeholder="N°Inscription">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input type="number" id="Inscription" name="Inscription" class="form-control" placeholder="N°Inscription">
                                                                 <label for="form_control_1">N°Inscription Ordre Médecins</label>
                                                                 <span class="help-block">Entrer N°Inscription</span>
                                                                 <i class="fa fa-address-book-o"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="Sépecialité">Sépecialité Médecin</label>
+                                                            <div class="input-icon">
+                                                               <i class="fa fa-user-md"></i>
+                                                                 <select id="Sépecialité" name="Sépecialité" class="form-control">
+                                                            <option value>sélectionnez Sépecialité</option>
+                                                            <option value="Anatomie pathologique">Anatomie pathologique</option>
+                                                            <option value="Biologie clinique">Biologie clinique</option>
+                                                            <option value="Anesthésie-réanimation">Anesthésie-réanimation</option>
+                                                            <option value="Cardiologie">Cardiologie</option>
+                                                            <option value="Chirurgie">Chirurgie</option>
+                                                            <option value="Chirurgie orthopédique">Chirurgie orthopédique</option>
+                                                            <option value="Chirurgie plastique">Chirurgie plastique</option>
+                                                            <option value="Dermatologie-Vénérologie">Dermatologie-Vénérologie</option>
+                                                            <option value="Gastro-entérologie">Gastro-entérologie</option>
+                                                            <option value="Gériatrie">Gériatrie</option>
+                                                            <option value="Gynécologie-obstétrique">Gynécologie-obstétrique</option>
+                                                            <option value="Médecine d’urgence">Médecine d’urgence</option>
+                                                            <option value="Médecine du travail">Médecine du travail</option>
+                                                            <option value="Médecine générale">Médecine générale</option>
+                                                            <option value="Médecine légale">Médecine légale</option>
+                                                            <option value="Médecine physique et réadaptation">Médecine physique et réadaptation</option>
+                                                            <option value="Neurochirurgie">Neurochirurgie</option>
+                                                            <option value="Ophtalmologie">Ophtalmologie</option>
+                                                            <option value="Oto-rhino-laryngologie">Oto-rhino-laryngologie</option>
+                                                            <option value="Neurologie">Neurologie</option>
+                                                            <option value="Pédiatrie">Pédiatrie</option>
+                                                            <option value="Pneumologie">Pneumologie</option>
+                                                            <option value="Psychiatrie">Psychiatrie</option>
+                                                            <option value="Radiodiagnostic">Radiodiagnostic</option>
+                                                            <option value="Radiothérapie-oncologie">Radiothérapie-oncologie</option>
+                                                            <option value="Rhumatologie">Rhumatologie</option>
+                                                            <option value="Stomatologie">Stomatologie</option>
+                                                            <option value="Urologie">Urologie</option>
+                                                            
+                                                            
+                                                            
+                                                        </select>
+                                                            </div>
+                                                        </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="Sépecialité" name="Sépecialité" class="form-control">
                                                             <option value>sélectionnez Sépecialité</option>
@@ -162,11 +255,18 @@
                                                                 <label for="form_control_1">Sépecialité Médecin</label>
                                                                 <i class="fa fa-user-md"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="form-group form-md-line-input">
+                                                <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="adr">Adresse</label>
+                                                            <div class="input-icon">
+                                                                <i class="fa fa-map" aria-hidden="true"></i>
+                                                                 <textarea id="adr" name ="adr" class="form-control" rows="3" placeholder="Enter l'adresse du patient"></textarea>
+                                                            </div>
+                                                        </div>
+<!--                                                <div class="form-group form-md-line-input">
                                                             <div class="input-group right-addon">
                                                              <textarea id="adr" name ="adr" class="form-control" rows="3" placeholder="Enter l'adresse du patient"></textarea>
                                                              <label for="form_control_1" class="has-success"> Adresse </label>
@@ -174,11 +274,20 @@
                                                                      <i class="fa fa-map" aria-hidden="true"></i>
                                                                  </span>
                                                              </div>    
-                                                         </div>
+                                                         </div>-->
                                                 
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                          <div class="form-group form-input has-success ">
+                                                                <label style="color: #27a4b0;" for="ville">Ville</label>
+                                                                <div class="input-icon">
+                                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                    <select id="ville" name="ville" class="form-control">
+                                                                        <option value>&nbsp;&nbsp;&nbsp;sélectionnez Ville </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="ville" name="ville" class="form-control">
                                                             <option value>&nbsp;&nbsp;&nbsp;sélectionnez Ville </option>
@@ -186,10 +295,19 @@
                                                                 <label for="form_control_1">Ville</label>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                                <label style="color: #27a4b0;" for="Gouvernorat">Gouvernorat</label>
+                                                                <div class="input-icon">
+                                                                    <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                                                    <select id="Gouvernorat" name="Gouvernorat" class="form-control">
+                                                                        <option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez Gouvernorat</option>   
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <select id="Gouvernorat" name="Gouvernorat" class="form-control">
                                                             <option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez Gouvernorat</option>   
@@ -197,50 +315,78 @@
                                                                 <label for="form_control_1">Gouvernorat</label>
                                                                 <i class="fa fa-map-signs" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                                <label style="color: #27a4b0;" for="fixe">N°Téléphone Fixe</label>
+                                                                <div class="input-icon">
+                                                                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                                                    <input id="fixe" name="fixe" type="text" class="form-control" placeholder="Fixe">
+                                                                </div>
+                                                            </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="fixe" name="fixe" type="text" class="form-control" placeholder="Fixe">
                                                                 <label for="form_control_1">N°Téléphone Fixe</label>
                                                                 <span class="help-block">Entrer Fixe du patient</span>
                                                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                                <label style="color: #27a4b0;" for="gsm">N°Téléphone GSM</label>
+                                                                <div class="input-icon">
+                                                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                                                    <input id="gsm" name="gsm" type="text" class="form-control" placeholder="GSM">
+                                                                </div>
+                                                            </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="gsm" name="gsm" type="text" class="form-control" placeholder="GSM">
                                                                 <label for="form_control_1">N°Téléphone GSM</label>
                                                                 <span class="help-block">Entrer Gsm du patient</span>
                                                                 <i class="fa fa-mobile" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                                             
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Titre">Titre</label>
+                                                                        <div class="input-icon">
+                                                                            <i class="fa fa-user-md" aria-hidden="true"></i>
+                                                                            <textarea id="Titre" name ="Titre" class="form-control" rows="1" placeholder="Enter Titres"></textarea>
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success">
                                                                         <div class="input-icon">
                                                                          <textarea id="Titre" name ="Titre" class="form-control" rows="3" placeholder="Enter Titres"></textarea>
                                                                          <label for="form_control_1" class="has-success"> Titre </label>
                                                                           <span class="help-block">Enter Titre du Médecin </span>
                                                                           <i class="fa fa-user-md" aria-hidden="true"></i>
                                                                          </div>    
-                                                                     </div>
+                                                                     </div>-->
                                                                     </div>
-                                                                <div class="col-md-6" style="margin-top: 35px;">
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                <div class="col-md-6" >
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="email">Email Médecin</label>
+                                                                        <div class="input-icon">
+                                                                            <i class="fa fa-envelope-open-o"></i>
+                                                                            <input id="email" name="email" type="email" class="form-control" placeholder="Email Médecin">
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="email" name="email" type="email" class="form-control" placeholder="Email Médecin">
                                                                             <label for="form_control_1">Email Médecin</label>
                                                                             <span class="help-block">Entrer Email du Médecin</span>
                                                                             <i class="fa fa-envelope-open-o"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                               
                                                                 
@@ -281,7 +427,19 @@
                                                                                 <div class="form-body">
                                                                                     <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                             <div class="form-group form-md-line-input has-success ">
+                                                                                        <div class="form-group form-input has-success ">
+                                                                                            <label style="color: #27a4b0;" for="Type">Type Consultation</label>
+                                                                                            <div class="input-icon">
+                                                                                                <i class="fa fa-hospital-o"></i>
+                                                                                                 <select id="Type" name="Type" class="form-control select2-bootstrap-append">
+                                                                                                        <option value> </option>
+                                                                                                        <option value="Consultation">Consultation</option>
+                                                                                                        <option value="Consultation Spécialiste">Consultation Spécialiste</option>
+                                                                                                        <option value="Consultation Neuro/Psy">Consultation Neuro/Psy</option>
+                                                                                                    </select>
+                                                                                            </div>
+                                                                                        </div>
+<!--                                                                                             <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                             <select id="Type" name="Type" class="form-control select2-bootstrap-append">
                                                                                                 <option value> </option>
@@ -292,49 +450,77 @@
                                                                                                     <label for="form_control_1">Type Consultation</label>
                                                                                                     <i class="fa fa-hospital-o"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                        <div class="form-group form-input has-success ">
+                                                                                            <label style="color: #27a4b0;" for="Code">Code Conventionnel</label>
+                                                                                            <div class="input-icon">
+                                                                                                <i class="fa fa-barcode" aria-hidden="true"></i>
+                                                                                                <input id="Code" name="Code" type="text" class="form-control" placeholder="Code Conventionnel">
+                                                                                            </div>
+                                                                                        </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="Code" name="Code" type="text" class="form-control" placeholder="Code Conventionnel">
                                                                                                     <label for="form_control_1">Code Conventionnel</label>
                                                                                                     <span class="help-block">Entrer Code Conventionnel</span>
                                                                                                     <i class="fa fa-barcode" aria-hidden="true"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
                                                                                          <div class="col-md-4">
-                                                                                                <div class="form-group form-md-line-input has-success ">
+                                                                                             <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="Tiket">Tiket Modérateur(%)</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                                    <input id="Tiket" name="Tiket" type="number" class="form-control" placeholder="Tiket Modérateur">
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                                <div class="form-group form-md-line-input has-success ">
                                                                                                     <div class="input-icon">
                                                                                                         <input id="Tiket" name="Tiket" type="number" class="form-control" placeholder="Tiket Modérateur">
                                                                                                         <label for="form_control_1">Tiket Modérateur(%)</label>
                                                                                                         <span class="help-block">Entrer Tiket Modérateur</span>
                                                                                                         <i class="fa fa-anchor" aria-hidden="true"></i>
                                                                                                     </div>
-                                                                                                </div>
+                                                                                                </div>-->
                                                                                             </div>
                                                                                         <div class="col-md-4">
-                                                                                                <div class="form-group form-md-line-input has-success ">
+                                                                                            <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="TVA">TVA Consultation(%)</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                                    <input id="TVA" name="TVA" type="number" class="form-control" placeholder="TVA Consultation">
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                                <div class="form-group form-md-line-input has-success ">
                                                                                                     <div class="input-icon">
                                                                                                         <input id="TVA" name="TVA" type="number" class="form-control" placeholder="TVA Consultation">
                                                                                                         <label for="form_control_1">TVA Consultation(%)</label>
                                                                                                         <span class="help-block">Entrer TVA Consultation</span>
                                                                                                         <i class="fa fa-anchor" aria-hidden="true"></i>
                                                                                                     </div>
-                                                                                                </div>
+                                                                                                </div>-->
                                                                                             </div>
                                                                                              <div class="col-md-4">
-                                                                                                <div class="form-group form-md-line-input has-success ">
+                                                                                                 <div class="form-group form-input has-success ">
+                                                                                                    <label style="color: #27a4b0;" for="Montant">Montant Consultation</label>
+                                                                                                    <div class="input-icon">
+                                                                                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                                                                                        <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Consultation">
+                                                                                                    </div>
+                                                                                                </div>
+<!--                                                                                                <div class="form-group form-md-line-input has-success ">
                                                                                                     <div class="input-icon">
                                                                                                         <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Consultation">
                                                                                                         <label for="form_control_1"> Montant Consultation </label>
                                                                                                         <span class="help-block">Entrer Montant Consultation</span>
                                                                                                         <i class="fa fa-anchor" aria-hidden="true"></i>
                                                                                                     </div>
-                                                                                                </div>
+                                                                                                </div>-->
                                                                                             </div>
                                                                                     </div>
                                                                                 </div>

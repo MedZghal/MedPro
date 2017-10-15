@@ -5,6 +5,12 @@
   Copyright (c) 2013-present Cloudflare, Inc. and contributors
   Licensed under the MIT license.
 */
+
+var mocha = require('../js/mocha');
+  var describe = mocha.describe;
+  var it = mocha.it;
+  var assert = require('chai').assert;
+  
 describe("Backgrid#resolveNameToClass", function () {
 
   it("will return a reference to a Backgrid or a Backgrid.Extension object from a dasherized string and a suffix", function () {

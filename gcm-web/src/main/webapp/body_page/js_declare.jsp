@@ -1,4 +1,7 @@
  <!-- BEGIN CORE PLUGINS -->
+        <script src="../js/jasmine.js"></script>
+        <script src="../js/jasmine-html.js"></script>
+        
         <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         
         <script src="../js/textresizedetector.js"></script>

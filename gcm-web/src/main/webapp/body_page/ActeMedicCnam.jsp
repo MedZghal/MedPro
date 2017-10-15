@@ -12,8 +12,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Acte Médicale CNAM</title>
         <jsp:include page="../body_page/css_declare.jsp"/>
+        <style>
+            /*Scroll hide*/
+            html {
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+            ::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+                background: transparent;  /* optional: just make scrollbar invisible */
+            }
+            /* optional: show position indicator in red */
+            ::-webkit-scrollbar-thumb {
+                background: #FF0000;
+            }
+        </style>
     </head>
-    <body style="font-family: cursive">
+    <body >
            <!-- BEGIN PAGE BAR -->
                         <div class="page-bar" style="padding-top: 5px">
                             <ul class="page-breadcrumb">
@@ -106,34 +121,54 @@
                                                                 </div>
                                                              <div class="row">
                                                                 <div class="col-md-4">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Montant">Montant Act</label>
+                                                                        <div class="input-icon">
+                                                                             <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                                             <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Acte" >
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="Montant" name="Montant" type="number" class="form-control" placeholder="Montant Acte" >
                                                                             <label for="form_control_1">Montant Acte</label>
                                                                             <span class="help-block">Entrer Montant</span>
                                                                              <i class="fa fa-dollar" aria-hidden="true"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Tiket">Tiket Modérateur</label>
+                                                                        <div class="input-icon">
+                                                                             <i class="fa fa-money"></i>
+                                                                             <input id="Tiket" name="Tiket" type="number" class="form-control" placeholder="Tiket Modérateur">
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="Tiket" name="Tiket" type="number" class="form-control" placeholder="Tiket Modérateur">
                                                                             <label for="form_control_1">Tiket Modérateur</label>
                                                                             <span class="help-block">Entrer Tiket Modérateur</span>
                                                                             <i class="fa fa-money"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                     <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="date_Acte">Date Acte Médicale</label>
+                                                                        <div class="input-icon">
+                                                                            <i style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                             <input id="date_Acte" name="date_Acte" class="form-control form-control-inline  date-picker" type="text" data-date-format="dd/mm/yyyy" size="120"  placeholder="Entrez la date">
+                                                                        </div>
+                                                                    </div>
+<!--                                                                     <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="date_Acte" name="date_Acte" class="form-control form-control-inline  date-picker" type="text" data-date-format="dd/mm/yyyy" size="120"  placeholder="Entrez la date">
                                                                             <label for="form_control_1">Date Acte Médicale</label>
                                                                             <i class="fa fa-calendar"></i>
                                                                         </div>
-                                                                     </div>
+                                                                     </div>-->
                                                                 </div>
                                                     </div>
                                                             <div class="row" style="margin-left: 80px; font-style: italic; font-family: monospace; font-size: larger;">
@@ -157,25 +192,38 @@
                                                             
                                                             <div class="row">
                                                                 <div class="col-md-6">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="price">Numéro de price en charge</label>
+                                                                        <div class="input-icon">
+                                                                            <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                                            <input id="price" name="price" type="number" class="form-control" placeholder="Numéro de price en charge" >
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="price" name="price" type="number" class="form-control" placeholder="Numéro de price en charge" >
                                                                             <label for="form_control_1">Numéro de price en charge</label>
                                                                             <span class="help-block">Entrer Numéro</span>
                                                                              <i class="fa fa-dollar" aria-hidden="true"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Cotation">Cotation</label>
+                                                                        <div class="input-icon">
+                                                                            <i class="fa fa-money"></i>
+                                                                            <input id="Cotation" name="Cotation" type="text" class="form-control" placeholder="Cotation">
+                                                                        </div>
+                                                                    </div>
+<!--                                                                    <div class="form-group form-md-line-input has-success ">
                                                                         <div class="input-icon">
                                                                             <input id="Cotation" name="Cotation" type="text" class="form-control" placeholder="Cotation">
                                                                             <label for="form_control_1"> Cotation </label>
                                                                             <span class="help-block">Entrer Cotation</span>
                                                                             <i class="fa fa-money"></i>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
                                                                 </div>
                                                             </div>
                                                             <!-- End Acte body -->

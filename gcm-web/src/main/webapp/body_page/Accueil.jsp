@@ -29,7 +29,7 @@
         </style>
         <title>Accueil</title>
     </head>
-    <body style="font-family: cursive;" >
+    <body  >
         
          <!-- BEGIN PAGE BAR -->
                         <div class="page-bar" style="padding-top: 5px">
@@ -71,7 +71,7 @@
                             <img src="../img/Acceuil (1).png" alt="" style="margin-left: 10px;margin-top: -25px;margin-bottom: -12px;">
                             </h1>
                     </legend>
-                            <div  style="margin-top: -48px;padding-left: 414px;">
+                            <div  style="margin-top: -48px;padding-left: 414px;" class="hide">
                                 <ul id="ticker02">
                                 <li><span style="color: #0044cc;">Version 3.0.1</span><a href="#">Gestion d'un complexe médical en ligne multi médecins </a></li>
                                 <li><span style="color: #0044cc;">Version 2.0.0</span><a href="#">MEDPROApp l'extension mobile de MedPro ISO/ANDROID/WINDOWS PHONE</a></li>

@@ -28,7 +28,7 @@
             }
         </style>
     </head>
-    <body style="font-family: cursive" >
+    <body  >
         
          <!-- BEGIN PAGE BAR -->
                         <div class="page-bar" style="padding-top: 5px">
@@ -81,51 +81,89 @@
                                                     
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="nom">Nom</label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-users" aria-hidden="true"></i>
+                                                                <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom" >
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="nom" name="nom" type="text" class="form-control" placeholder="Nom" >
                                                                 <label for="form_control_1">Nom</label>
                                                                 <span class="help-block">Entrer nom de patient</span>
                                                                  <i class="fa fa-users" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="prenom">Prénom</label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-user"></i>
+                                                                <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="prenom" name="prenom" type="text" class="form-control" placeholder="Prénom">
                                                                 <label for="form_control_1">Prénom</label>
                                                                 <span class="help-block">Entrer prénom de patient</span>
                                                                 <i class="fa fa-user"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="fich">Num Fiche</label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-bookmark"></i>
+                                                                <input id="fich" name="fich" type="text" class="form-control" placeholder="Num Fiche(Papier)">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="fich" name="fich" type="text" class="form-control" placeholder="Num Fiche(Papier)">
                                                                 <label for="form_control_1">Num Fiche</label>
                                                                 <span class="help-block">Entrer Num Fiche du patient</span>
                                                                 <i class="fa fa-bookmark"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     
                                                 </div>
                                                 
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="datnaiss">Date de Naissance</label>
+                                                            <div class="input-icon">
+                                                                  <i style=" margin-top: 9px; " class="fa fa-calendar"></i>
+                                                                <input id="datnaiss" name="datnaiss" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de naissance du patient">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="datnaiss" name="datnaiss" class="form-control form-control-inline  date-picker" type="text" size="120" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de naissance du patient">
                                                                 <label for="form_control_1">Date de Naissance</label>
                                                                 <i class="fa fa-calendar"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                      <div class="col-md-4">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="sexse">Sexe</label>
+                                                            <div class="input-icon">
+                                                                  <i class="fa fa-transgender"></i>
+                                                                <select id="sexse" name="sexe" class="form-control">
+                                                                    <option value>sélectionnez le sexe</option>
+                                                                    <option value="Homme">Homme</option>
+                                                                    <option value="Femme">Femme</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="sexse" name="sexe" class="form-control">
                                                             <option value>sélectionnez le sexe</option>
@@ -135,10 +173,24 @@
                                                                 <label for="form_control_1">Sexe</label>
                                                                 <i class="fa fa-transgender"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="sutfam">Sutuation Familiaire</label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-hospital-o"></i>
+                                                                <select id="sutfam" name="sutfam" class="form-control">
+                                                            <option value>sélectionnez la Sutuation Familiaire</option>
+                                                            <option value="Célebataire">Célebataire</option>
+                                                            <option value="Marié(e)">Marié(e)</option>
+                                                            <option value="Divorcé(e)">Divorcé(e)</option>
+                                                            <option value="Veuf(ve)">Veuf(ve)</option>
+                                                        </select>
+                                                            </div>
+                                                        </div>
+                                                        
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="sutfam" name="sutfam" class="form-control">
                                                             <option value>sélectionnez la Sutuation Familiaire</option>
@@ -150,45 +202,74 @@
                                                                 <label for="form_control_1">Sutuation Familiaire</label>
                                                                 <i class="fa fa-hospital-o"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                                 
                                                <div class="row">
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="age">Entrer l'âge du patient</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-birthday-cake"></i>
+                                                                 <input type="number" id="age" name="age" disabled class="form-control" placeholder="Age">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input type="number" id="age" name="age" disabled class="form-control" placeholder="Age">
                                                                 <label for="form_control_1">Age</label>
                                                                 <span class="help-block">Entrer l'âge du patient</span>
                                                                 <i class="fa fa-birthday-cake"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="poid">Entrer Poid du patient</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-anchor" aria-hidden="true"></i>
+                                                                 <input id="poid" name="poid" type="number" class="form-control" placeholder="Poids">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="poid" name="poid" type="number" class="form-control" placeholder="Poids">
                                                                 <label for="form_control_1">Poids</label>
                                                                 <span class="help-block">Entrer Poid du patient</span>
                                                                 <i class="fa fa-anchor" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="poid">Profession</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                                                 <input id="prof" name="prof" type="text" class="form-control" placeholder="Profession">
+                                                            </div>
+                                                        </div>
+                                                        
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="prof" name="prof" type="text" class="form-control" placeholder="Profession">
                                                                 <label for="form_control_1"> Profession </label>
                                                                 <span class="help-block">Entrer Profession du patient</span>
                                                                 <i class="fa fa-suitcase" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     
                                                 </div>
                                                 
-                                                <div class="form-group form-md-line-input">
+                                                            <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="adr">Adresse</label>
+                                                            <div class="input-icon">
+                                                                  <i class="fa fa-map" aria-hidden="true"></i>
+                                                                 <textarea id="adr" name ="adr" class="form-control" rows="3" placeholder="Enter l'adresse du patient"></textarea>
+                                                            </div>
+                                                        </div>
+<!--                                                <div class="form-group form-md-line-input">
                                                             <div class="input-group right-addon">
                                                              <textarea id="adr" name ="adr" class="form-control" rows="3" placeholder="Enter l'adresse du patient"></textarea>
                                                              <label for="form_control_1" class="has-success"> Adresse </label>
@@ -196,11 +277,21 @@
                                                                      <i class="fa fa-map" aria-hidden="true"></i>
                                                                  </span>
                                                              </div>    
-                                                         </div>
+                                                         </div>-->
                                                 
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="ville">Ville</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                                 <select id="ville" name="ville" class="form-control">
+                                                            <option value>&nbsp;&nbsp;&nbsp;sélectionnez Ville </option>
+                                                        </select>
+                                                            </div>
+                                                        </div>
+                                                        
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                         <select id="ville" name="ville" class="form-control">
                                                             <option value>&nbsp;&nbsp;&nbsp;sélectionnez Ville </option>
@@ -208,10 +299,19 @@
                                                                 <label for="form_control_1">Ville</label>
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="Gouvernorat">Gouvernorat</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                                                  <select id="Gouvernorat" name="Gouvernorat" class="form-control">
+                                                            <option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez Gouvernorat</option>   
+                                                        </select>
+                                                            </div>
+                                                        </div>
+<!--                                                         <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <select id="Gouvernorat" name="Gouvernorat" class="form-control">
                                                             <option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez Gouvernorat</option>   
@@ -219,27 +319,41 @@
                                                                 <label for="form_control_1">Gouvernorat</label>
                                                                 <i class="fa fa-map-signs" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="fixe">N°Téléphone Fixe</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                                                  <input id="fixe" name="fixe" type="text" class="form-control" placeholder="Fixe">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="fixe" name="fixe" type="text" class="form-control" placeholder="Fixe">
                                                                 <label for="form_control_1">N°Téléphone Fixe</label>
                                                                 <span class="help-block">Entrer Fixe du patient</span>
                                                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="gsm">N°Téléphone GSM</label>
+                                                            <div class="input-icon">
+                                                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                                                  <input id="gsm" name="gsm" type="text" class="form-control" placeholder="GSM">
+                                                            </div>
+                                                        </div>
+<!--                                                        <div class="form-group form-md-line-input has-success ">
                                                             <div class="input-icon">
                                                                 <input id="gsm" name="gsm" type="text" class="form-control" placeholder="GSM">
                                                                 <label for="form_control_1">N°Téléphone GSM</label>
                                                                 <span class="help-block">Entrer Gsm du patient</span>
                                                                 <i class="fa fa-mobile" aria-hidden="true"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                 </div>
                                                         </div>
@@ -278,7 +392,18 @@
                                                                                 <div class="form-body">
                                                                                     <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                             <div class="form-group form-md-line-input has-success ">
+                                                                                        <div class="form-group form-input has-success ">
+                                                                                            <label style="color: #27a4b0;" for="regime_affi">Régime d'Affiliation</label>
+                                                                                            <div class="input-icon">
+                                                                                                  <i class="fa fa-hospital-o"></i>
+                                                                                                <select id="regime_affi" name="regime_affi" class="form-control select2-bootstrap-append">
+                                                                                                <option value> sélectionnez </option>
+                                                                                                <option value="CNSS">CNSS</option>
+                                                                                                <option value="CNRPS">CNRPS</option>
+                                                                                            </select>
+                                                                                            </div>
+                                                                                        </div>
+<!--                                                                                             <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                             <select id="regime_affi" name="regime_affi" class="form-control select2-bootstrap-append">
                                                                                                 <option value> sélectionnez </option>
@@ -288,22 +413,43 @@
                                                                                                     <label for="form_control_1">Régime d'Affiliation</label>
                                                                                                     <i class="fa fa-hospital-o"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                         <div class="form-group form-input has-success ">
+                                                                                            <label style="color: #27a4b0;" for="ident_unique">Identifient Unique</label>
+                                                                                            <div class="input-icon">
+                                                                                                  <i class="fa fa-mobile" aria-hidden="true"></i>
+                                                                                                <input id="ident_unique" name="ident_unique" type="text" class="form-control" placeholder="Identifient CNAM">
+                                                                                            </div>
+                                                                                        </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="ident_unique" name="ident_unique" type="text" class="form-control" placeholder="Identifient CNAM">
                                                                                                     <label for="form_control_1">Identifient Unique</label>
                                                                                                     <span class="help-block">Entrer Identifient CNAM</span>
                                                                                                     <i class="fa fa-mobile" aria-hidden="true"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
                                                                                          <div class="col-md-6">
-                                                                                             <div class="form-group form-md-line-input has-success ">
+                                                                                              <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="qualite">Qualité</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i class="fa fa-hospital-o"></i>
+                                                                                                   <select id="qualite" name="qualite" class="form-control select2-bootstrap-append">
+                                                                                                        <option value> sélectionnez </option>
+                                                                                                        <option value="Assuré">Assuré</option>
+                                                                                                        <option value="Conjoint">Conjoint</option>
+                                                                                                        <option value="Enfant à charge">Enfant à charge</option>
+                                                                                                        <option value="Pére à charge">Pére à charge</option>
+                                                                                                        <option value="Mére à charge">Mére à charge</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                             <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <select id="qualite" name="qualite" class="form-control select2-bootstrap-append">
                                                                                                 <option value> sélectionnez </option>
@@ -316,21 +462,40 @@
                                                                                                     <label for="form_control_1">Qualité</label>
                                                                                                     <i class="fa fa-hospital-o"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                          <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                              <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="date_valid_cnam">Date de Validation Carnet CNAM</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                                                   <input id="date_valid_cnam" name="date_valid_cnam" class="form-control form-control-inline  date-picker" type="text" size="120" value="" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Validation">
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="date_valid_cnam" name="date_valid_cnam" class="form-control form-control-inline  date-picker" type="text" size="120" value="" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Validation">
                                                                                                     <label for="form_control_1">Date de Validation Carnet CNAM</label>
                                                                                                     <i class="fa fa-calendar"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
                                                                                         <div class="col-md-6">
-                                                                                             <div class="form-group form-md-line-input has-success ">
+                                                                                             <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="type_cnam">Type Assurance</label>
+                                                                                                <div class="input-icon">
+                                                                                                   <i class="fa fa-hospital-o"></i>
+                                                                                                    <select id="type_cnam" name="type_cnam" class="form-control select2-bootstrap-append">
+                                                                                                        <option value> sélectionnez </option>
+                                                                                                        <option value="Filiére publique">Filiére publique</option>
+                                                                                                        <option value="Remboursement">Remboursement</option>
+                                                                                                        <option value="Tiers Payant">Tiers Payant</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                             <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <select id="type_cnam" name="type_cnam" class="form-control select2-bootstrap-append">
                                                                                                 <option value> sélectionnez </option>
@@ -341,39 +506,60 @@
                                                                                                     <label for="form_control_1"> Type Assurance </label>
                                                                                                     <i class="fa fa-hospital-o"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                            <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="rang_Assur">Rang Assuré</label>
+                                                                                                <div class="input-icon">
+                                                                                                   <i class="fa fa-anchor" aria-hidden="true"></i>
+                                                                                                   <input id="rang_Assur" name="rang_Assur" type="number" class="form-control" placeholder="Rang">
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="rang_Assur" name="rang_Assur" type="number" class="form-control" placeholder="Rang">
                                                                                                     <label for="form_control_1">Rang Assuré</label>
                                                                                                     <span class="help-block">Entrer le Rang Assuré</span>
                                                                                                     <i class="fa fa-anchor" aria-hidden="true"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     </div>
                                                                                      <div class="row">
                                                                                          <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                             <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="medfamille">Nom Médecin de famille</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i class="fa fa-medkit" aria-hidden="true"></i>
+                                                                                                    <input id="medfamille" name="medfamille" type="text" class="form-control" placeholder="Nom Médecin de famille">
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="medfamille" name="medfamille" type="text" class="form-control" placeholder="Nom Médecin de famille">
                                                                                                     <label for="medfamille">Nom Médecin de famille</label>
                                                                                                     <span class="help-block">Entrer Nom Médecin</span>
                                                                                                     <i class="fa fa-medkit" aria-hidden="true"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <div class="form-group form-md-line-input has-success ">
+                                                                                             <div class="form-group form-input has-success ">
+                                                                                                <label style="color: #27a4b0;" for="codecnam">Code Cnam</label>
+                                                                                                <div class="input-icon">
+                                                                                                    <i class="fa fa-medkit" aria-hidden="true"></i>
+                                                                                                    <input id="codecnam" name="codecnam" type="text" class="form-control" placeholder="Code Cnam"  >
+                                                                                                </div>
+                                                                                            </div>
+<!--                                                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                 <div class="input-icon">
                                                                                                     <input id="codecnam" name="codecnam" type="text" class="form-control" placeholder="Code Cnam"  >
                                                                                                     <label for="codecnam">Code Cnam</label>
                                                                                                     <span class="help-block">Entrer Code Cnam</span>
                                                                                                     <i class="fa fa-medkit" aria-hidden="true"></i>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>-->
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -415,7 +601,18 @@
                                                                                          <div class="form-body">
                                                                                              <div class="row">
                                                                                              <div class="col-md-6">
-                                                                                                      <div class="form-group form-md-line-input has-success ">
+                                                                                                 <div class="form-group form-input has-success ">
+                                                                                                    <label style="color: #27a4b0;" for="type_apci">Type APCI</label>
+                                                                                                    <div class="input-icon">
+                                                                                                        <i class="fa fa-hospital-o"></i>
+                                                                                                        <select id="type_apci" name="type_apci" class="form-control select2-bootstrap-append">
+                                                                                                            <option value> sélectionnez </option>
+                                                                                                            <option value="APCI Remb"> APCI Remb </option>
+                                                                                                            <option value="APCI Tiers Payant"> APCI Tiers Payant </option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+<!--                                                                                                      <div class="form-group form-md-line-input has-success ">
                                                                                                          <div class="input-icon">
                                                                                                              <select id="type_apci" name="type_apci" class="form-control select2-bootstrap-append">
                                                                                                          <option value> sélectionnez </option>
@@ -425,28 +622,42 @@
                                                                                                              <label for="form_control_1"> Type APCI </label>
                                                                                                              <i class="fa fa-hospital-o"></i>
                                                                                                          </div>
-                                                                                                     </div>
+                                                                                                     </div>-->
                                                                                                  </div>
                                                                                              <div class="col-md-6">
-                                                                                                     <div class="form-group form-md-line-input has-success ">
+                                                                                                   <div class="form-group form-input has-success ">
+                                                                                                    <label style="color: #27a4b0;" for="code_apci">Code APCI</label>
+                                                                                                    <div class="input-icon">
+                                                                                                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                                                                                                        <input id="code_apci" name="code_apci" type="text" class="form-control" placeholder="Code APCI">
+                                                                                                    </div>
+                                                                                                </div>
+<!--                                                                                                     <div class="form-group form-md-line-input has-success ">
                                                                                                          <div class="input-icon">
                                                                                                              <input id="code_apci" name="code_apci" type="text" class="form-control" placeholder="Code APCI">
                                                                                                              <label for="form_control_1">Codes APCI</label>
                                                                                                              <span class="help-block">Entrer Codes APCI</span>
                                                                                                              <i class="fa fa-mobile" aria-hidden="true"></i>
                                                                                                          </div>
-                                                                                                     </div>
+                                                                                                     </div>-->
                                                                                                  </div>
                                                                                              </div>
                                                                                              <div class="row">
                                                                                              <div class="col-md-12">
-                                                                                                     <div class="form-group form-md-line-input has-success ">
+                                                                                                  <div class="form-group form-input has-success ">
+                                                                                                    <label style="color: #27a4b0;" for="date_valid_apci">Date de Validation APCI</label>
+                                                                                                    <div class="input-icon">
+                                                                                                        <i style="margin-top: 9px;" class="fa fa-calendar"></i>
+                                                                                                        <input id="date_valid_apci" name="date_valid_apci" class="form-control form-control-inline  date-picker" type="text" size="120" value="" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Validation">
+                                                                                                    </div>
+                                                                                                </div>
+<!--                                                                                                     <div class="form-group form-md-line-input has-success ">
                                                                                                          <div class="input-icon">
                                                                                                              <input id="date_valid_apci" name="date_valid_apci" class="form-control form-control-inline  date-picker" type="text" size="120" value="" data-date-format="dd/mm/yyyy" placeholder="Entrez la date de Validation">
                                                                                                              <label for="form_control_1">Date de Validation APCI</label>
                                                                                                              <i class="fa fa-calendar"></i>
                                                                                                          </div>
-                                                                                                     </div>
+                                                                                                     </div>-->
                                                                                                  </div>
                                                                                              </div>
                                                                                              <div class="row">
@@ -563,7 +774,20 @@
                                                         <div id="collapse_4" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                                             <div class="panel-body">
                                                         <div class="col-md-12 " >
-                                                            <div class="form-group form-md-line-input has-success ">
+                                                            <div class="form-group form-input has-success ">
+                                                                <label style="color: #27a4b0;" for="autreAssur">Assurance</label>
+                                                                <div class="input-icon">
+                                                                    <i class="fa fa-hospital-o"></i>
+                                                                    <select id="autreAssur" class="form-control select2-bootstrap-append">
+                                                                        <option value> sélectionnez </option>
+                                                                        <option value="COMAR"> COMAR </option>
+                                                                        <option value="STEG">STEG</option>
+                                                                        <option value="MAGHREBIA"> MAGHREBIA </option>
+                                                                        <option value="AMEN"> AMEN </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+<!--                                                            <div class="form-group form-md-line-input has-success ">
                                                                                                          <div class="input-icon">
                                                                                                      <select id="autreAssur" class="form-control select2-bootstrap-append">
                                                                                                          <option value> sélectionnez </option>
@@ -575,7 +799,7 @@
                                                                                                              <label for="form_control_1"> Assurance </label>
                                                                                                              <i class="fa fa-hospital-o"></i>
                                                                                                          </div>
-                                                                                                     </div>
+                                                                                                     </div>-->
                                                         </div>
                                                             </div>
                                                         </div>

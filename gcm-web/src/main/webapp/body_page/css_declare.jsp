@@ -10,10 +10,9 @@
         <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        
+        <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+        
         <link href="../assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
@@ -21,14 +20,13 @@
         <link href="../css/backgrid.css" rel="stylesheet" type="text/css" />
         <link href="../css/backgrid-moment-cell.css" rel="stylesheet" type="text/css" />
         <link href="../css/backgrid-paginator.css" rel="stylesheet" type="text/css" />
-        <link href="../css/backgrid-responsiveGrid.css" rel="stylesheet" type="text/css" />
         <link  rel="stylesheet" type="text/css" media="screen" href="../css/smartadmin-production-plugins.min.css">
         <link href="../assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/typeahead/typeahead.css" rel="stylesheet" type="text/css" />
         <link href="../css/profile.css" rel="stylesheet" type="text/css">
         <link href="../assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" rel="stylesheet" type="text/css" />
-        <link href="../css/backgrid-sizeable-columns.css" rel="stylesheet" type="text/css" />
+        
         <link href="../css/mfb.css" rel="stylesheet" type="text/css" />
         <link href="../js/summernote/summernote.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />

@@ -468,9 +468,9 @@ function UpdatePatientAPCI(num_patient,code_apci,type_apci,datnaiss)
                     minlength :8
                 },
                 ident_unique: {
-                    number: true,
-                    minlength: 12,
-                    maxlength:12,
+//                    number: true,
+//                    minlength: 12,
+//                    maxlength:12,
                     required: true
                 },
                 date_valid_cnam: {
@@ -761,9 +761,9 @@ function UpdatePatientAPCI(num_patient,code_apci,type_apci,datnaiss)
                     minlength :8
                 },
                 ident_unique: {
-                     number: true,
-                    minlength: 12,
-                    maxlength:12,
+//                     number: true,
+//                    minlength: 12,
+//                    maxlength:12,
                     required: true
                 },
                 date_valid_cnam: {

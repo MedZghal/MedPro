@@ -17,7 +17,7 @@
     </head>
     <!-- END HEAD -->
 <!--page-sidebar-closed-->
-    <body id="HomeMedPro" style="font-family: cursive;background: transparent" class="page-sidebar-closed-hide-logo page-content-white page-md page-header-fixed page-sidebar-fixed ">
+    <body id="HomeMedPro" style="background: transparent" class="page-sidebar-closed-hide-logo page-content-white page-md page-header-fixed page-sidebar-fixed ">
         
         <div class="page-wrapper">
             <!-- BEGIN HEADER -->
@@ -27,7 +27,7 @@
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
                         <a href="index.jsp">
-                            <!--<img src="../imcg/avatars/doctor.png" alt="logo" class="logo-default" />--> 
+                            <img src="../img/logominiPro.png" alt="logo" class="logo-default" style=" width: 165px; margin-top: 2px; " /> 
                         </a>
                         <div class="menu-toggler sidebar-toggler">
                             <span></span>
@@ -204,7 +204,7 @@
                                     <a href="javascript:;" class="remove">
                                         <i class="icon-close"></i>
                                     </a>
-                                    <div id='logoImgChange' >
+                                    <div id='logoImgChange'  >
                                         <div id="logopub" style="margin-top: -45px;margin-left: -30px;margin-right: -17px;margin-bottom: -20px;">
                                             <ul id="ticker03" >
                                             <li ><a href="#"><img src="../img/1.png" alt="" style="width: 200px"></a></li>
@@ -287,7 +287,7 @@
                                             <span class="title">État de coffre</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle">
                                             <i class="icon-clock"></i>
                                             <span class="title">Règlement Patient</span>
@@ -300,13 +300,13 @@
                                             <span class="title">Bordereau CNAM</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">Bordereau Organisme</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">Règlement Organisme</span>
@@ -327,38 +327,38 @@
                                             <span class="title">État de CA par période</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide">
                                         <a  class="nav-link nav-toggle">
                                             <i class="icon-user-following"></i>
                                             <span class="title">État des Patients par période</span>
                                             <span class="title"></span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-layers"></i>
                                             <span class="title">Évolution des consultations par mois</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">Évolution des consultations par sexe</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">Évolution des consultations par nature<small>(Payant, CNAM, Autres)</small></span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">État des Patients PEC<small>(régler et non régler)</small></span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item hide ">
                                         <a  class="nav-link nav-toggle" >
                                             <i class="icon-calendar"></i>
                                             <span class="title">État des Patients Payant<small>(régler et non régler)</small></span>
@@ -449,7 +449,7 @@
                 </div>
                 <!-- END CONTENT -->
                 <!-- BEGIN QUICK SIDEBAR -->
-                <a href="javascript:;" class="page-quick-sidebar-toggler">
+                <a id="salleAttBtt" href="javascript:;" class="page-quick-sidebar-toggler">
                     <i class="icon-login"></i>
                 </a>
                 <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">

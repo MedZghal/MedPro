@@ -1,0 +1,81 @@
+
+<ion-header class="Header">
+<ion-navbar >
+  <!--<button ion-button menuToggle>-->
+    <!--<ion-icon name="menu"></ion-icon>-->
+  <!--</button>-->
+  <!--<ion-title >-->
+    <!--<ion-icon name="md-contacts"></ion-icon>-->
+    <!--Liste des Patients-->
+  <!--</ion-title>-->
+  <div data-role="header" data-position="fixed">
+    <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+    <div class="nav_center_logo">Gérer les Patient</div>
+    <ion-badge class="nblistbadge">{{items.length}}</ion-badge>
+    <div class="clear"></div>
+  </div>
+</ion-navbar>
+
+</ion-header>
+<ion-content >
+
+  <ion-refresher (ionRefresh)="getItems($event)" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+  <!--<ion-fab bottom right >
+    <button ion-fab (click)="openModal1()" >
+      <ion-icon name="person-add" ></ion-icon>
+    </button>
+
+  </ion-fab>-->
+
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      (ionInput)="SerachItems($event.target.value)">
+    </ion-searchbar>
+
+
+  <ion-list >
+    <!--<ion-list-header>Liste des Patients</ion-list-header>-->
+    <ion-item-group reorder="false">
+    <ion-item-sliding *ngFor="let item of items" >
+      <a ion-item (click)="openModal({clientObj: item})">
+        <ion-thumbnail item-left>
+          <img src="{{ImgProfile(item.datenaiss,item.sexe)}}">
+        </ion-thumbnail>
+        <span><span style="color: cornflowerblue;">N° {{item.num_fich_patient}}</span> <ion-badge class="agebadge"><small>{{getAge(item.datenaiss)}}Ans</small></ion-badge></span>
+        <p><span text-uppercase>{{item.prenom}} {{item.nom}}</span>
+        </p>
+        <p><img style="width: 15px;" src="./assets/img/map.png"><span>  {{item.adresse}}</span></p>
+        <ion-note item-right style="margin-top: -70px;">
+          <span *ngIf="item.AssurCnam!=''"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="./assets/img/cnam.png"></span>
+          <span *ngIf="item.code_apci!=''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="./assets/img/apci_logo_600w.png"></span>
+          <span *ngIf="item.AutreAssur!=''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(item.AutreAssur)}}"></span>
+        </ion-note>
+        <hr/>
+      </a>
+      <!--<ion-item-options side="left">
+        <button ion-button color="danger" (click)="delete(item)">
+          <ion-icon name="ios-alert-outline"></ion-icon>
+          Delete
+        </button>
+        <button ion-button color="secondary" (click)="openModal2({clientObj: item})" >
+          <ion-icon name="ios-apps-outline"></ion-icon>
+          Edit
+        </button>
+      </ion-item-options>-->
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="callConsult({num_patient:item.num_fich_patient})">
+          <ion-icon ios="ios-medkit" md="md-medkit"></ion-icon>
+          Dossier
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+
+
+</ion-content>

@@ -1,0 +1,15 @@
+page-login-8 {
+    //login_8
+    .login-8 {
+      background: linear-gradient(rgba(23, 22, 22, 0.4), rgba(23, 22, 22, 0.4)), url('../assets/img/background.jpg');
+        background-size: cover;
+        h1,
+        h2 {
+            color: color($colors, light);
+            margin-bottom: 35px;
+        }
+        img {
+            margin-top: 60px;
+        }
+    }
+}

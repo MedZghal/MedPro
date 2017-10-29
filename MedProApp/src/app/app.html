@@ -1,0 +1,17 @@
+<ion-menu id="menuhome" type="overlay" [content]="content" >
+  <div data-role="panel" id="left-panel" data-display="reveal" data-position="left" style="background-color: #3a5999;">
+
+    <nav class="main-nav">
+      <ul>
+        <div *ngFor="let p of Pages">
+          <li><a data-transition="slidefade" (click)="openPage(p)"><img src="{{p.class}}" alt="" title="" /><span>{{p.title}}</span></a></li>
+        </div>
+        <li style="height: 160px;"></li>
+
+      </ul>
+    </nav>
+
+  </div><!-- /panel -->
+</ion-menu>
+
+<ion-nav id="myNav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

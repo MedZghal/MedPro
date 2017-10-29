@@ -1,0 +1,45 @@
+page-login {
+
+  .login-6 {
+    background: linear-gradient(rgba(23, 22, 22, 0.4), rgba(23, 22, 22, 0.4)), url('../assets/img/background.jpg');
+    background-size: cover;
+    .center-content {
+      width: 100%;
+    }
+    ion-list {
+      margin: 30px auto 0px auto;
+      background: transparent;
+      max-width: 300px;
+    }
+    ion-item {
+      margin-bottom: 15px;
+      border-radius: 8px !important;
+      ion-icon {
+        width: 14px;
+        color: color($colors, grey);
+      }
+      input {
+        font-size: 16px;
+        &::-webkit-input-placeholder {
+          color: color($colors, grey);
+          font-size: 16px;
+        }
+      }
+    }
+    .center-logo{
+      width: 195px;
+      margin-top: -160px;
+    }
+
+    .btns {
+      width: 200px;
+      text-align: center;
+      margin: 30px auto 0 auto;
+      .button-block {
+        &:first-child {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}

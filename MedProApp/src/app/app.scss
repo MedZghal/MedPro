@@ -1,0 +1,643 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|Muli|Playfair+Display:400,700,900';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css';
+
+.menu-logo{
+  display: block;
+  margin: 45px auto 40px;
+  padding-left: 30px;
+}
+
+[ion-fixed] {
+  width: 100%;
+}
+
+.toolbar-md {
+  height: 50px;
+  min-height: 50px;
+}
+.toolbar-title-md{
+  font-weight: 100;
+}
+
+.tabbar{
+  height: 50px;
+}
+/**********************************
+Helper
+***********************************/
+
+
+
+.text-light {
+  color: color($colors, light);
+}
+
+.text-dark {
+  color: color($colors, dark);
+}
+
+.text-grey {
+  color: color($colors, grey);
+}
+
+button.activated {
+  border-color: transparent !important
+}
+
+.text-facebook {
+  color: color($colors, facebook);
+}
+
+.half-opacity {
+  opacity: 0.5;
+}
+
+
+.m-b-15 {
+  margin-bottom: 15px !important;
+}
+
+.m-t-b-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.center-margin {
+  margin: 0 auto !important;
+}
+/**********************************
+typography
+***********************************/
+
+h1 {
+  font-family: 'PlayfairDisplay', serif;
+  font-size: 31px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Muli', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.78;
+  text-align: center;
+}
+
+h5 {
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+button,
+p,
+ul,
+li,
+a,
+input,
+h5 {
+  font-family: 'Muli', sans-serif;
+}
+
+.shadow {
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.20), inset 0px 2px 0px 0px rgba(255, 255, 255, 0.20);
+  &:hover {
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.20), inset 0px 2px 0px 0px rgba(255, 255, 255, 0.20);
+  }
+}
+
+.pinro-side-menu {
+  a {
+    font-family: 'PlayfairDisplay', serif;
+    font-weight: bold;
+  }
+}
+
+//positioning
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: perspective(1px) translate(-50%, -50%);
+}
+
+.center-content {
+  position: absolute;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  padding-right: 10px;
+}
+
+//footer content
+.footer-content {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+}
+
+//buttons
+.btn-holder {
+  width: 200px;
+  text-align: center;
+  left: 50%;
+  transform: perspective(1px) translateX(-50%);
+  .button-block {
+    &:first-child {
+      margin-bottom: 15px;
+    }
+  }
+}
+/*
+.button-block {
+border-radius: 40px;
+min-height: 45px;
+line-height: 36px;
+}*/
+
+//colors
+.login-1,
+.login-2,
+.login-3,
+.login-5,
+.login-6 {
+  h1 {
+    color: color($colors, light);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-7 {
+    img {
+      margin-top: 30px !important;
+    }
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 360px) {
+  //galaxy s5
+  .login-10 {
+    h1 {
+      margin-top: 60px;
+    }
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 375px) {
+  //iphone 6
+  .login-10 {
+    h1 {
+      margin-top: 70px;
+    }
+  }
+}
+
+// media query
+@media screen and (min-width: 376px) {
+  //iphone 6 plus
+  .login-10 {
+    h1 {
+      margin-top: 110px;
+    }
+  }
+}
+.tabs-md .tab-button-icon{
+  color: white;
+}
+.tab-button-text{
+  color: wheat;
+}
+
+.md #menuhome .menu-inner{
+  width: 112px;
+}
+
+.main-nav ul li:nth-child(1){
+  border-bottom: 1px #ddd solid;
+}
+.main-nav ul li:nth-child(2){
+  border-bottom: 1px #ddd solid;
+}
+.main-nav ul li:nth-child(3){
+  border-bottom: 1px #ddd solid;
+}
+.main-nav ul li:nth-child(4){
+  border-bottom: 1px #ddd solid;
+}
+.main-nav ul li:nth-child(5){
+  border-bottom: 1px #ddd solid;
+}
+.main-nav a{
+  color: white;
+}
+///**/
+///*===============================================*/
+///* 4. LEFT AND RIGHT SLIDE PANELS */
+///*===============================================*/
+//.panel {
+//  z-index: 1000;
+//  display: none;
+//  background: linear-gradient(rgba(23, 22, 22, 0.4), rgba(23, 22, 22, 0.4)), url('../assets/img/background.jpg');  background-size: cover;
+//  -webkit-box-sizing: border-box;
+//  -moz-box-sizing: border-box;
+//  box-sizing: border-box;
+//  overflow: auto;
+//  -webkit-overflow-scrolling: touch;
+//  position: absolute;
+//  width: 240px;
+//  top: 0;
+//  height: 100%;
+//  -webkit-transform: translate3d(0, 0, 0);
+//  transform: translate3d(0, 0, 0);
+//  -webkit-transition-duration: 400ms;
+//  transition-duration: 400ms;
+//  color:#FFFFFF;
+//}
+//.content-block {
+//  margin: 35px 0;
+//  padding: 0 15px;
+//}
+///* 4.1 SIDE NAVIGATION */
+//
+//.list-nav{
+//  padding:50px 0 0 0px;
+//  width:100%;
+//}
+//.list-nav ul{
+//  width:100%;
+//  list-style:none;
+//  padding:0px;
+//  margin:0;
+//  display:block;
+//  float:left;
+//  text-align:center;
+//}
+//.list-nav ul li{
+//  display:block;
+//  padding:0px;
+//  margin:0px;
+//}
+//.list-nav ul li a{
+//  color:#FFFFFF;
+//  font-size:15px;
+//  font-weight:300;
+//  width:22%;
+//  display:inline-block;
+//  float:left;
+//  list-style:none;
+//  padding:16.5% 0 3% 0;
+//  margin:2% 0 2% 8%;
+//  height:auto;
+//  background-color:#127b42;
+//}
+//.list-nav-small{
+//  padding:20px 5%;
+//  width:90%;
+//}
+//.list-nav-small ul{
+//  width:100%;
+//  list-style:none;
+//  padding:0px;
+//  margin:0px;
+//  display:block;
+//}
+//.list-nav-small ul li{
+//  list-style:none;
+//  padding:0 0 0 50px;
+//  margin:0px;
+//  display:block;
+//  height:45px;
+//  line-height:45px;
+//  border-bottom:1px #12713e solid;
+//}
+//.list-nav-small ul li a{
+//  color:#FFFFFF;
+//  font-size:16px;
+//  font-weight:300;
+//}
+//.home-icon a{
+//  background:url(../assets/img/white/home.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.about-icon a{
+//  background:url(../assets/img/white/user.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.features-icon a{
+//  background:url(../assets/img/white/settings.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.photos-icon a{
+//  background:url(../assets/img/white/photos.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.blog-icon a{
+//  background:url(../assets/img/white/blog.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.contact-icon a{
+//  background:url(../assets/img/white/contact.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.lock-icon a{
+//  background:url(../assets/img/white/lock.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.tools-icon a{
+//  background:url(../assets/img/white/tools.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.envelope-icon a{
+//  background:url(../assets/img/white/envelope.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.download-icon a{
+//  background:url(../assets/img/white/download.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.video-icon a{
+//  background:url(../assets/img/white/video.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.heart-icon a{
+//  background:url(../assets/img/white/heart.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.logout-icon a{
+//  background:url(../assets/img/white/logout.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.toogle-icon a{
+//  background:url(../assets/img/white/toogle.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.docs-icon a{
+//  background:url(../assets/img/white/docs.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//.responsive-icon a{
+//  background:url(../assets/img/white/responsive.png);
+//  background-size: auto 40%;
+//  background-repeat: no-repeat;
+//  background-position: 50% 35px;
+//}
+//
+//.home-icon-small{
+//  background:url(../assets/img/white/home.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.about-icon-small{
+//  background:url(../assets/img/white/user.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 10px;
+//}
+//.features-icon-small{
+//  background:url(../assets/img/white/settings.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.photos-icon-small{
+//  background:url(../assets/img/white/photos.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.blog-icon-small{
+//  background:url(../assets/img/white/blog.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.contact-icon-small{
+//  background:url(../assets/img/white/contact.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.lock-icon-small{
+//  background:url(../assets/img/white/lock.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.tools-icon-small{
+//  background:url(../assets/img/white/tools.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.envelope-icon-small{
+//  background:url(../assets/img/white/envelope.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.download-icon-small{
+//  background:url(../assets/img/white/download.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.video-icon-small{
+//  background:url(../assets/img/white/video.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.heart-icon-small{
+//  background:url(../assets/img/white/heart.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.logout-icon-small{
+//  background:url(../assets/img/white/logout.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.toogle-icon-small{
+//  background:url(../assets/img/white/toogle.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+//.docs-icon-small{
+//  background:url(../assets/img/white/docs.png);
+//  background-size: auto 50%;
+//  background-repeat: no-repeat;
+//  background-position: 10px 50%;
+//}
+
+/*===============================================*/
+/* 2. GENERAL		 						 */
+/*===============================================*/
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #232323;
+  font-size: 14px;
+  font-weight:300;
+}
+.clear{
+  clear:both;
+  display:block;
+}
+.clearleft{
+  clear:both;
+  float:left;
+  display:block;
+}
+a {
+  text-decoration: none;
+}
+p{
+  padding:0px;
+  margin:0px;
+  line-height:20px;
+}
+blockquote{
+  padding:0 0 0 15px;
+  margin:5px 0 15px 0;
+  font-size:16px;
+  border-left:3px solid #ececec;
+  line-height:20px;
+  font-weight:300;
+}
+blockquote span{
+  display:block;
+  font-weight:700;
+  font-size:14px;
+  text-transform:uppercase;
+  line-height:22px;
+}
+.videocontainer{
+  max-width:100%;
+  padding:0;
+  display: block;
+  margin:0;
+}
+#homepage :not(INPUT):not(TEXTAREA) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.ui-page{
+  text-shadow:none;
+  -ms-scroll-chaining: none;
+}
+
+/*newmenu*/
+
+#left-panel{
+  width: 8em;
+}
+#right-panel{
+  width:20em;
+}
+.ui-panel .ui-panel-inner {
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 4-1. MAIN NAVIGATION - LEFT PANEL */
+.main-nav{
+  padding:0px;
+  width:100%;
+}
+.main-nav ul{
+  width:100%;
+  list-style:none;
+  padding:0px;
+  margin:0px;
+  display:block;
+}
+.main-nav ul li{
+  width:100%;
+  list-style:none;
+  padding:15px 0;
+  margin:0;
+  display:block;
+  text-align:center;
+}
+.main-nav ul li img{
+  display:inline-block;
+  max-width:40%;
+  margin:auto;
+}
+.main-nav ul li span{
+  display:block;
+  text-align:center;
+  padding:0px 0 0 0;
+}
+.main-nav ul li a{
+  font-size:13px;
+  font-weight:300;
+  text-shadow:none;
+}
+
+/**sideMENU**/

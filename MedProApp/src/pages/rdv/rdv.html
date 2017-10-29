@@ -1,0 +1,45 @@
+<ion-header class="Header">
+  <ion-navbar >
+    <div data-role="header" data-position="fixed">
+      <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+      <div class="nav_center_logo">Gérer les Rendez-Vous</div>
+      <ion-badge class="nblistbadge">{{rdvs.length}}</ion-badge>
+      <div class="clear"></div>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+<ion-content >
+  <ion-refresher (ionRefresh)="getItems($event)" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterItems($event.target.value)">
+  </ion-searchbar>
+
+  <ion-fab bottom right >
+    <button ion-fab (click)="openCalendar_()" >
+      <img style="width: 30px;" src="./assets/img/weekly-calendar.png">
+    </button>
+
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let events of rdvs">
+      <ion-thumbnail item-left style=" margin-top: -40px; ">
+        <img src="./assets/img/picto-rdv.png">
+      </ion-thumbnail>
+      <button ion-button clear STYLE="margin-top: 15px;" (click)="createEvent(events.numRDV)"><img style="width: 20px;" src="./assets/img/weekly-calendar.png"><h2 style="margin-left: 5px;"> {{events.typeRDV}}</h2></button>
+
+      <p> <label>Title : </label>{{events.descpRDV}}</p>
+      <p> <label>Start date : </label>{{events.start_date | date:'dd/MM/yy HH:mm'}}</p>
+      <p><label>End date : </label>{{events.end_date | date:'dd/MM/yy HH:mm'}}</p>
+      <p><label>Patient : </label> {{events.num_patient}}</p>
+      <button ion-button clear item-right style="margin-bottom: -20px;" (click)="openModal({RdvObj: events})">Détails</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

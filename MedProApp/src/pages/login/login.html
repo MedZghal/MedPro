@@ -1,0 +1,94 @@
+
+<ion-content text-center class="login-6 text-center  animated fadeIn">
+
+  <!--div>
+      <label *ngIf="auth_status == 'OK'" style="font-style: oblique;"><button ion-button (click)="signOut()" color="error">Sign Out</button> :{{loggedInUser}}</label>
+  </div-->
+  <div class="center-content" text-center padding ion-fixed>
+
+    <div padding text-center ion-fixed class="center-logo">
+      <img  src="assets/img/logo_mymedapp.png">
+    </div>
+
+    <div padding>
+
+      <ion-list>
+        <ion-item>
+          <ion-icon name="md-mail" item-left></ion-icon>
+          <ion-input type="email" placeholder="E-mail" [value]="username" (input)="username = $event.target.value"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="md-lock" item-left></ion-icon>
+          <ion-input type="password" placeholder="Password" [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+    </div>
+
+    <div class="btns">
+      <button ion-button block round color="facebook" (click)="getAuthTokenSimple()">Connecte</button>
+    </div>
+
+  </div>
+
+  <!--div class="list">
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [value]="username" (input)="username = $event.target.value"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input  [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+    </ion-item>
+  </div>
+  <div class="padding">
+    <button ion-button (click)="getAuthTokenSimple()" >Login</button>
+  </div>
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [value]="username" (input)="username = $event.target.value"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input  [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <button ion-button (click)="getAuthTokenSimple()" color="success">Token Auth</button>
+    <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button>
+    <br/>
+    <label>Using {{auth_type}} authentication</label>
+    <div>
+        <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
+    </div>
+
+
+    <hr/>
+    <h2>Change Password</h2>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Old Password</ion-label>
+            <ion-input type="password" [value]="oldPassword" (input)="oldPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>New Password</ion-label>
+            <ion-input type="password" [value]="newPassword" (input)="newPassword = $event.target.value"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Confirm Password</ion-label>
+            <ion-input type="password" [value]="confirmNewPassword" (input)="confirmNewPassword = $event.target.value"></ion-input>
+        </ion-item>
+
+
+        <button ion-button (click)="changePassword()" color="success">Change Password</button>
+
+    </ion-list-->
+
+</ion-content>

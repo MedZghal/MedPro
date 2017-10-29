@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-navbar *navbar>
+
+  </ion-navbar>
+
+  <ion-toolbar>
+
+
+  <div data-role="header" data-position="fixed">
+    <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+    <div class="nav_center_logo">Med Pro App</div>
+    <div class="nav_right_button" (click)="toggleRightMenu()"><a><img src="./assets/img/white/user.png" alt="" title="" /></a>
+      <ion-badge class="nblistehome">{{salleAttente.length}}</ion-badge>
+    </div>
+    <div class="clear"></div>
+  </div><!-- /header -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="grid-basic-page" >
+  <ion-refresher (ionRefresh)="getItems($event)" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+  <div role="main" class="ui-content" >
+    <div class="pages_maincontent">
+      <h2 class="page_title">Services</h2>
+      <div class="page_content" >
+
+        <ul class="features_list_detailed">
+
+
+          <li (click)="callrdv()" >
+            <div class="feat_small_icon"><img src="./assets/img/black/blog.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>Rendez-Vous</h4>
+              <a  data-transition="slidefade">Consulter Vous rendez-Vous à distance.</a>
+            </div>
+            <div class="view_more"><a  data-transition="slidefade"><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+
+          <li (click)="callpatient()">
+            <div class="feat_small_icon"><img src="./assets/img/black/user.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>Patient</h4>
+              <a  data-transition="slidedown">Gérer vos patients de manière simple avec cette application.</a>
+            </div>
+            <div class="view_more"><a  data-transition="slidedown"><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+          <li (click)="callConsult()">
+            <div class="feat_small_icon"><img src="./assets/img/black/toggle.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>Consultation</h4>
+              <a  data-transition="slidedown">Gérer vos consultations.</a>
+            </div>
+            <div class="view_more"><a  data-transition="slidedown"><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+
+          <li (click)="callparametre()">
+            <div class="feat_small_icon"><img src="./assets/img/black/lock.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>Paramétres</h4>
+              <a >Gérer vos paramétres.</a>
+            </div>
+            <div class="view_more"><a ><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+          <li (click)="callStatistique()">
+            <div class="feat_small_icon"><img src="./assets/img/black/docs.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>Statiqtiques</h4>
+              <a  data-transition="slidefade">Gérer vos Statiqtiques avec des simples courbes.</a>
+            </div>
+            <div class="view_more"><a  data-transition="slidefade"><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+
+          <li (click)="callAbout()">
+            <div class="feat_small_icon"><img src="./assets/img/black/responsive.png" alt="" title="" /></div>
+            <div class="feat_small_details">
+              <h4>About</h4>
+              <a  data-transition="slidefade">about Santé Med App.</a>
+            </div>
+            <div class="view_more"><a  data-transition="slidefade"><img style=" margin-top: -10px; " src="./assets/img/black/settings.png" alt="" title="" /></a></div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-menu side="right" type="overlay" [content]="mycontent" >
+  <ion-header-bar class="bg-dark bar bar-header">
+    <h5 class="light fw300 pl10">Notifications (Salle d'attende)</h5>
+
+  </ion-header-bar>
+  <ion-content class="scroll-content ionic-scroll overflow-scroll  has-header">
+    <div class="scroll">
+
+    <div class="list" style=" margin-top: 38px; ">
+
+      <ion-item *ngFor="let item of salleAttente" (click)="openModal({clientObj: patientlisteAttente[item.num_patient]})" class="item-remove-animate item-avatar border-b-xs item item-complex item-left-editable item-right-editable" style=" height: 80px; margin-top: -10px; ">
+        <div class="item-content">
+        <img src="{{ImgProfile(patientlisteAttente[item.num_patient].datenaiss,patientlisteAttente[item.num_patient].sexe)}}">
+          <h3 class=" m0 fw300 ng-binding">Rendez-Vous N°:{{item.num_rdv}}</h3>
+          <h3 class=" m0 fw300 ng-binding">{{patientlisteAttente[item.num_patient].prenom}} {{patientlisteAttente[item.num_patient].nom}}</h3>
+        <p class="light m0 ng-binding">{{item.note}}</p>
+        </div>
+      </ion-item>
+    </div>
+
+  </div>
+  </ion-content>
+
+</ion-menu>
+<ion-nav  #mycontent [root]="rootPage"></ion-nav>

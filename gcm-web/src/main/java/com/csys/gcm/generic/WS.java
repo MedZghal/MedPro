@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package com.csys.gcm.generic;
-
-
+//import com.rest.GempApplication;
 import java.net.URL;
 import java.net.MalformedURLException;
 import service.*;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class WS {
      *
      */
     public static GcmEventWS PortCltWS;
-    
+//    public static  GempApplication gempApplication;
     /**
      *
      * @return
@@ -56,6 +56,10 @@ public class WS {
      * @return
      * @throws MalformedURLException
      */
+//     public GempApplication GempApplication() {
+//         gempApplication= new GempApplication();
+//         return gempApplication;
+//     }
     public GcmEventWS GcmEventWS() throws MalformedURLException{
          /*Authenticator muAth= new Authenticator() {
              @Override
@@ -90,6 +94,7 @@ public class WS {
          
          Authenticator.setDefault(muAth);*/
              GcmEventWS_Service service;
+             
              service = new GcmEventWS_Service(new URL("http://127.0.0.1/GCM/GcmEventWS?wsdl"));
              PortCltWS = service.getGcmEventWSPort();
              return PortCltWS;

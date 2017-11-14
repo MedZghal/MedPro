@@ -1,5 +1,5 @@
 
-/* global option */
+/* global option, scheduler, dataService */
 var listeAttend=[];
 $(function() {
     if(!window.parent.$("#menuback").hasClass('hide'))
@@ -38,6 +38,7 @@ $(function() {
         menu1.contextAutoHide = false;                
         menu1.setIconsPath("../img/");
         menu1.addNewChild(menu1.topId, 0, "Presente", "Arrivé", false, "check.png");
+        menu1.addNewChild(menu1.topId, 1, "payer", "Payé", false, "icons8-Parking payant-50.png");
         
     
     var listePatient =GetListPatientByMedecin(paramater.codeMedTrit.codeMedTrit);
@@ -62,7 +63,7 @@ $(function() {
 			scheduler.locale.labels.section_select = 'Patient';
 
 			scheduler.config.lightbox.sections = [
-				{ name: "text", height: 50, map_to: "text", type: "textarea", focus: true },
+				{ name: "text", height: 100, map_to: "text", type: "textarea", focus: true },
 				{ name: "checkbox", map_to: "single_checkbox", type: "checkbox", checked_value: "registrable", unchecked_value: "unchecked" },
 				{ name: "radiobutton", height: 65, options: TypeConsult, map_to: "radiobutton_option", type: "radio", vertical: true },
 				{ name: "select", height: 40, map_to: "type", type: "select", options: patients },
@@ -95,10 +96,13 @@ $(function() {
 				if(id==="Presente"){
                                     if(listeAttend.indexOf(eventObjMenu.id)=== -1 && eventObjMenu.type!=="0"){
                                         listeAttend.push(eventObjMenu.id);
+                                        
                                         var num__patient =eventObjMenu.type.toString().substr(eventObjMenu.type.toString().indexOf('(')+1,8);
+                                        
                                         var Err=AjSalle_Attente(num__patient,eventObjMenu.id,paramater.codeMedTrit.codeMedTrit,eventObjMenu.type);
                                         if(Err.toString()==="true"){
                                             window.parent.toastr.success("Attention, Patient Ajouter Avec Succès dans la liste d'attente!.",'success',option);
+                                            console.log(dataService.create('Salle_Attente_ADD'+paramater.codeMedTrit.codeMedTrit));
                                             RefreshListeAttente();
                                         }else
                                             window.parent.toastr.error("Attention,Ce patient est déjà arrivée!.",'Error',option);
@@ -109,8 +113,17 @@ $(function() {
                                         else
                                             window.parent.toastr.error("Ce rendez-vous ne considère pas une consultation!.",'Error',option);
                                     }
-                                }
+                                }else
+                                    if(id==="payer"){
+                                        var num__patient =eventObjMenu.type.toString().substr(eventObjMenu.type.toString().indexOf('(')+1,8);
+                                        window.parent.$("#confirmeemodal").attr("data-target","#payermodal");  
+                                        window.parent.$("#prixapayer").val(parseFloat(paramater.montantConsult));
+                                        window.parent.$("#confirmeemodal").trigger("click");
+                                        localStorage.setItem("PatientPaiement",num__patient);
+                                    }
+                                        
 			});
+                        
     scheduler.attachEvent("onTemplatesReady", function() {
 			var highlight_step = 60; // we are going to highlight 30 minutes timespan
 
@@ -157,7 +170,12 @@ $(function() {
         });
 
     scheduler.attachEvent("onLightbox", function (){
+            $(document).find('.select2-bootstrap-append').select2({
+                dropdownAutoWidth: true,
+                width: "100%"
+            });
             $(document).find('.select2-bootstrap-append').attr("disabled",true);
+            
     });
     
     scheduler.attachEvent("onEventSave",function(id,data,mode){
@@ -246,6 +264,8 @@ $(function() {
             RefreshListeRdvAujourdHui();
         }
     });
+    
+
  
 });
 

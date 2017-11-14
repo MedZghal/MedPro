@@ -60,10 +60,17 @@ function GetParemetrebyCodeMedTrit(codeMedTrit)
  
 function Connect(){
     localStorage.setItem("Secretaire",JSON.stringify([]));
+    localStorage.setItem("Utilisateur",JSON.stringify([]));
+    localStorage.setItem('Soket','false');
      var verif ="false";
      var paramater,codeMedTrit;
         $.each(utilisateur , function(i){
             if(utilisateur[i].username === $("#user").val() && utilisateur[i].pass === $("#password").val() ){
+                localStorage.setItem("Utilisateur",JSON.stringify(
+                {
+                    user:$("#user").val(),
+                    pass:$("#password").val()
+                }));
                 if(utilisateur[i].codeMedTrit<0){
                     codeMedTrit=utilisateur[i].secretaire;
                     localStorage.setItem("Secretaire",JSON.stringify(utilisateur[i]));

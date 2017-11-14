@@ -131,6 +131,7 @@
           
           <script src="../js/attrchange/attrchange.js"></script>
         <script src="../js/attrchange/attrchange_ext.js"></script>
+        <script src="../js/backand.js"></script>
         
     <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>

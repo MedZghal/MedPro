@@ -3,11 +3,14 @@
         <script src="../js/jasmine-html.js"></script>
         
         <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.cookie.js" type="text/javascript"></script>
         
         <script src="../js/textresizedetector.js"></script>
         <script src="../js/attrchange/attrchange.js"></script>
         <script src="../js/attrchange/attrchange_ext.js"></script>
-        
+        <script src="../js/backand.js"></script>
+        <script src="../js/sockjs-0.3.4.min.js"></script>
+        <script src="../js/stomp.min.js"></script>
         <script src="../assets/global/plugins/bootstrap-fileinput/js/plugins/sortable.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-fileinput/js/plugins/purify.js" type="text/javascript"></script>
 <!--        <script src="../assets/global/plugins/bootstrap-fileinput/js/plugins/piexif.js" type="text/javascript"></script>-->
@@ -33,7 +36,7 @@
         <script src="../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
-        <!--script src="../assets/global/plugins/select2/js/select2.min.js" type="text/javascript"></script-->
+        <!--<script src="../assets/global/plugins/select2/js/select2.min.js" type="text/javascript"></script>-->
         <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
@@ -55,7 +58,9 @@
         <script src="../assets/global/plugins/bootstrap-editable/inputs-ext/wysihtml5/wysihtml5.js" type="text/javascript"></script>
         
         <script src="../js/portlet-draggable.js" type="text/javascript"></script>
-        <script src="../js/dhtmlxscheduler/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script><!--148-->
+        <script src="../js/dhtmlxscheduler/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/dhtmlxscheduler/locale/locale_fr.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/dhtmlxscheduler/locale/recurring/locale_recurring_fr.js" type="text/javascript" charset="utf-8"></script>
         <script src="../js/dhtmlxscheduler/ext/dhtmlxscheduler_agenda_view.js" type="text/javascript" charset="utf-8"></script>
         <script src="../js/dhtmlxscheduler/ext/dhtmlxscheduler_year_view.js" type="text/javascript" charset="utf-8"></script>
         <script src="../js/dhtmlxscheduler/ext/dhtmlxscheduler_active_links.js" type="text/javascript" charset="utf-8"></script>

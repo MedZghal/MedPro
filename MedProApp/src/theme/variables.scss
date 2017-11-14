@@ -1,7 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
-
+$svg-path : "~assets/icon/cloud-computing.svg";
 @import "ionic.globals";
 
 
@@ -76,7 +76,6 @@ $cordova-md-statusbar-padding:           29px;
 
 // Used to show the status bar for component demos
 $cordova-wp-statusbar-padding:           31px;
-
 
 
 

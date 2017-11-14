@@ -2,11 +2,12 @@
 
 $.fn.fileInputThemes='fa';
 moment.locale('fr');
+var Utilisateur
 var DataChange ="false";
- var Consults=[];
- var paramater;
- var index=1;
- var option=  toastr.options = {
+var Consults=[];
+var paramater;
+var index=1;
+var option=  toastr.options = {
   "closeButton": true,
   "debug": false,
   "positionClass": "toast-top-right",
@@ -54,8 +55,132 @@ jQuery.fn.liScroll = function(settings) {
         });    
 };
 
+var Soket ={
+     init: function(){
+        var cookie=null;
+        var csrfToken=null;
+        var socket;
+        var stompClient ;
+        showMeYourCookies('At loginform submission');
+               
+      
+                Utilisateur=JSON.parse(localStorage.getItem("Utilisateur"));
+		
+		
+                $.ajax({
+			type: 'GET',
+			url: '/GEMP/hello'
+
+		}).done(function(data, textStatus, jqXHR) {
+                    var data = 'username=' + Utilisateur.user + '&password=' + Utilisateur.pass;
+                    $.ajax({
+                            data: data,
+                            //headers: {'X-CSRF-TOKEN': cookie.csrf},
+                            timeout: 1000,
+                            type: 'POST',
+                            url: '/GEMP/login'
+
+                    }).done(function(data, textStatus, jqXHR) {
+                            showMeYourCookies('When loginform is done');
+                            socket= new SockJS('/GEMP/ws');
+                            stompClient= Stomp.over(socket);
+                            stompClient.connect({}, function(frame) {
+                             console.log(stompClient);
+                                    stompClient.subscribe('/user/queue/notify', function(notification) {
+                                        console.log('subscribe notify');
+                                    });
+                                    stompClient.subscribe('/user/queue/chatSend', function(notification) {
+                                        console.log('subscribe chatSend');
+                                        incriBadge("#nbNotesMsg");
+                                        addListeNotesMsg(JSON.parse(notification.body).content);
+                                    });
+                                    stompClient.subscribe('/user/queue/chatRecive', function(notification) {
+                                        incriBadge("#nblisteNotes");
+                                        var html="";
+                                        console.log(JSON.parse(notification.body).user.toString());
+                                        console.log(Utilisateur.user.toString());
+                                        var Secretaire =JSON.parse(localStorage.getItem("Secretaire"));
+                                        if(JSON.parse(notification.body).user.toString() !== Utilisateur.user.toString())
+                                        {
+                                            html='<div class="post in">';
+                                            if(Object.keys(Secretaire).length>0)
+                                                html+='<img class="avatar" src="../img/avatars/nurse.png" alt="...">';
+                                            else
+                                                html+=' <img class="avatar" src="../img/avatars/doctor-.png" alt="...">';
+                                            html+=' <div class="message">'+
+                                                        '<span class="arrow"></span>'+
+                                                        '<a href="javascript:;" class="name"> '+JSON.parse(notification.body).user +' </a>'+
+                                                        '<span class="datetime">'+  heure() +'</span>'+
+                                                        '<span style=" word-wrap: break-word; " class="body"> '+ JSON.parse(notification.body).content +' </span>'+
+                                                    '</div>'+
+                                                '</div>';
+                                        }else{
+                                            html='<div class="post out">';
+                                            if(Object.keys(Secretaire).length>0)
+                                                html+='<img class="avatar" src="../img/avatars/nurse.png" alt="...">';
+                                            else
+                                                html+=' <img class="avatar" src="../img/avatars/doctor-.png" alt="...">';
+                                            html+='<div class="message">'+
+                                                            '<span class="arrow"></span>'+
+                                                            '<a href="javascript:;" class="name"> '+JSON.parse(notification.body).user +' </a>'+
+                                                            '<span class="datetime">'+  heure() +'</span>'+
+                                                            '<span style=" word-wrap: break-word; " class="body"> '+JSON.parse(notification.body).content +'</span>'+
+                                                        '</div>'+
+                                                    '</div>';
+                                        }
+                                        $("#listeNotes").append(html);
+                                    });
+                            });
+
+
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                    showMeYourCookies('When loginform fails');
+                    console.error('Booh! Wrong credentials, try again!'+errorThrown);
+                    });
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+			showMeYourCookies('When loginform fails hello');
+			console.error('Booh! Wrong credentials, try again!'+errorThrown);
+		});
+               
+     }
+};
+
+var dataService = {
+  init: function(){
+    backand.init(
+      {appName: 'medproapp',
+        signUpToken: '2b12816f-0325-4845-bf02-e45e17336a0a',
+        anonymousToken: '47d86686-5de2-438c-b024-7d65a63dfc50',
+       runSocket: false
+      }
+    );   
+  },
+  create:function(note){
+     backand.object.create('events',{"text": note } )
+             .then(function(response){ return 'true'; })
+                    .catch( function(error){return error; });
+  },
+  remove:function(id){
+     backand.object.remove("events",parseInt(id))
+             .then(function(response){ return 'true'; })
+                    .catch( function(error){return error; });
+  },
+   getList: function(){
+        var params =  {
+          sort: backand.helpers.sort.create('creationDate', backand.helpers.sort.orders.desc),
+          exclude: backand.helpers.exclude.options.all,
+          pageSize: 10,
+          pageNumber: 1,
+          filter: backand.helpers.filter.create('completionDate', backand.helpers.filter.operators.date.empty, '')
+        };
+        return backand.object.getList('Salle_Attente');
+  }
+};
+
 $(function () {
 /*init*/
+
+    dataService.init();
   
                 
     $("#sidemenu").attrchange({
@@ -83,7 +208,7 @@ $(function () {
     $("ul#ticker01").liScroll({travelocity: 0.05});
     paramater = JSON.parse(localStorage.getItem("paramater"));
     if(paramater!==null){
-        
+        $("#prixrecu").attr('max',parseFloat(paramater.montantConsult));
         var Secretaire =JSON.parse(localStorage.getItem("Secretaire"));
         if(Object.keys(Secretaire).length>0){
             $("#content").empty();
@@ -110,6 +235,10 @@ $(function () {
         RefreshListeRdvAujourdHui();
         RefreshListeDossierPar();
         $("#datedepense").val(GetDateServeur());
+        var listeSoldePatient =localStorage.getItem("listeSoldePatient");
+        if(listeSoldePatient === null)
+            inialiserSoldePatinet([]);
+      
     }
 /*end*/
 
@@ -182,6 +311,38 @@ $(function () {
              window.parent.toastr.error('Vérifiez que tous les champs sont remplis correctement?','Error',option);
     });
     
+    $("#confirmerpayermodal").click(function (){
+        handleValidationModalPaiement();
+        if($('#payermodalForm').valid()){
+            var tab = JSON.parse(localStorage.getItem("listeSoldePatient")); 
+            var numpastient=localStorage.getItem("PatientPaiement");
+            function trouveSPatinet(tabsp) {
+                var pt=localStorage.getItem("PatientPaiement");
+                return tabsp.numPatient ===pt ;
+            }
+            console.log(tab.find(trouveSPatinet));
+            var ob = tab.find(trouveSPatinet);
+            var credit=parseInt($("#prixapayer").val())-parseInt($("#prixrecu").val());
+            if( ob === undefined){
+                 tab.push({
+                    'debit':$("#prixrecu").val(),
+                    'credit':credit,
+                    'numPatient':numpastient
+                });
+                window.parent.toastr.success("Attention, Paiement Ajouté!.",'success',option);
+            }else{
+                window.parent.toastr.success("Attention, Paiement Modifié!.",'success',option);
+                ob.debit=$("#prixrecu").val();
+                ob.credit=credit;
+                
+            }
+            inialiserSoldePatinet(tab);
+            $('#anuulerpayermodal')[0].click();
+        }
+        else
+             window.parent.toastr.error('Vérifiez que tous les champs sont remplis correctement?','Error',option);
+    });
+    
     $("#logout").click(function (){
         window.parent.$.SmartMessageBox({
                     title : '<i class="fa fa-sign-out txt-color-orangeDark"></i>  Se déconnecter !',
@@ -189,6 +350,10 @@ $(function () {
                     buttons : '[Annuler][Valider]'
                     }, function(ButtonPressed) {
                         if (ButtonPressed === "Valider") {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/GEMP/logout'
+                            });
                             window.location.href="../index.jsp";
                         }
                         
@@ -208,6 +373,7 @@ $(function () {
                                 if (ButtonPress === "Valider") {
                                     var Err =SuppAllSalleAttente(paramater.codeMedTrit.codeMedTrit);
                                      if(Err.toString()==="true"){
+                                         sendAction();
                                         RefreshListeAttente();
                                         toastr.success("Attention, Patients enlever Avec Succès!.",'success',option);
                                 }else
@@ -310,7 +476,7 @@ $(function () {
         
         $('#Accesmodal').on('shown', function () {
             ListeChargeUtil();
-            var select_html="<option value></option>";
+            var select_html="";
             if(paramater.codeMedTrit.codeMedTrit===1){
                  select_html+="<option value='Medecin'>Medecin</option>";
                  //select_html+="<option value='Secretaire'>Secretaire</option>";
@@ -318,6 +484,7 @@ $(function () {
                 select_html+="<option value='Secretaire'>Secretaire</option>";
             
                 $("#Type").empty().append(select_html);
+//                $("#Type").attr('class','');  
           });
         
         $("#submitacces").click(function (){
@@ -351,7 +518,20 @@ $(function () {
  
 });
 
-function CallConsulttAtt(patient){
+/**
+  * Send an action to the server.
+*/
+function sendAction() {
+ $.ajax({
+   url: "/GEMP/some-action?msg=deletesalleattende&user="+Utilisateur.user,
+   type: "POST"
+ });
+} 
+function inialiserSoldePatinet(tab){
+    localStorage.setItem('listeSoldePatient',JSON.stringify(tab));
+}
+function CallConsulttAtt(patient,numligneAttend){
+    localStorage.setItem('listeAttend',numligneAttend);
     $("#salleAttBtt")[0].click();
     CallConsult(patient);
 }
@@ -384,11 +564,11 @@ function CallConsult(patient){
                 $("#select2-patient2").empty().trigger('change');
             }
 }
-function AjRecette(total,date_trans,libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam)
+function AjRecette(total,date_trans,libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam,debit,credit)
 {
     var reponse;
     $.ajax({
-        url: "../Consultation?type=update&function=AjRecette&total="+total+"&date_trans="+date_trans+"&libelle="+libelle+"&type_depense="+type_depense+"&num_patient="+num_patient+"&num_consult="+num_consult+"&code_med_trait="+code_med_trait+"&tiers="+tiers+"&tiketModérateur="+tiketModérateur+"&codeActe="+codeActe+"&cnam="+cnam,
+        url: "../Consultation?type=update&function=AjRecette&total="+total+"&date_trans="+date_trans+"&libelle="+libelle+"&type_depense="+type_depense+"&num_patient="+num_patient+"&num_consult="+num_consult+"&code_med_trait="+code_med_trait+"&tiers="+tiers+"&tiketModérateur="+tiketModérateur+"&codeActe="+codeActe+"&cnam="+cnam+"&debit="+debit+"&credit="+credit,
         type: 'POST',
         async: false,
         dataType: "json",
@@ -585,28 +765,26 @@ function RefreshListeAttente(){
         addListeAttendeWS(listeAttente);
 }
 function toggleChat(){
-    window.parent.$("#quick_sidebar_tab_1").toggleClass("page-quick-sidebar-content-item-shown");
+    window.parent.$("#quick_sidebar_tab_2").toggleClass("page-quick-sidebar-content-item-shown");
+}
+function togglePatient(){
+    window.parent.$("#quick_sidebar_tab_1")[0].click;
 }
 function addListeAttendeWS(eventObjMenu){
     var listeAttende="";
-    var tab =[];
     $.each(eventObjMenu,function (i){
-        tab.push({
-            'numligneAttend':eventObjMenu[i].numligneAttend,
-            'numRdv':eventObjMenu[i].numRdv.numRDV,
-            'numPatient':eventObjMenu[i].numRdv.fichPatient.fichPatientPK.numPatient
-        });
-        listeAttende+='<li class="media" onclick="CallConsulttAtt('+eventObjMenu[i].numRdv.fichPatient.fichPatientPK.numPatient+')">';
+        
+        listeAttende+='<li class="media" >';
         listeAttende+='<div class="pull-right">';
         listeAttende+='<small>'+eventObjMenu[i].numRdv.startDate.hour+':'+eventObjMenu[i].numRdv.startDate.minute+'</small>&nbsp;';
         listeAttende+='<a class="pull-right" href="javascript:SuppSalleAttentes('+eventObjMenu[i].numligneAttend+');"><img class="media-object" src="../img/delete.png" style="width: 20px; position: relative; " alt="..."></a></div>';
-        listeAttende+='<img onclick="toggleChat();" class="media-object" src="'+ImgProfile(eventObjMenu[i].numRdv.fichPatient.patient.datenaiss,eventObjMenu[i].numRdv.fichPatient.patient.sexe)+'" alt="...">';
+//        listeAttende+='<img onclick="toggleChat();" class="media-object" src="'+ImgProfile(eventObjMenu[i].numRdv.fichPatient.patient.datenaiss,eventObjMenu[i].numRdv.fichPatient.patient.sexe)+'" alt="...">';
+        listeAttende+='<div onclick="CallConsulttAtt('+eventObjMenu[i].numRdv.fichPatient.fichPatientPK.numPatient+','+eventObjMenu[i].numligneAttend+')"><img  class="media-object" src="'+ImgProfile(eventObjMenu[i].numRdv.fichPatient.patient.datenaiss,eventObjMenu[i].numRdv.fichPatient.patient.sexe)+'" alt="...">';
         listeAttende+='<div class="media-body">';                                          
         listeAttende+='<h4 class="media-heading"> Rendez-Vous N°'+eventObjMenu[i].numRdv.numRDV+'</h4> ';                                       
         listeAttende+='<div class="media-heading-sub">'+eventObjMenu[i].numRdv.descpRDV+'</div>';                                        
-        listeAttende+='</div></li>';  
+        listeAttende+='</div></div></li>';  
     });
-    localStorage.setItem('listeAttend',JSON.stringify(tab));
     window.parent.$("#listeDattende").empty().append(listeAttende);
     
                                         
@@ -653,6 +831,26 @@ function addListeDossierPar(DossierPar){
     });
     
     window.parent.$("#ListeDossierPar").empty().append(listeDossierPar);
+                                        
+}
+
+function addListeNotesMsg(NotMsg){
+    var Notificaton="";
+    var patientNum="",patientNomPrm="", note ="";
+    var tab =NotMsg.toString().split(':');
+    patientNum=tab[0];
+    patientNomPrm=tab[1];
+    note=tab[2];
+    Notificaton+='<li><a style=" margin-top: -10px; padding-bottom: 5px; " href="#">';
+    Notificaton+='<span style=" margin-left: -10px; " class="photo">';
+    Notificaton+='<img src="../img/task-notes-icon.png" class="img-circle" alt=""> </span>';
+    Notificaton+='<span style=" margin-left: 34px; " class="subject">';
+    Notificaton+='<span  class="from"><div style=" word-wrap: break-word; width: 150px;" >Note Pour Patient '+patientNomPrm+' <small>N° '+patientNum+'</small></div></span>';                                          
+    Notificaton+='<span style=" margin-top: -40px;" class="time">'+heure()+'</span></span>';                                       
+    Notificaton+='<span style=" word-wrap: break-word; width: 200px;margin-left: 34px;" class="message"><b>Note</b>:'+note+'</span></a></li>';                                        
+    
+    
+    window.parent.$("#ListeNotesMsg").append(Notificaton);
                                         
 }
 
@@ -809,12 +1007,14 @@ function SuppSalleAttentes(num_ligneAttend){
                             }, function(ButtonPress, Value) {
                                 if (ButtonPress === "Valider") {
                                     var Err =SuppSalleAttente(num_ligneAttend);
-                                     if(Err.toString()==="true"){
+                                    if(Err.toString()==="true"){
                                         RefreshListeAttente();
+                                        console.log(dataService.create('Salle_Attente_DELETE'+paramater.codeMedTrit.codeMedTrit));
+                                        sendAction();
                                         toastr.success("Attention, Patient Supprimé Avec Succès!.",'success',option);
-                                }else
-                                    toastr.error("Attention, Suppression interdite !!!.",'Error',option);
-                                    
+                                    }else
+                                        toastr.error("Attention, Suppression interdite !!!.",'Error',option);
+
                                 
                             }
                         });    
@@ -1736,7 +1936,66 @@ function handleValidationMedicmodal() {
             }
         });
     }
-    
+function handleValidationModalPaiement() {
+        // for more info visit the official plugin documentation: 
+        // http://docs.jquery.com/Plugins/Validation
+        var FormVAL = $('#payermodalForm');
+        var error1 = $('.alert-danger', FormVAL);
+        var success1 = $('.alert-success', FormVAL);
+
+        FormVAL.validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block help-block-error', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "", // validate all fields including form hidden input
+            rules: {
+                prixapayer: {
+                    number: true,
+                    required: true
+                },
+                prixrecu: {
+                    number: true,
+                    required: true
+                }
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit              
+                success1.hide();
+                error1.show();
+                App.scrollTo(error1, -1000);
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.is(':checkbox')) {
+                    error.insertAfter(element.closest(".md-checkbox-list, .md-checkbox-inline, .checkbox-list, .checkbox-inline"));
+                } else if (element.is(':radio')) {
+                    error.insertAfter(element.closest(".md-radio-list, .md-radio-inline, .radio-list,.radio-inline"));
+                } else {
+                    error.insertAfter(element); // for other inputs, just perform default behavior
+                }
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            unhighlight: function(element) { // revert the change done by hightlight
+                $(element)
+                    .closest('.form-group').removeClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label
+                    .closest('.form-group').removeClass('has-error'); // set success class to the control group
+            },
+
+            submitHandler: function(form) {
+                success1.show();
+                error1.hide();
+            }
+        });
+    }
 function handleValidationModalUtilisateur() {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation
@@ -2243,10 +2502,21 @@ function EngConsult(numFichPatient,ConsultType,button){
                             if(Err.toString()=== "true" ){
                                 window.parent.$(button).trigger("click");
 //                                console.log(ConsultType);
+                                function trouveSPatinets(tabsp) {
+                                    return tabsp.numPatient ===numFichPatient ;
+                                }
+                                var listeSoldePatient = JSON.parse(localStorage.getItem("listeSoldePatient")); 
+                                var debit ="0";
+                                var credit ="0";
+                                var ob =listeSoldePatient.find(trouveSPatinets);
+                                if(ob !== undefined){
+                                    debit= ob.debit;
+                                    credit=ob.credit;
+                                }
                                 if(ConsultType.toString().includes("APCI"))
-                                    var Err=AjRecette(parseInt($("#MontantCNAM").val())+parseInt($("#Tiket").val()),$('#dateConsultEngcnam').val(),"Montant Consultation","CS",CptConsult,numFichPatient,paramater.codeMedTrit.codeMedTrit,"Patient","",$("#Tiket").val(),$("#MontantCNAM").val());
+                                    var Err=AjRecette(parseInt($("#MontantCNAM").val())+parseInt($("#Tiket").val()),$('#dateConsultEngcnam').val(),"Montant Consultation","CS",CptConsult,numFichPatient,paramater.codeMedTrit.codeMedTrit,"Patient","",$("#Tiket").val(),$("#MontantCNAM").val(),debit,credit);
                                 else
-                                    var Err=AjRecette($("#Honoraire").val(),$('#dateConsultEng').val(),"Montant Consultation","CS",CptConsult,numFichPatient,paramater.codeMedTrit.codeMedTrit,"Patient","","0","0");
+                                    var Err=AjRecette($("#Honoraire").val(),$('#dateConsultEng').val(),"Montant Consultation","CS",CptConsult,numFichPatient,paramater.codeMedTrit.codeMedTrit,"Patient","","0","0",debit,credit);
                                 /** Ref listE des consultations**/
                                 Consults =GetListConsultationByPatient(numFichPatient);
                                 localStorage.setItem("Consults",JSON.stringify(Consults));
@@ -3097,4 +3367,46 @@ function BuildCourbeConsult(Consults ,containerPouls,containerTEMP,containerPOID
 function format2_8_2(ch){
     return ch.substr(0,2)+"/"+ch.substr(2,8)+"/"+ch.substr(8,2);
 }
-     
+    
+
+// Extract some information from the cookies
+function showMeYourCookies(title) {
+	var jsessionid = $.cookie('JSESSIONID');
+	if (jsessionid) {
+		console.log('>>>>> ' + title + ' JSESSIONID cookie = ' + jsessionid);
+	} else {
+		console.warn('>>>>> ' + title + ' no JSESSIONID cookie was found');
+	}
+
+	var restsecurity = $.cookie('helloween');
+	if (restsecurity) {
+		restsecurity = JSON.parse(restsecurity);
+		console.log('>>>>> ' + title + ' CSRF token in cookie = ' + restsecurity.csrf);
+	} else {
+		console.warn('>>>>> ' + title + ' no restsecurity cookie was found');
+	}
+}
+
+// Extract some info from the returned jqXHR
+function showMeYourJqXHR(title, jqXHR) {
+	if (jqXHR) {
+		console.log('>>>>> ' + title + ' jqXHR X-CSRF-TOKEN = ' + jqXHR.getResponseHeader('X-CSRF-TOKEN'));
+	} else {
+		console.error('>>>>> ' + title + ' no jqXHR is defined... That\'s not normal at all...');
+	}
+}
+
+function heure()
+{
+     var date = new Date();
+     var heure = date.getHours();
+     var minutes = date.getMinutes();
+     if(minutes < 10)
+          minutes = "0" + minutes;
+     return heure + "h" + minutes;
+}
+
+function incriBadge(el){
+    var nblistenote =parseInt($(el).html())+1;
+    $(el).empty().append(nblistenote);
+}

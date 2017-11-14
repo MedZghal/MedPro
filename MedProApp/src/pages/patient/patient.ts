@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {LoadingController,AlertController,ModalController, NavParams,ViewController,Platform,NavController  } from 'ionic-angular';
 import { LocalNotifications } from 'ionic-native';
 import { ConsultPage } from '../../pages/consult/consult';
+import { RdvPage } from '../../pages/rdv/rdv';
+import { ChatRoomPage_} from './../chat-room/chat-room_';
 import {BackandService} from '@backand/angular2-sdk';
 
 
@@ -13,23 +15,24 @@ export class PatientPage {
 	name:string = '';
   description:string = '';
   public items:any[] = [];
+  public asssur:any[] = [];
   searchQuery: string;
   code_Med_Trit:number;
   param:any = [];
+  showSearchCancelButton: boolean = true;
+  Recherchebar: string="Recherche... ";
 
     constructor(public backandService:BackandService,public loadingCtrl: LoadingController,private alertCtrl: AlertController,public modalCtrl: ModalController,public navCtrl: NavController,public params: NavParams) {
         this.searchQuery = '';
         this.code_Med_Trit = this.params.get('code_Med_Trit');
         this.load(this.code_Med_Trit);
-
-
-
-
     }
 
   callConsult(num_patient) {
     this.navCtrl.push(ConsultPage,num_patient);
   }
+
+
 
     showAlert(msg) {
     let alert = this.alertCtrl.create({
@@ -95,15 +98,14 @@ export class PatientPage {
     public load(code_Med_Trit){
       var log=this.showloading();
 
-      this.backandService.object.getList('Patient',{  "filter": [ { "fieldName": "fichpapier", "operator": "contains", "value": "M"+code_Med_Trit } ], "deep": true, "relatedObjects": false })
+      this.backandService.object.getList('Patient',{  "filter": [ { "fieldName": "fichpapier", "operator": "contains", "value": "M"+code_Med_Trit } ], "deep": true, "relatedObjects": true })
         .then(
           data => {
             log.dismiss();
+            this.asssur=data.relatedObjects.AssuranceCNAM;
             this.items = data.data;
             if(this.items.length==0)
               this.showAlert("La liste des patients est vide!!");
-
-            console.log(data.data);
 
           },
           err => {this.showAlert("ERREUR LORS DU CHARGEMENT DE LA BASE DE DONNEES, VERIFIER VOTRE CONNEXION");log.dismiss();}
@@ -215,6 +217,10 @@ export class PatientPage {
   }
 
 
+  public onCancelSearch() {
+
+  }
+
   public SerachItems(searchbar) {
     // set q to the value of the searchbar
     var q = searchbar;
@@ -251,25 +257,34 @@ export class PatientPage {
   template: `
     <ion-modal-view>
 <ion-header>
-  <ion-toolbar style="height: 70px;">
+  <ion-toolbar style="height: auto;">
     <ion-title>
-      <img style=" width: 25px; margin-bottom: -6px; margin-left: -10px; " src="./assets/img/onligne.ico"> PATIENT N°{{client.num_fich_patient}}
+      <!--<img style=" width: 25px; margin-bottom: -6px; margin-left: -10px; margin-top:1px;" src="./assets/img/onligne.ico">-->
+      <ion-avatar item-left style="width: 25px;margin-bottom: -23px;margin-left: -11px;">
+        <img  src="{{ImgProfile(client.datenaiss,client.sexe)}}">
+      </ion-avatar>
+      <span style=" margin-left: 17px; ">PATIENT N°{{client.num_fich_patient}}</span>
     </ion-title>
+    <span>
+      <span  text-uppercase style="color: white;margin-left: 30px;">{{client.prenom}} {{client.nom}}
+        <ion-badge><small>{{getAge(client.datenaiss)}}Ans</small></ion-badge>
+      </span>
+    </span>
     <ion-buttons start style=" margin-top: -50px; ">
       <button ion-button (click)="dismiss()">
         <span color="primary" showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-segment style=" width: 110%;">
-      <ion-segment-button (click)="callConsult(client.num_fich_patient)" value="Archive">
-        Archive
+    <ion-segment style=" width: 111%;">
+      <ion-segment-button style="margin-left: -7px;" (click)="callConsult(client.num_fich_patient)" value="Archive">
+      <img style=" margin-bottom: -7px;width: 28px;" src="./assets/img/medical-history.png"> <span> Archive </span>
       </ion-segment-button>
-      <ion-segment-button value="Rendez-Vous">
-        Rendez-Vous
+      <ion-segment-button value="Rendez-Vous" (click)="callrdv(client.num_fich_patient)" >
+        <img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/event.png"><span> Rendez-Vous</span>
       </ion-segment-button>
-      <ion-segment-button value="Notes">
-        Notes
+      <ion-segment-button value="Notes" (click)="callChat(client)" >
+        <img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/chat.png"> <span> Notes</span>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -279,18 +294,18 @@ export class PatientPage {
 </ion-header>
 <ion-content >
   <ion-list>
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="{{ImgProfile(client.datenaiss,client.sexe)}}">
-        </ion-avatar>
-        <h2 text-uppercase>{{client.prenom}} {{client.nom}} <ion-badge><small>{{getAge(client.datenaiss)}}Ans</small></ion-badge></h2>
-        <p >
-          <span><img style="width: 15px;" src="./assets/img/map.png"><span>  {{client.adresse}}</span>  </span>
-          <span *ngIf="client.AssurCnam!=''"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="./assets/img/cnam.png"></span>
-          <span *ngIf="client.code_apci!=''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="./assets/img/apci_logo_600w.png"></span>
-          <span *ngIf="client.AutreAssur!=''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(client.AutreAssur)}}"></span>
-        </p>
-      </ion-item>
+      <!--<ion-item>-->
+        <!--<ion-avatar item-left>-->
+          <!--<img src="{{ImgProfile(client.datenaiss,client.sexe)}}">-->
+        <!--</ion-avatar>-->
+        <!--<h2 text-uppercase>{{client.prenom}} {{client.nom}} <ion-badge><small>{{getAge(client.datenaiss)}}Ans</small></ion-badge></h2>-->
+        <!--<p >-->
+          <!--<span><img style="width: 15px;" src="./assets/img/map.png"><span>  {{client.adresse}}</span>  </span>-->
+          <!--<span *ngIf="client.AssurCnam!=''"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="./assets/img/cnam.png"></span>-->
+          <!--<span *ngIf="client.code_apci!=''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="./assets/img/apci_logo_600w.png"></span>-->
+          <!--<span *ngIf="client.AutreAssur!=''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(client.AutreAssur)}}"></span>-->
+        <!--</p>-->
+      <!--</ion-item>-->
 
       <ion-item>
         Détails Patient 
@@ -358,8 +373,14 @@ export class Profile {
   }
 
   callConsult(num_patient) {
-    console.log(num_patient);
     this.navCtrl.push(ConsultPage,{num_patient:num_patient});
+  }
+
+  callChat(num_patient) {
+    this.navCtrl.push(ChatRoomPage_,{patient:num_patient});
+  }
+  callrdv(num_patient) {
+    this.navCtrl.push(RdvPage,{code_Med_Trit:0,num_patient:num_patient});
   }
 
   dismiss() {

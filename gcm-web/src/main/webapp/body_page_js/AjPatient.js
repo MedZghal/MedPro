@@ -193,7 +193,7 @@ $(function(){
 
                                     if(Err.toString()=== "true")
                                            {
-                                               Err =AjPatient($("#nom").val(),$("#prenom").val(),$("#sexse").val(),$("#datnaiss").val(),$("#sutfam").val(),$("#prof").val(),$("#adr").val(),$("#fixe").val(),$("#gsm").val(),$("#poid").val(),CodeVille,$('#fich').val(),$("#autreAssur").val(),codeapci,$("#type_apci").val(),$("#date_valid_apci").val(),CptAssurCnam);
+                                               Err =AjPatient($("#nom").val(),$("#prenom").val(),$("#sexse").val(),$("#datnaiss").val(),$("#sutfam").val(),$("#prof").val(),$("#adr").val(),$("#fixe").val(),$("#gsm").val(),$("#poid").val(),CodeVille,$('#fich').val()+"M"+paramater.codeMedTrit.codeMedTrit,$("#autreAssur").val(),codeapci,$("#type_apci").val(),$("#date_valid_apci").val(),CptAssurCnam);
                                                 if(Err.toString()=== "true")
                                                     Err=AjPatientByMedecin(paramater.codeMedTrit.codeMedTrit,cptPatient,"");
                                                if(Err.toString()=== "true" && $("#collapse_1").hasClass('in'))

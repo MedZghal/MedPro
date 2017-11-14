@@ -501,6 +501,8 @@ public class Consultation extends HttpServlet {
                                 
                                 String codeActe=request.getParameter("codeActe");
                                 String libelle=request.getParameter("libelle");
+                                String debit=request.getParameter("debit");
+                                String credit=request.getParameter("credit");
                                 String type_depense=request.getParameter("type_depense");
                                 String tiers=request.getParameter("tiers");
                                 String cnam=request.getParameter("cnam");
@@ -508,7 +510,7 @@ public class Consultation extends HttpServlet {
                                 int num_consult=Integer.parseInt(request.getParameter("num_consult"));
                                 int num_patient=Integer.parseInt(request.getParameter("num_patient"));
                                 int code_med_trait=Integer.parseInt(request.getParameter("code_med_trait"));
-                                out.println(gson.toJson(WS.PortCltWS.ajRecette(total, dateC, libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam)));
+                                out.println(gson.toJson(WS.PortCltWS.ajRecette(total, dateC, libelle,type_depense,num_consult,num_patient,code_med_trait,tiers,codeActe,tiketModérateur,cnam,debit,credit)));
                                 break;
                             }
                         case "UpdateRecetteDate":

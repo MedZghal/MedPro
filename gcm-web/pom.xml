@@ -39,6 +39,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>com.rest</groupId>
+            <artifactId>GEMP</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>

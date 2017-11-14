@@ -67,9 +67,23 @@ $(function(){
                      if(e.params.data.isNew){
                         var isNew = $(this).find('[data-select2-tag="true"]');
                             if(isNew.length){
-                                isNew.replaceWith('<option selected value="'+num_motif+'">'+isNew.val()+'</option>');
-                                console.log(isNew.val());
-                                AjMotif(num_motif,isNew.val());
+                            window.parent.$.SmartMessageBox({
+                               title : "<img src='../img/ERR.png'></img>  Attention!",
+                               content : "Etes Vous Sûre d'ajouter cette  Motif",
+                               buttons : "[Annuler][Valider]"
+                            }, function(ButtonPress, Value) {
+                                if (ButtonPress === "Valider") {
+                                    isNew.replaceWith('<option selected value="'+num_motif+'">'+isNew.val()+'</option>');
+                                    console.log(isNew.val());
+                                    var Err =AjMotif(num_motif,isNew.val());
+                                     if(Err.toString()==="true"){
+                                        window.parent.swal("Notification !", "Motif Ajouté Avec Succès", "success");
+                                     }else
+                                        window.parent.swal("Notification !!! ", " erroné: Motif déjà utilisée par une autre consultation", "error");
+                                        
+                                }
+                            });
+                                
                             }
                           }    
                         });
@@ -223,7 +237,8 @@ $(function(){
                                     window.parent.$("#confirmeemodal").attr("data-target","#ConsultCnam");
                                 else
                                     window.parent.$("#confirmeemodal").attr("data-target","#Consult");
-
+                                SuppSalleAttente(localStorage.getItem("listeAttend"));
+                                RefreshListeAttente();
                                 window.parent.$("#confirmeemodal").trigger("click");
                                 window.parent.$("#dateConsultEng").val(d[0]+"/"+d[1]+"/"+d[2]);
                                 window.parent.$("#Honoraire").val(paramater.montantConsult);

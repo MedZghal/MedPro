@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController,AlertController,ToastController,LoadingController,MenuController,ModalController} from 'ionic-angular';
+
 import { LocalNotifications} from '@ionic-native/local-notifications';
 import { PatientPage,Profile } from '../patient/patient';
 import { LoginPage } from '../login/login';
@@ -9,21 +10,83 @@ import { AboutPage } from '../about/about';
 import { ParametrePage } from '../parametre/parametre';
 import { StatistiquePage } from '../Statistique/statistique';
 import { BackandService} from '@backand/angular2-sdk';
+import { StompService } from 'ng2-stomp-service';
+import { Http, Headers, RequestOptions,URLSearchParams } from '@angular/http';
+
 @Component({
   templateUrl: 'home.html',
   selector:'page-home'
 })
 export class HomePage {
+  private subscription : any;
   parameters:any[] = [];
   salleAttente:any[] = [];
   patientlisteAttente:any[]=[];
   rdvs:any[]=[];
   param:any = [];
   public items:any[] = [];
-
-  constructor(private localNotifications: LocalNotifications,public menuCtrl: MenuController,private toastCtrl: ToastController,public backandService:BackandService,public navCtrl: NavController,private alertCtrl: AlertController,public loadingCtrl: LoadingController,public modalCtrl: ModalController){
+  constructor( private http: Http,private stomp: StompService,private localNotifications: LocalNotifications,public menuCtrl: MenuController,private toastCtrl: ToastController,public backandService:BackandService,public navCtrl: NavController,private alertCtrl: AlertController,public loadingCtrl: LoadingController,public modalCtrl: ModalController){
     this.chargeParametre(LoginPage.loggedInUser.toString());
     let that = this;
+
+    //configuration
+    stomp.configure({
+      host:'https://medproapp.ddns.net/GEMP/ws',
+      debug:true,
+      headers: {
+        'Origin ': 'https://medproapp.ddns.net',
+        'Content-Type': 'application/json'
+      },
+      queue:{'init':false,'/user/queue/notify':false}
+    });
+
+    var headers = new Headers();
+    // Website you wish to allow to connect
+    headers.append('Content-Type','application/x-www-form-urlencoded');
+    let options = new RequestOptions({ headers: headers, withCredentials: true  });
+    let urlSearchParams = new URLSearchParams();
+    urlSearchParams.append('username', 'admin');
+    urlSearchParams.append('password', 'admin');
+
+
+        this.http.post("https://medproapp.ddns.net/GEMP/login",urlSearchParams.toString(),options)
+          .subscribe(
+            data => {
+              // start connection
+              let originalOnConnect = stomp.onConnect;
+              stomp.onConnect = (frame: any) => {
+                originalOnConnect(frame);
+                this.subscription = stomp.subscribe('/user/queue/notify', this.response);
+              };
+              stomp.startConnect().then(() => {
+                stomp.done('init')
+              });
+            },
+            error => {
+              console.log(JSON.stringify(error.json()));
+            }
+          );
+
+
+    // stomp.startConnect().then(() => {
+    //   stomp.done('init');
+    //   console.log('Soket connected ');
+    //   that.showAlert("Soket connected", "toast");
+    //   //subscribe
+    //   this.subscription = stomp.subscribe('/user/queue/notify', this.response);
+    //   //
+    //   // //send data
+    //   // stomp.send('destionation',{"data":"data"});
+    //   //
+    //   // //unsubscribe
+    //   // this.subscription.unsubscribe();
+    //   //
+    //   // //disconnect
+    //   // stomp.disconnect().then(() => {
+    //   //   console.log( 'Connection closed' )
+    //   // })
+    //
+    // });
 
     this.backandService.on("EventTrigger_updated", function (data) {
       console.log((data[1].Value).toString().includes('Salle_Attente_ADD'));
@@ -39,6 +102,13 @@ export class HomePage {
       }
     );
 
+  }
+
+
+//response
+  public response = (data) => {
+    console.log('Soket subscribed ');
+    this.showAlert("Soket Salle_Attente_deleted", "toast");
   }
 
   openModal(clientObj) {
@@ -62,7 +132,7 @@ export class HomePage {
   }
 
   callrdv() {
-    this.navCtrl.push(RdvPage,{code_Med_Trit:this.parameters["0"]["code_Med_Trit"]});
+    this.navCtrl.push(RdvPage,{code_Med_Trit:this.parameters["0"]["code_Med_Trit"],num_patient:0});
   }
 
   callparametre() {
@@ -85,6 +155,8 @@ export class HomePage {
     this.menuCtrl.toggle('right');
   }
 
+
+
   public chargeParametre(email){
     var log =this.showloading();
 
@@ -94,7 +166,7 @@ export class HomePage {
           console.log(data.data[0]);
           this.parameters = data.data;
           this.showAlert("Bienvenue Dr." + this.parameters["0"]["nom_medecin"] + " " + this.parameters["0"]["prenom_medecin"], "toast"),
-            this.chargeListeAttente(this.parameters["0"]["code_Med_Trit"]);
+          this.chargeListeAttente(this.parameters["0"]["code_Med_Trit"]);
           log.dismiss();
         },
         err => {console.log(err);this.showAlert("ERREUR , VERIFIER VOTRE CONNEXION !!!","alert");log.dismiss();}

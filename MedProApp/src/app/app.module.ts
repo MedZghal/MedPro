@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { ChatRoomPage_ } from '../pages/chat-room/chat-room_';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,10 +26,9 @@ import { PatientPage,Profile } from '../pages/patient/patient';
 //import { Ng2HighchartsModule } from 'ng2-highcharts';
 
 import {HttpModule} from '@angular/http'
-
+import { StompService } from 'ng2-stomp-service';
 import io from 'socket.io-client';
 window["io"] = io;
-
 
 
 
@@ -48,7 +48,8 @@ window["io"] = io;
     DetailsRdv,
     ParametrePage,
     StatistiquePage,
-    TabsPage
+    TabsPage,
+    ChatRoomPage_
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,8 @@ window["io"] = io;
     DetailsRdv,
     ParametrePage,
     StatistiquePage,
-    TabsPage
+    TabsPage,
+    ChatRoomPage_
   ],
   providers: [
     StatusBar,
@@ -80,6 +82,7 @@ window["io"] = io;
     Calendar,
     LocalNotifications,
     Slides,
+    StompService,
     BackandService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

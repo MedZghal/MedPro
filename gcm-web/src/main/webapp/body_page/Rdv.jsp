@@ -13,16 +13,15 @@
         <title>Gestion des Rendez-Vous</title>
         <jsp:include page="../body_page/css_declare.jsp"/>
         <link rel="stylesheet" href="../js/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css"/>
+        <link rel="stylesheet" href="../js/dhtmlxscheduler/styles.css" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="../js/dhtmlxscheduler/dhtmlxcombo_dhx_terrace.css">
         <link rel="stylesheet" type="text/css" href="../js/dhtmlxscheduler/dhtmlxMenu/skins/dhtmlxmenu_dhx_terrace.css">
 	<style type="text/css" media="screen">
-            html, body{
-                padding:0px;
-                height:100%;
+             /*Scroll hide*/
+            html {
                 overflow: scroll;
                 overflow-x: hidden;
-            }   
-            
+            }
             ::-webkit-scrollbar {
                 width: 0px;  /* remove scrollbar space */
                 background: transparent;  /* optional: just make scrollbar invisible */
@@ -30,7 +29,6 @@
             /* optional: show position indicator in red */
             ::-webkit-scrollbar-thumb {
                 background: transparent;
-                /*background: #FF0000;*/
             }
             .highlighted_timespan {
 		transition: background-color 400ms;
@@ -116,6 +114,81 @@
                                                     <div class="dhx_cal_data">
                                                     </div>		
                                             </div>
+                                                                
+<!--                                                <div id="lightbox_form">
+                                                    <div class="lightbox_left_section">
+                                                        <label>Name</label>
+                                                    </div>
+                                                    <div class="lightbox_right_section">
+                                                        <input id="lightboxName" type="text" class="lightbox_text_field">
+                                                    </div>
+                                                    <div class="lightbox_left_section">
+                                                        <label>Car</label>
+                                                    </div>
+                                                    <div class="lightbox_right_section">
+                                                        <div class="select lightbox_select_field">
+                                                            <select id="lightboxCar"></select>
+                                                            <span class="select_layout"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox_left_section">
+                                                        <label>Status</label>
+                                                    </div>
+                                                    <div id="lightboxStatus" class="lightbox_right_section">
+                                                        <label>
+                                                            <div class="radio">
+                                                                <input name="status" type="radio">
+                                                                <span class="radio_marker"></span>
+                                                            </div>
+                                                            Reservation
+                                                        </label><br/>
+                                                        <label>
+                                                            <div class="radio">
+                                                                <input name="status" type="radio">
+                                                                <span class="radio_marker"></span>
+                                                            </div>
+                                                            Prepaid
+                                                        </label><br/>
+                                                        <label>
+                                                            <div class="radio">
+                                                                <input name="status" type="radio">
+                                                                <span class="radio_marker"></span>
+                                                            </div>
+                                                            100% payment
+                                                        </label>
+                                                    </div>
+                                                    <div class="lightbox_left_section">
+                                                        <label>Pick Up</label>
+                                                    </div>
+                                                    <div id="lightboxPickUpDate" class="lightbox_right_section lightbox_date_select">
+                                                        <img src="content/calendar.svg" id="lightboxFromIcon" class="date_calendar" onclick="show_minical(this, 'lightboxFromDate')"/>
+                                                        <input id="lightboxFromDate" name="dateFrom" type="text" class="date_text" value="" onclick="show_minical(this, 'lightboxFromDate')"/>
+                                                        <div class="select">
+                                                            <select id="lightboxFromTime" name="timeFrom"></select>
+                                                            <span class="select_layout"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox_left_section">
+                                                        <label>Drop Off</label>
+                                                    </div>
+                                                    <div id="lightboxDropOffDate" class="lightbox_right_section lightbox_date_select">
+                                                        <img src="content/calendar.svg" id="lightboxToIcon" class="date_calendar" onclick="show_minical(this, 'lightboxToDate')"/>
+                                                        <input id="lightboxToDate" name="dateFrom" type="text" class="date_text" value="" onclick="show_minical(this, 'lightboxToDate')"/>
+                                                        <div class="select">
+                                                            <select id="lightboxToTime" name="timeFrom"></select>
+                                                            <span class="select_layout"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lightbox_buttons">
+                                                        <div class="lightbox_left_section">
+                                                            <button class="lightbox_button" onclick="delete_event()">DELETE</button>
+                                                        </div>
+                                                        <div class="lightbox_right_section">
+                                                            <button class="lightbox_button" onclick="close_form()">CANCEL</button>
+                                                            <button class="lightbox_button lightbox_button_active" onclick="save_form()">SAVE</button>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                                                                                                       </div>
                                                     </div>
                                                 </div>

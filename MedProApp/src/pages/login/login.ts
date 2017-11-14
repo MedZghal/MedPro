@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController,ToastController,AlertController} from 'ionic-angular';
-// import {bootstrap} from '@angular/platform-browser-dynamic';
 import 'rxjs/Rx'
 import { BackandService } from '@backand/angular2-sdk';
 import { TabsPage } from '../../pages/tabs/tabs';

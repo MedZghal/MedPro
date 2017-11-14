@@ -18,7 +18,11 @@
 
   <ion-searchbar
     [(ngModel)]="searchQuery"
-    (ionInput)="filterItems($event.target.value)">
+    (ionInput)="filterItems($event.target.value)"
+    [showCancelButton]="showSearchCancelButton"
+    [placeholder]="Recherchebar"
+    [type]="typeSearch"
+    (ionCancel)="onCancelSearch()">
   </ion-searchbar>
 
   <div role="main" class="ui-content">

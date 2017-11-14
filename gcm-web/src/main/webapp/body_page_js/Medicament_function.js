@@ -246,6 +246,7 @@ function createBackGridMedic() {
     document.getElementById("search").focus();
     
 // Render the grid and attach the root to your HTML document
+    $(grid.el).css({'margin-left':'-10px'});
     $("#contents").append(grid.render().el);
     
             var paginator = new Backgrid.Extension.Paginator({

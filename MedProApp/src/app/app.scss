@@ -641,3 +641,39 @@ blockquote span{
 }
 
 /**sideMENU**/
+ion-icon {
+  &[class*="medproicons-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+
+  // custom icons
+  &[class*="medproicons-customicon1"] {
+    mask-image: url(../assets/icon/cloud-computing.svg);
+  }
+  &[class*="medproicons-briefcase"] {
+     mask-image: url(../assets/icon/medicine-briefcase.png);
+   }
+  &[class*="medproicons-home"] {
+    mask-image: url(../assets/icon/medicine.svg);
+  }
+  &[class*="medproicons-surgeon"] {
+    mask-image: url(../assets/icon/surgeon.svg);
+  }
+  &[class*="medproicons-history"] {
+    mask-image: url(../assets/icon/medical-history.svg);
+  }
+  &[class*="medproicons-send"] {
+    mask-image: url(../assets/icon/email.svg);
+  }
+
+
+
+
+}

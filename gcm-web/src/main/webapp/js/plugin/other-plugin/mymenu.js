@@ -3,6 +3,8 @@ var url =window.location.href;
 
     
 $(function () {
+    
+         
     var paramater = JSON.parse(localStorage.getItem("paramater"));
     $("#patient").unbind("click");
     $("#patient").bind("click", function (e)

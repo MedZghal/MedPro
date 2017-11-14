@@ -12,13 +12,21 @@ export class RdvPage {
   param:any = [];
   searchQuery: string;
   code_Med_Trit:number;
+  num_patient:number;
+  showSearchCancelButton: boolean = true;
+  Recherchebar: string="Recherche... ";
 
   public Event: Array<{id : number,title: string,note: string,startDate: Date,endDate: Date,titleUpdated: string,noteUpdated: string}>;
 
   constructor(public backandService:BackandService,private calendar: Calendar,private alertCtrl: AlertController,public params: NavParams,public modalCtrl: ModalController,public loadingCtrl: LoadingController) {
       this.searchQuery = '';
       this.code_Med_Trit = this.params.get('code_Med_Trit');
-      this.chargeRdv(this.code_Med_Trit);
+      this.num_patient = this.params.get('num_patient');
+      console.log(this.num_patient);
+      if(this.num_patient === 0 )
+        this.chargeRdv(this.code_Med_Trit);
+      else
+        this.chargeRdvPatient(this.num_patient);
 
 
 /*
@@ -67,6 +75,39 @@ export class RdvPage {
     var log=this.showloading();
 
     this.backandService.object.getList('RDV',{  "filter": [ { "fieldName": "num_medecin_trait", "operator": "equals", "value": code_Med_Trit } ], "deep": true, "relatedObjects": true ,"sort":[ {    "fieldName": "start_date",    "order": "desc"  }] })
+      .then(
+        data => {
+          // console.log(data.data);
+          this.rdvs = data.data;
+          if(this.rdvs.length==0)
+            this.showAlert("La liste des Rendez-Vous est vide!!");
+          else {
+            this.Event =[];
+            for(let event of this.rdvs) {
+              // console.log(event);
+              this.Event.push({
+                id: event.numRDV,
+                title: event.typeRDV,
+                note: event.descpRDV,
+                startDate: new Date(event.start_date),
+                endDate: new Date(event.end_date),
+                titleUpdated: 'Event updated',
+                noteUpdated: 'We update the event !'
+              });
+            }
+          }
+          log.dismiss();
+          console.log('events',this.Event);
+        },
+        err => {console.log(err);this.showAlert("ERREUR LORS DU CHARGEMENT DE LA BASE DE DONNEES, VERIFIER VOTRE CONNEXION");log.dismiss();}
+      );
+
+  }
+
+  public chargeRdvPatient(num_patient){
+    var log=this.showloading();
+
+    this.backandService.object.getList('RDV',{  "filter": [{ "fieldName": "num_patient", "operator": "equals", "value": num_patient } ], "deep": true, "relatedObjects": true ,"sort":[ {    "fieldName": "start_date",    "order": "desc"  }] })
       .then(
         data => {
           // console.log(data.data);

@@ -152,7 +152,7 @@ div.dhtmlxMenu_dhx_terrace_SubLevelArea_Polygon {
 	user-select: none;
 }
 div.dhtmlxMenu_dhx_terrace_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl td {
-	font-family: Arial, Helvetica;
+	font-family: cursive;
 	font-size: 13px;
 	color: #333333;
 	line-height: normal;
@@ -191,6 +191,7 @@ div.dhtmlxMenu_dhx_terrace_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tb
 div.dhtmlxMenu_dhx_terrace_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl div.sub_item_text {
 	padding: 0px 16px 0px 1px;
 	height: 26px;
+        font-family: cursive;
 	line-height: 25px;
 	white-space: nowrap;
 	text-align: left;

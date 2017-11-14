@@ -14,6 +14,9 @@ export class ConsultPage {
   searchQuery: string;
   param:any = [];
   code_Med_Trit:number;
+  typeSearch: string="number";
+  showSearchCancelButton: boolean = true;
+  Recherchebar: string="Recherche... ";
 
   constructor(public backandService:BackandService,public navCtrl: NavController,public params: NavParams,private alertCtrl: AlertController,public loadingCtrl: LoadingController,public modalCtrl: ModalController) {
     this.searchQuery = '';

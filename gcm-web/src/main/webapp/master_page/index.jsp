@@ -15,6 +15,7 @@
         <link rel="shortcut icon" href="../img/favicon/favicon.ico" /> 
         
     </head>
+  
     <!-- END HEAD -->
 <!--page-sidebar-closed-->
     <body id="HomeMedPro" style="background: transparent" class="page-sidebar-closed-hide-logo page-content-white page-md page-header-fixed page-sidebar-fixed ">
@@ -54,9 +55,9 @@
                                     <span class="badge badge-default" id="nbDossierPar"> 0 </span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="external">
+                                    <li class="external" style=" margin-top: -5px; ">
                                         <h3>
-                                            <span class="bold" id="notificationExPar">12 </span></h3>
+                                            <span class="bold" id="notificationExPar">0 </span></h3>
                                         <a href="#">Voir tout</a>
                                     </li>
                                      <li>
@@ -66,31 +67,36 @@
                                     </li>
                                 </ul>
                             </li>
-                             <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+                             <li class="dropdown dropdown-extended dropdown-inbox" id="header_Notes_bar">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-tag"></i>
-                                    <span class="badge badge-default"> 0 </span>
+                                    <span class="badge badge-default" id="nbNotesMsg" > 0 </span>
                                 </a>
-                                <ul class="dropdown-menu extended tasks">
-                                    <li class="external">
+                                <ul class="dropdown-menu">
+                                    <li class="external" style=" margin-top: -5px; ">
                                         <h3>
-                                            <span class="bold"> &nbsp;</span> &nbsp;</h3>
-                                        <a href="app_todo.html">Voir tout</a>
+                                            <span class="bold"> Notes</span> &nbsp;</h3>
+                                        <a href="#">Voir tout</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" id="ListeNotesMsg" style="height: 275px;" data-handle-color="#637283">
+                                            
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
                             <!-- END NOTIFICATION DROPDOWN -->
                             <!-- BEGIN INBOX DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+                            <li class="dropdown dropdown-extended dropdown-inbox" id="header_rdv_bar">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-calendar"></i>
                                     <span class="badge badge-default" id="nbrdvAujoud">  </span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="external">
+                                    <li class="external" style=" margin-top: -5px; ">
                                         <h3> 
-                                            <span class="external" id="notificationExRdv" ></span> </h3>
+                                            <span class="bold" id="notificationExRdv" ></span> </h3>
                                     </li>
                                     <li>
                                         <ul class="dropdown-menu-list scroller" id="ListeRdvAujourdHui" style="height: 275px;" data-handle-color="#637283">
@@ -460,8 +466,13 @@
                                     <span id='nblisteattende' class="badge badge-danger">0</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="javascript:;" onclick="toggleChat();" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Notes
+                                    <span id='nblisteNotes' class="badge badge-danger">0</span>
+                                </a>
+                            </li>
                             <li class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> Autre
+                                <a style=" width: 107%; " href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> Autre
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
@@ -492,31 +503,17 @@
                                         </div>
                                     
                                 </div>
+                                
+                            </div>
+                            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_2">
                                 <div class="page-quick-sidebar-item">
                                     <div class="page-quick-sidebar-chat-user">
                                         <div class="page-quick-sidebar-nav">
-                                            <a href="javascript:;" class="page-quick-sidebar-back-to-list">
+                                            <a onclick="togglePatient();" class="page-quick-sidebar-back-to-list">
                                                 <i class="icon-arrow-left"></i>Back</a>
                                         </div>
-                                        <div class="page-quick-sidebar-chat-user-messages">
-                                            <div class="post out">
-                                                <img class="avatar" src="../img/avatars/doctor-.png" alt="...">
-                                                <div class="message">
-                                                    <span class="arrow"></span>
-                                                    <a href="javascript:;" class="name">Médecin</a>
-                                                    <span class="datetime">20:15</span>
-                                                    <span class="body"> When could you send me the report ? </span>
-                                                </div>
-                                            </div>
-                                            <div class="post in">
-                                                <img class="avatar" src="../img/avatars/nurse.png" alt="...">
-                                                <div class="message">
-                                                    <span class="arrow"></span>
-                                                    <a href="javascript:;" class="name">Sécretaire</a>
-                                                    <span class="datetime">20:15</span>
-                                                    <span class="body"> Its almost done. I will be sending it shortly </span>
-                                                </div>
-                                            </div>
+                                        <div class="page-quick-sidebar-chat-user-messages" id="listeNotes">
+                                            
                                         </div>
                                         <div class="page-quick-sidebar-chat-user-form">
                                             <div class="input-group">
@@ -842,7 +839,7 @@
                          </div>
           
            <!--ModalAcces-->
-	 <div id="Accesmodal" class="modal container fade fast" style="font-family: cursive;" tabindex="-1">
+	 <div id="Accesmodal" class="modal container fade fast" style="font-family: cursive;padding-bottom:40px;" tabindex="-1">
                              <div class="modal-header">
                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                  <h4 class="modal-title" style="font-family: cursive;margin-bottom: -10px;"> <img src='../img/worldwide.png' style="width: 40px;">&nbsp; Gestion d'Accés (Sécurite)</h4>
@@ -866,41 +863,53 @@
                                                     </div>
                                                         <div class="panel-body">
                                                             <!-- Begin Acte body -->
-                                                             <div class="row">
+                                                    <div class="row">
                                                                 <div class="col-md-6">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Login"> Login </label>
                                                                         <div class="input-icon">
-                                                                            <input id="Login" name="Login" type="text" class="form-control" placeholder="Login Utilisateur" >
-                                                                            <label for="form_control_1">Login</label>
-                                                                            <span class="help-block">Entrer Login</span>
                                                                              <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                                             <input id="Login" name="Login" type="text" class="form-control" placeholder="Login Utilisateur" >
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="Passe"> Mot de Passe </label>
                                                                         <div class="input-icon">
-                                                                            <input id="Passe" name="Passe" type="text" class="form-control" placeholder="Mot de Passe Utilisateur" >
-                                                                            <label for="form_control_1">Mot de Passe</label>
-                                                                            <span class="help-block">Entrer Mot de Passe</span>
                                                                              <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                                             <input id="Passe" name="Passe" type="text" class="form-control" placeholder="Mot de Passe Utilisateur" >
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                     </div>
-                                                            <div class="col-md-12">
-                                                         <div class="form-group form-md-line-input has-success ">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="Type"> Type d'utilisateur </label>
                                                             <div class="input-icon">
-                                                        <select id="Type" name="Type" class="form-control">
-                                                            
-                                                        </select>
-                                                                <label for="form_control_1">Type</label>
-                                                                <i class="fa fa-user-md"></i>
+                                                                 <i class="fa fa-user-md"></i>
+                                                                 <select id="Type" name="Type" class="form-control">
+                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                         
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="droitAcces"> L'autorisation d'accès </label>
+                                                            <div class="input-icon">
+                                                                 <i class="fa fa-server"></i>
+                                                                  <select id="droitAcces" class="bs-select form-control" multiple data-actions-box="true">
+                                                                    <option value="Patients">Gestion des Patients</option>
+                                                                    <option>Gestion des Dossier médicale</option>
+                                                                    <option>Gestion de Comptabilité</option>
+                                                                    <option>Gestion des Archives</option>
+                                                                    <option>Gestion des Statistiques</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                            <br/>
                                                             <!-- End Acte body -->
                                                             <br/><br/>
                                                             
@@ -1176,12 +1185,13 @@
                                                     <button class="close" data-close="alert"></button><i class="fa-fw fa fa-times"></i> Vous avez des erreurs dans le formulaire. Veuillez vérifier ci-dessous. </div>
                                                 <div class="alert alert-success display-hide">
                                                     <button class="close" data-close="alert"></button><i class="fa-fw fa fa-check"></i> Votre validation de formulaire est réussie ! </div>
-                                                    
+                                                  <div class="row">   
                                                     <div class="col-md-6">
-
-                                                                    <div class="form-group form-md-line-input has-success ">
+                                                                    <div class="form-group form-input has-success ">
+                                                                        <label style="color: #27a4b0;" for="typedepenses"> Type Dépense  </label>
                                                                         <div class="input-icon">
-                                                                    <select id="typedepenses" name="typedepenses" class="form-control">
+                                                                             <i class="fa fa-medkit"></i>
+                                                                              <select id="typedepenses" name="typedepenses" class="form-control">
                                                                         <option value="Frais de Télécommunications">Frais de Télécommunications</option>
                                                                             <option value="Eau">Eau</option>
                                                                             <option value="Electricité">Electricité</option>
@@ -1205,40 +1215,41 @@
                                                                             <option value="Autres Facture">Autres Facture</option>
                                                                             <option value="Autres">Autres</option>
                                                                     </select>
-                                                                            <label for="form_control_1">Type Dépense </label>
-                                                                            <i class="fa fa-medkit"></i>
                                                                         </div>
                                                                     </div>
                                                     </div>
                                                      <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="datedepense"> Date  </label>
                                                             <div class="input-icon">
-                                                                <input id="datedepense" name="datedepense" class="form-control form-control-inline  date-picker" data-date-format="dd/mm/yyyy" type="text" size="120"  placeholder="Date du Dépense">
-                                                                <label for="form_control_1">Date </label>
                                                                 <i class="fa fa-calendar"></i>
+                                                                <input id="datedepense" name="datedepense" class="form-control form-control-inline  date-picker" data-date-format="dd/mm/yyyy" type="text" size="120"  placeholder="Date du Dépense">
                                                             </div>
                                                         </div>
+                                                       
                                                     </div>
+                                                      </div>
+                                     <div class="row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success ">
+                                                         <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="libelledepense"> Libellé Dépense  </label>
                                                             <div class="input-icon">
-                                                                <input id="libelledepense" name="libelledepense" type="text" class="form-control" placeholder="Entrer Libellé">
-                                                                <label for="form_control_1">Libellé</label>
-                                                                <span class="help-block">Libellé Dépense</span>
                                                                 <i class="fa fa-bookmark"></i>
+                                                                <input id="libelledepense" name="libelledepense" type="text" class="form-control" placeholder="Entrer Libellé">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                                    <div class="form-group form-md-line-input has-success ">
-                                                                        <div class="input-icon">
-                                                                            <input id="prixdepense" name="prixdepense" type="number" class="form-control" placeholder="Montant Dépense">
-                                                                            <label for="form_control_1">Montant</label>
-                                                                            <span class="help-block">Entrer Montant</span>
-                                                                            <i class="fa fa-money"></i>
-                                                                        </div>
-                                                                    </div>
+                                                <div class="col-md-6" >
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="prixdepense"> Montant  </label>
+                                                            <div class="input-icon">
+                                                                <i class="fa fa-money"></i>
+                                                                <input id="prixdepense" name="prixdepense" type="number" class="form-control" placeholder="Montant Dépense">
+                                                            </div>
+                                                        </div>
+                                                               
                                                     </div>    
+                                         </div>
                                      </form>
                              </div>
                              <div class="modal-footer">
@@ -1246,7 +1257,46 @@
                                  <button id="confirmerdepense" type="submit" class="btn green"> Enregistrer </button>
                              </div>
                          </div>
-        
+        <!-- Modal payé-->
+                <div id="payermodal" class="modal container fade fast" style="font-family: cursive;" tabindex="-1">
+                             <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                 <h4 class="modal-title" style="font-family: cursive;"> <img src='../img/icons8-Parking payant-50.png' style="width: 30px;"> Paiement </h4>
+                             </div>
+                             <div class="modal-body">
+                                 <form id="payermodalForm" role="form" novalidate="novalidate" method="POST">
+                                     <div class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button><i class="fa-fw fa fa-times"></i> Vous avez des erreurs dans le formulaire. Veuillez vérifier ci-dessous. </div>
+                                                <div class="alert alert-success display-hide">
+                                                    <button class="close" data-close="alert"></button><i class="fa-fw fa fa-check"></i> Votre validation de formulaire est réussie ! </div>
+                                                    
+                                                    <div class="col-md-6">
+                                                         <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="prixapayer">Montant à payer</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-money"></i>
+                                                                <input id="prixapayer" name="prixapayer" step="0.001" type="number" class="form-control" placeholder="Montant à payer">
+                                                            </div>
+                                                        </div>
+                                                           
+                                                    </div> 
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-input has-success ">
+                                                            <label style="color: #27a4b0;" for="prixrecu">Montant Récu</label>
+                                                            <div class="input-icon">
+                                                                   <i class="fa fa-money"></i>
+                                                                   <input id="prixrecu" name="prixrecu" type="number" step="0.001" class="form-control" placeholder="Montant Récu">
+                                                            </div>
+                                                        </div>
+                                                                 
+                                                    </div>
+                                     </form>
+                             </div>
+                             <div class="modal-footer">
+                                 <button id="anuulerpayermodal" type="reset" data-dismiss="modal" class="btn btn-outline dark">Annuler</button>
+                                 <button id="confirmerpayermodal" type="submit" class="btn green"> Enregistrer </button>
+                             </div>
+                         </div>
         <!-- Modal fileUpload-->
                 <div id="fileUpload" class="modal container fade fast" aria-hidden="true" role="dialog" style="font-family: cursive;" tabindex="-1">
                              <div class="modal-header">
@@ -1346,7 +1396,10 @@
         <script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
         <script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>-->
         <script src="../js/highcharts/code/themes/sand-signika.js"></script>
-        
+          <script>
+        // Start the web socket connection.
+         Soket.init();
+    </script>
         <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 

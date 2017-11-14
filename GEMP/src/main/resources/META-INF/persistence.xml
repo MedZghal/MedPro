@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.rest_demo_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.rest.entities.Diagnostic</class>
+    <class>com.rest.entities.FichPatient</class>
+    <class>com.rest.entities.Ville</class>
+    <class>com.rest.entities.Sysdiagrams</class>
+    <class>com.rest.entities.PrescriptionOrd</class>
+    <class>com.rest.entities.MotifConsult</class>
+    <class>com.rest.entities.BilanBioinflam</class>
+    <class>com.rest.entities.Ordonnance</class>
+    <class>com.rest.entities.BianBioGly</class>
+    <class>com.rest.entities.BilanAECBU</class>
+    <class>com.rest.entities.Patient</class>
+    <class>com.rest.entities.FileUpload</class>
+    <class>com.rest.entities.BilanAAutre</class>
+    <class>com.rest.entities.Examen</class>
+    <class>com.rest.entities.Motif</class>
+    <class>com.rest.entities.BilanBioNFS</class>
+    <class>com.rest.entities.BilanBioRenal</class>
+    <class>com.rest.entities.BilanBioHepatique</class>
+    <class>com.rest.entities.Antecedents</class>
+    <class>com.rest.entities.BilanBioHemostase</class>
+    <class>com.rest.entities.Posologie</class>
+    <class>com.rest.entities.SalleAttente</class>
+    <class>com.rest.entities.BilanAECG</class>
+    <class>com.rest.entities.Rdv</class>
+    <class>com.rest.entities.Consultation</class>
+    <class>com.rest.entities.BilanBiolipidique</class>
+    <class>com.rest.entities.Medicament</class>
+    <class>com.rest.entities.Param</class>
+    <class>com.rest.entities.Dci</class>
+    <class>com.rest.entities.AssuranceCNAM</class>
+    <class>com.rest.entities.Lettre</class>
+    <class>com.rest.entities.Recette</class>
+    <class>com.rest.entities.Utilisateur</class>
+    <class>com.rest.entities.Acte</class>
+    <class>com.rest.entities.CabinetMedical</class>
+    <class>com.rest.entities.TraitementAPCI</class>
+    <class>com.rest.entities.BilanRad</class>
+    <class>com.rest.entities.ActeMedicaux</class>
+    <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+    <validation-mode>NONE</validation-mode>
+    <non-jta-data-source>java:/comp/env/jdbc/gcm</non-jta-data-source>
+  </persistence-unit>
+</persistence>

@@ -174,6 +174,7 @@
     
     <script src="../js/attrchange/attrchange.js"></script>
     <script src="../js/attrchange/attrchange_ext.js"></script>
+    <script src="../js/backand.js"></script>
     
     <script src="../assets/global/plugins/bootstrap-fileinput/js/plugins/sortable.js" type="text/javascript"></script>
     <script src="../assets/global/plugins/bootstrap-fileinput/js/plugins/purify.js" type="text/javascript"></script>

@@ -9,9 +9,20 @@
 .lockscreen .logo+div>img+div>:first-child>:first-child{opacity:.1;padding:15px}
 .lockscreen .logo+div>img+div>:first-child>small{display:block;padding-top:5px}
 .lockscreen .logo+div>img+div>:first-child+p{margin-bottom:12px}
+.lockscreen .logo .logResponse  {
+    width: 150px;
+    margin-top: -24px;
+  }
 #lock-page #main{position:static}
+
 @media (max-width:767px){
     .lockscreen .logo+div>img{float:none!important}
     .lockscreen{height:auto;left:5%;margin-left:0;margin-top:0;position:absolute;top:0;width:90%;text-align:center}
     .lockscreen .logo+div>img+div{float:none;width:100%;height:auto}
+    .lockscreen .logo .logResponse {
+     width: 90px;
+     position: fixed;
+     top: 80px;
+     right: 8px;
+    }
 }

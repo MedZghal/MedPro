@@ -160,6 +160,9 @@ function createBackGridRecette(d1,d2) {
 //                    this.$el.css({background:"repeating-linear-gradient(45deg,#606dbc,#606dbc 10px,#465298 10px,#465298 20px"});
                     this.$el.append(parseFloat("0").toFixed(3)+" DT");
                 else
+                    if(this.model.get("type")==="CS" && parseFloat(this.model.get("debit")) !== 0)
+                        this.$el.append(parseFloat(this.model.get("debit")).toFixed(3) +" DT");
+                else
                     this.$el.append(parseFloat(this.model.get("total")).toFixed(3)+" DT");
 		return this;
             }
@@ -177,6 +180,9 @@ function createBackGridRecette(d1,d2) {
                     this.$el.append(parseFloat(this.model.get("total")).toFixed(3)+" DT");
                     
                 else
+                    if(this.model.get("type")==="CS")
+                        this.$el.append(parseFloat(this.model.get("credit")).toFixed(3) +" DT");
+                else            
                     this.$el.append(parseFloat("0").toFixed(3) +" DT");
 		return this;
             }

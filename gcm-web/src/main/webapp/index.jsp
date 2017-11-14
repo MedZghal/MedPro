@@ -1,5 +1,7 @@
 <%@page import="java.io.Console"%>
 <%@page import="java.util.Date"%>
+
+
 <%
     long ts = (new Date()).getTime();
     session.setAttribute("versionJS",ts);
@@ -25,7 +27,7 @@
         <!-- Basic Styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
+     
         <link rel="stylesheet" type="text/css" media="screen" href="js/bootstrap-toastr/toastr.min.css">
 
         <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
@@ -41,6 +43,7 @@
 
         <!-- page related CSS -->
         <link rel="stylesheet" type="text/css" media="screen" href="css/lockscreen.min.css">
+           <link rel="stylesheet" type="text/css" media="screen" href="css/login.css">
 
         <!-- #FAVICONS -->
         <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
@@ -50,14 +53,13 @@
  <body class="login" style="font-family: cursive">
         
         
-        
        
             <!-- BEGIN LOGIN FORM -->
              <div class="lockscreen animated flipInY">
                  <!-- BEGIN LOGO -->
 				<div class="logo">
 					<h1 class="semi-bold"><img src="img/logo-o.png" alt="" /> SE CONNECTER </h1>
-                                        <img class="pull-right" src="./img/log4.png" alt="" style=" width: 150px; margin-top: -24px;">
+                                        <img class="logResponse pull-right" src="./img/log4.png" alt="" >
 				</div>
                  
                  <!-- END LOGO -->

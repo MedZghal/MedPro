@@ -41,6 +41,7 @@ public class Gestion_Acces extends HttpServlet {
             if(WS.PortCltWS == null){
                         webservice= new WS();
                         webservice.GcmEventWS();
+//                        webservice.GempApplication();
                     }
         
             Gson gson = new GsonBuilder().serializeNulls().create();

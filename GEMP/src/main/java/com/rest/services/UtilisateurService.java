@@ -7,6 +7,7 @@ package com.rest.services;
 
 import com.rest.entities.Utilisateur;
 import com.rest.metier.UtilisateurMetier;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,13 @@ public class UtilisateurService {
     @RequestMapping(value = "/Utilisateurs", method = RequestMethod.GET)
     public List<Utilisateur> findAll() {
         return metier.findAll();
+    }
+    
+    @RequestMapping(value = "/LoginUser", method = RequestMethod.GET)
+    public List<Utilisateur> LoginUser(@RequestParam String username,@RequestParam String pass) {
+        List<Utilisateur> rep = new ArrayList<>();
+          rep.add(metier.LoginUser(username, pass));
+        return rep;
     }
     
     

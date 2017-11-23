@@ -1,0 +1,197 @@
+
+page-patient {
+
+  .grid-basic-page {
+
+    ion-col div {
+      background-color: #F9FAFB;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+  }
+  ion-note{
+
+  }
+
+  ion-item-options{
+    margin-top: -10px;
+  }
+  .note-md{
+    font-size: 12px;
+
+  }
+
+  .item-inner{
+    font-size: 20px;
+  }
+  .item-md ion-icon[item-left] + .item-inner{
+    margin-left: 0px;
+  }
+
+  .item-wrapper{
+  //  margin-top: -20px;
+    //border-bottom: 1px #8f8f8f solid;
+  }
+
+  .input-wrapper{
+    //margin-top: -15px;
+  }
+  .nav-toggle {
+    position:relative;
+    cursor: pointer;
+    padding:15px 0 0 0;
+  }
+  .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {
+    cursor: pointer;
+    height: 1px;
+    width: 26px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+  }
+  .nav-toggle span:before {
+    top: -7px;
+  }
+  .nav-toggle span:after {
+    bottom: -7px;
+  }
+  .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {
+    transition: all 250ms ease-out;
+    -webkit-transition: all 250ms ease-out;
+  }
+  .nav-toggle.navtoggleon span {
+    background-color: transparent;
+  }
+  .nav-toggle.navtoggleon span:before, .nav-toggle.navtoggleon span:after {
+    top: 0;
+  }
+  .nav-toggle.navtoggleon span:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    height:2px;
+  }
+  .nav-toggle.navtoggleon span:after {
+    transform: translateY(-7px) rotate(-45deg);
+    -webkit-transform: translateY(-7px) rotate(-45deg);
+    -ms-transform: translateY(-7px) rotate(-45deg);
+    top: 7px;
+    height:2px;
+  }
+  .nav_left_button{
+    float:left;
+    width:20%;
+    text-align:left;
+  }
+  .nav_left_button a{
+    display:block;
+    float:left;
+    margin:10px 0 0 18px;
+    width:100%;
+    height:30px;
+  }
+  .nav_center_logo{
+    float:left;
+    width:60%;
+    padding:0;
+    text-align:center;
+    line-height:50px;
+    font-size:22px;
+    color: white;
+  }
+  .nav_center_logo a{
+    color:#4a250a;
+  }
+  .nav_right_button{
+    float:right;
+    width:20%;
+    text-align:right;
+  }
+  .nav_right_button a{
+    display:block;
+    float:right;
+    width:45px;
+    padding:12px 15px 0 0;
+  }
+  .nav_right_button a img{
+    display:inline-block;
+    max-width:90%;
+    padding:0;
+  }
+  background-color: #4d4d4d;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .item-md ion-thumbnail{
+    width: 60px;
+    height: 70px;
+    min-width: 60px;
+    min-height: 70px;
+  }
+  .item-md ion-thumbnail img{
+    width: 60px;
+    height: 60px;
+  }
+
+  .nblistbadge{
+    overflow: auto;
+    padding: 2px 4px 2px 4px;
+    margin-left: -6px;
+    margin-bottom: 11px;
+    background-color: #ff4500;
+  }
+
+  .nblistehome{
+    overflow: auto;
+    margin-right: -40px;
+    margin-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #ff4500;
+  }
+
+  .agebadge{
+  padding-right: 5px;
+  padding-left: 5px;
+  }
+  .img_partage{
+    position: absolute;
+    width: 20px;
+    margin-left: -8px;
+    margin-top: -18px;
+  }
+
+  .img_partage img{
+    //margin-top: -31px;
+    margin-left: -17px;
+    position: absolute;
+  }
+
+.aucuneattend{
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  .verticalLine {
+    border-right: thick solid #3a5999;
+  }
+  .verticalLinepg {
+    border-right: thick solid #ff4500;
+  }
+  .item-md.item-block .item-inner{
+    padding-right: 0px;
+  }
+  .content-md {
+    color: #000;
+    background-color: white;
+  }
+}

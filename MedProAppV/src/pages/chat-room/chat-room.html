@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Notes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content has-bouncing="true" class="chat-conteinar has-header has-footer">
+  <div class="section-header"><span>aujourd'hui</span></div>
+  <div *ngFor="let message of messages" class="message-wrapper">
+    <div *ngIf="message.from ==='emit'">
+      <img  class="profile-pic left"
+           src="./assets/img/avatars/d.png"  />
+      <div class="chat-bubble left">
+        <div class="message" autolinker>
+          {{message.content}}
+        </div>
+        <div class="message-detail">
+                              <span class="bold">{{message.user}}</span>,
+          <span >{{message.created.toString().substr(0,24)}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="message.from === 'send'">
+      <img class="profile-pic right"
+           src="./assets/img/avatars/d.png" />
+      <div class="chat-bubble right">
+        <div class="message"  autolinker>
+          {{message.content}}
+        </div>
+        <div class="message-detail">
+                              <span class="bold">{{message.user}}</span>,
+          <span >{{message.created.toString().substr(0,24)}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="cf"></div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="message_row">
+      <ion-col col-9>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear color="primary" (click)="sendMessages()" [disabled]="message === ''">
+          <img  src="./assets/img/email.png">
+      </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
+
+
+  <!--<ion-content has-bouncing="true" class="chat-conteinar has-header has-footer" >-->
+
+    <!--<div class="section-header"><span>yesterday</span></div>-->
+
+    <!--<div ng-repeat="message in messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">-->
+      <!--<div *ngIf="user._id !== message.senderId && message.imgFlag==0">-->
+        <!--<img (click)="viewProfile(message)" class="profile-pic left"-->
+             <!--src="./assets/img/avatars/doctor-.png" onerror="onProfilePicError(this)" />-->
+        <!--<div class="chat-bubble left">-->
+          <!--<div class="message" ng-bind-html="message.text" autolinker>-->
+          <!--</div>-->
+          <!--<div class="message-detail">-->
+                              <!--<span ng-click="viewProfile(message)"-->
+                                    <!--class="bold">{{_toUserDetail.name}}</span>,-->
+            <!--<span am-time-ago="message.date"></span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div *ngIf="user._id === message.senderId && message.imgFlag==0">-->
+        <!--<img (click)="viewProfile(message)" class="profile-pic right"-->
+             <!--src="./assets/img/avatars/doctor-.png" onerror="onProfilePicError(this)" />-->
+        <!--<div class="chat-bubble right">-->
+          <!--<div class="message" ng-bind-html="message.text" autolinker>-->
+          <!--</div>-->
+          <!--<div class="message-detail">-->
+                              <!--<span (click)="viewProfile(message)"-->
+                                    <!--class="bold">{{user.username}}</span>,-->
+            <!--<span am-time-ago="message.date"></span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="cf"></div>-->
+    <!--</div>-->
+  <!--</ion-content>-->
+  <!--<form name="sendMessageForm" (click)="sendMessage(sendMessageForm)" novalidate>-->
+    <!--<ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>-->
+      <!--<label class="item-input-wrapper">-->
+                <!--<textarea ng-model="input.message" value="" placeholder="Send {{toUser.username}} a message..." required minlength="1" maxlength="1500" msd-elastic>-->
+                <!--</textarea>-->
+      <!--</label>-->
+      <!--<div class="footer-btn-wrap">-->
+        <!--<button class="button button-icon icon ion-android-send footer-btn" type="submit" ng-disabled="!input.message || input.message === ''"></button>-->
+      <!--</div>-->
+    <!--</ion-footer-bar>-->
+  <!--</form>-->
+<!--</ion-view>-->

@@ -5,17 +5,22 @@
  */
 package com.rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,12 +31,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u"),
-    @NamedQuery(name = "Utilisateur.findByUsername", query = "SELECT u FROM Utilisateur u WHERE u.username = :username"),
+    @NamedQuery(name = "Utilisateur.findByUsername", query = "SELECT u FROM Utilisateur u WHERE u.username = :username and u.pass =:pass"),
     @NamedQuery(name = "Utilisateur.findByPass", query = "SELECT u FROM Utilisateur u WHERE u.pass = :pass"),
-    @NamedQuery(name = "Utilisateur.findByType", query = "SELECT u FROM Utilisateur u WHERE u.type = :type"),
+    @NamedQuery(name = "Utilisateur.findByType", query = "SELECT u FROM Utilisateur u WHERE u.type = :type" ),
     @NamedQuery(name = "Utilisateur.findByCodeMedTrit", query = "SELECT u FROM Utilisateur u WHERE u.codeMedTrit = :codeMedTrit"),
     @NamedQuery(name = "Utilisateur.findBySecretaire", query = "SELECT u FROM Utilisateur u WHERE u.secretaire = :secretaire")})
 public class Utilisateur implements Serializable {
+
+    @OneToMany(mappedBy = "codeMedTrit")
+    private Collection<Consultation> consultationCollection;
+    @OneToMany(mappedBy = "numMedcTrait")
+    private Collection<SalleAttente> salleAttenteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur")
+    private Collection<FichPatient> fichPatientCollection;
+    @OneToMany(mappedBy = "codeMedTrait")
+    private Collection<Recette> recetteCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,8 +71,9 @@ public class Utilisateur implements Serializable {
     @Size(max = 50)
     @Column(name = "secretaire")
     private String secretaire;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codeMedTrit")
+    private Collection<CabinetMedical> cabinetMedicalCollection;
 
-    
     public Utilisateur() {
     }
 
@@ -113,7 +128,15 @@ public class Utilisateur implements Serializable {
         this.secretaire = secretaire;
     }
 
-    
+    @XmlTransient
+    public Collection<CabinetMedical> getCabinetMedicalCollection() {
+        return cabinetMedicalCollection;
+    }
+
+    public void setCabinetMedicalCollection(Collection<CabinetMedical> cabinetMedicalCollection) {
+        this.cabinetMedicalCollection = cabinetMedicalCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -137,6 +160,46 @@ public class Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "com.rest.entities.Utilisateur[ username=" + username + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Consultation> getConsultationCollection() {
+        return consultationCollection;
+    }
+
+    public void setConsultationCollection(Collection<Consultation> consultationCollection) {
+        this.consultationCollection = consultationCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<SalleAttente> getSalleAttenteCollection() {
+        return salleAttenteCollection;
+    }
+
+    public void setSalleAttenteCollection(Collection<SalleAttente> salleAttenteCollection) {
+        this.salleAttenteCollection = salleAttenteCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<FichPatient> getFichPatientCollection() {
+        return fichPatientCollection;
+    }
+
+    public void setFichPatientCollection(Collection<FichPatient> fichPatientCollection) {
+        this.fichPatientCollection = fichPatientCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Recette> getRecetteCollection() {
+        return recetteCollection;
+    }
+
+    public void setRecetteCollection(Collection<Recette> recetteCollection) {
+        this.recetteCollection = recetteCollection;
     }
     
 }

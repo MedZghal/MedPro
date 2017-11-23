@@ -1,0 +1,273 @@
+page-Consult {
+
+  ion-item-options{
+    margin-top: -10px;
+  }
+  .note-md{
+    font-size: 12px;
+
+  }
+  .item-inner{
+    margin-bottom: -20px;
+    font-size: 20px;
+  }
+
+  .item-wrapper{
+    //border-bottom: 1px #8f8f8f solid;
+  }
+
+  .input-wrapper{
+    margin-top: -15px;
+  }
+  .nav_center_logo {
+    float: left;
+    width: 85%;
+    padding: 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    color: white;
+  }
+  background-color: #4d4d4d;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .item-md ion-thumbnail{
+    width: 60px;
+    height: 70px;
+    min-width: 60px;
+    min-height: 70px;
+  }
+  .item-md ion-thumbnail img{
+    width: 60px;
+    height: 60px;
+  }
+
+  .nblistbadge{
+    margin-left: -16px;
+    margin-top: 8px;
+    background-color: orangered;
+  }
+
+  /*===============================================*/
+  /* 5. HOME PAGE LAYOUT */
+  /*===============================================*/
+  .logo_container{
+    width:100%;
+    height:100%;
+    text-align:center;
+  }
+  .logo{
+    margin:20% 0 0 0;
+  }
+  .logo img{
+    max-width:100%;
+    display:inline-block;
+  }
+  .logo h2{
+    font-size:54px;
+    font-weight:700;
+    letter-spacing:-1px;
+    padding:0px; margin:0px;
+    line-height:40px;
+  }
+  .logo span{
+    font-size:20px;
+    font-weight:300;
+    color:#FFFFFF;
+    letter-spacing:1px;
+    padding:0px;
+  }
+  .slide_info{
+    width:100%;
+    text-align:center;
+    font-size:14px;
+    letter-spacing:3px;
+    position: absolute;
+    bottom: 15px;
+  }
+  /*===============================================*/
+  /* 6. PAGES LAYOUT */
+  /*===============================================*/
+  .ui-content {
+    clear:both;
+    padding: 0;
+    margin-top: -10px;
+  }
+  .pages_maincontent{
+    width:100%;
+    padding:0px;
+  }
+  .page_content{
+    width:90%;
+    padding:0 5%;
+    margin:0 0 10px 0;
+  }
+  h2.page_title{
+    margin:15px 5%;
+    font-size:22px;
+    font-weight:700;
+    padding:0;
+    display:inline-block;
+    letter-spacing:-0.5px;
+  }
+  h2.page_subtitle{
+    font-size:22px;
+    line-height:25px;
+    font-weight:300;
+    padding:0 0 10px 0;
+    margin:20px 0 10px 0;
+    display:inline-block;
+    letter-spacing:-0.5px;
+  }
+  .pages_maincontent h3{
+    font-size:16px;
+    font-weight:700;
+    margin:5px 0 20px 0;
+    display:block;
+    clear:both;
+  }
+  .pages_maincontent p{
+    padding:0 0 15px 0;
+    margin:0px;
+    clear:both;
+  }
+  .page_content img{
+    display:block;
+    max-width:100%;
+    margin:0 0 20px 0;
+  }
+  .page_content ul.simple_list{
+    padding:0px 0 20px 10px;
+    margin:0px;
+    list-style:none;
+  }
+  .page_content ul.simple_list li{
+    margin:0 0 10px 0;
+    padding:0 0 0 20px;
+    //background:url(images/bullet.png) no-repeat left;
+  }
+
+
+  /* 6-2. FEATURES LIST */
+
+  ul.features_list{
+    padding:0 0 20px 0;
+    width:100%;
+    margin:0px;
+    list-style:none;
+    float:left;
+    clear:both;
+  }
+  ul.features_list li{
+    border-bottom:1px #e6e6e6 solid;
+    padding:5px 2% 10px 2%;
+    margin:5px 0;
+    display:block;
+    width:96%;
+    float:left;
+    clear:both;
+  }
+  ul.features_list li img{
+    display:inline-block;
+    max-width:10%;
+    float:left;
+    margin:0px;
+  }
+  ul.features_list li span{
+    display:inline-block;
+    max-width:90%;
+    padding:5px 0 0 5%;
+    font-weight:700;
+    float:left;
+  }
+  ul.features_list_detailed{
+    padding:10px 0 0px 0;
+    width:100%;
+    margin:0px;
+    list-style:none;
+    float:left;
+    clear:both;
+  }
+  ul.features_list_detailed li{
+    padding:5px 0 10px 0;
+    margin:0 0 10px 0;
+    display:block;
+    width:115%;
+    float:left;
+    clear:both;
+    border-bottom:1px #ddd solid;
+  }
+  ul.features_list_detailed li .feat_small_icon{
+    width:15%;
+    float:left;
+  }
+  ul.features_list_detailed li .feat_small_details{
+    width:65%;
+    float:left;
+    padding:0 0 0 3%;
+  }
+  ul.features_list_detailed li .view_more{
+    width:10%;
+    float:left;
+    margin:25px 0 0 5%;
+  }
+  ul.features_list_detailed li .view_more img{
+    display:block;
+    max-width:100%;
+  }
+  ul.features_list_detailed li .feat_small_details p{
+    padding:0 0 0px 0;
+  }
+  ul.features_list_detailed li .feat_small_details a{
+    color:#232323;
+  }
+  ul.features_list_detailed li .feat_small_icon img{
+    display:inline-block;
+    max-width:90%;
+  }
+  ul.features_list_detailed li .feat_small_details h4{
+    font-weight:700;
+    font-size:18px;
+    padding:0 0 5px 0;
+    margin:0px;
+  }
+  /* 6-3. SOCIAL ICONS */
+  ul.social_share{
+    list-style:none;
+    padding:0px;
+    margin:0px;
+    width:100%;
+    text-align:center;
+    display:inline-block;
+  }
+  ul.social_share li{
+    width:32%;
+    text-align:center;
+    display:inline-block;
+    padding:10px 0;
+    margin:0px;
+  }
+  ul.social_share li img{
+    margin:auto;
+  }
+
+  .numConsultBad{
+    background-color: darkolivegreen;
+    margin-left: -12px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .rowp{
+    padding: 0px;
+  }
+
+  .plusDet{
+    margin-left: 130px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+}

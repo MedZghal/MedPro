@@ -10,6 +10,7 @@ import com.rest.entities.Utilisateur;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -20,7 +21,6 @@ public class UtilisateurMetierImpl implements UtilisateurMetier{
 
     @Autowired
     private UtilisateurRepository UtilisateurRepository;
-
     @Override
     public Utilisateur findByUsername(String username) {
         return  UtilisateurRepository.findOne(username);
@@ -28,7 +28,12 @@ public class UtilisateurMetierImpl implements UtilisateurMetier{
 
     @Override
     public List<Utilisateur> findAll() {
-        return UtilisateurRepository.findAll();
+        return (List<Utilisateur>) UtilisateurRepository.findAll();
+    }
+
+    @Override
+    public Utilisateur LoginUser(String username, String pass) {
+            return UtilisateurRepository.LoginUser(username, pass);
     }
    
     

@@ -15,6 +15,7 @@ import java.util.List;
  */
 public interface UtilisateurMetier {
     public Utilisateur findByUsername(String username);
+    public Utilisateur LoginUser(String username,String pass);
     public List<Utilisateur> findAll();
     
 }

@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar *navbar>
+
+  </ion-navbar>
+
+  <ion-toolbar>
+    <div data-role="header" data-position="fixed">
+      <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+      <div class="nav_center_logo"><span style=" margin-left: 15px; ">Gérer les Patients</span>
+       <ion-badge class="nblistbadge">{{patients.length}}</ion-badge>
+      </div>
+      <div class="nav_right_button" (click)="toggleRightMenu()"><a><img src="./assets/img/white/user.png" alt="" title="" /></a>
+        <ion-badge class="nblistehome">{{salleAttente.length}}</ion-badge>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </ion-toolbar>
+
+
+</ion-header>
+<ion-content >
+
+  <ion-refresher (ionRefresh)="getItems($event)" style="background-color: white" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+
+    <ion-searchbar class="ion-searchbar"
+      [(ngModel)]="searchQuery"
+      (ionInput)="SerachItems($event.target.value)"
+      [showCancelButton]="showSearchCancelButton"
+      [placeholder]="Recherchebar"
+      [type]="typeSearch"
+      (ionCancel)="onCancelSearch()">
+    </ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let item of patientsPartag" class="verticalLinepg" (click)="openModal(item)">
+      <ion-icon item-left class="img_partage" >
+        <img src="./assets/img/BMR.gif">
+      </ion-icon>
+      <ion-icon style="width: 50px;" item-left>
+        <img src="{{ImgProfile(item.datenaiss,item.sexe)}}">
+      </ion-icon>
+      <span text-uppercase style="color: cornflowerblue;">{{item.prenom}} {{item.nom}}</span>
+      <!--<ion-badge class="agebadge"><small></small></ion-badge></span>-->
+      <span >
+            <p><span text-uppercase><b>N° :</b>{{item.numFichPatient}}</span>
+              <span><b>Age:</b> {{getAge(item.datenaiss)}}Ans </span>
+            </p>
+            <p *ngIf="item.assurCnam != null">
+              <img style="width: 15px;" src="./assets/img/surgeon.png">
+              <span text-uppercase><b>{{item.assurCnam.nomMedc}}</b></span>
+            </p>
+        </span>
+      <ion-note item-right style="margin-top: -40px;">
+        <span *ngIf="item.assurCnam != null"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="./assets/img/cnam.png"></span>
+        <span *ngIf="item.codeApci != ''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="./assets/img/apci_logo_600w.png"></span>
+        <span *ngIf="item.autreAssur != ''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(item.AutreAssur)}}"></span>
+      </ion-note>
+    </ion-item>
+    <ion-item *ngFor="let item of patients" class="verticalLine" (click)="openModal(item)">
+      <ion-icon style="width: 50px;" item-left>
+        <img src="{{ImgProfile(item.datenaiss,item.sexe)}}">
+      </ion-icon>
+      <span text-uppercase style="color: cornflowerblue;">{{item.prenom}} {{item.nom}}</span>
+      <!--<ion-badge class="agebadge"><small></small></ion-badge></span>-->
+      <span >
+            <p><span text-uppercase><b>N° :</b>{{item.numFichPatient}}</span>
+              <span><b>Age:</b> {{getAge(item.datenaiss)}}Ans </span>
+            </p>
+            <p *ngIf="item.assurCnam != null">
+              <img style="width: 15px;" src="./assets/img/surgeon.png">
+              <span text-uppercase><b>{{item.assurCnam.nomMedc}}</b></span>
+            </p>
+        </span>
+      <ion-note item-right style="margin-top: -40px;">
+        <span *ngIf="item.assurCnam != null"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="./assets/img/cnam.png"></span>
+        <span *ngIf="item.codeApci != ''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="./assets/img/apci_logo_600w.png"></span>
+        <span *ngIf="item.autreAssur != ''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(item.AutreAssur)}}"></span>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+
+<ion-menu side="right" type="overlay" [content]="mycontent" >
+
+  <ion-content style="background-color: #f4f4f4;" >
+    <div class="scroll">
+
+      <ion-item-group>
+
+        <ion-item-divider style="height: 45px;margin-bottom: 10px; font-weight: lighter; " color="light">Notifications (Salle d'attende)</ion-item-divider>
+        <span *ngIf="salleAttente.length == 0" class="aucuneattend"> Aucun patient n'attend dans la salle d'attente !!</span>
+        <ion-item *ngFor="let item of salleAttente" (click)="openModal(item.numPatient)"   style="height: 72px;background-color: #f4f4f4;">
+          <div class="item-content">
+            <img style="width:50px;position: absolute;" src="{{ImgProfile(item.numPatient.datenaiss,item.numPatient.sexe)}}">
+            <div style="margin-left: 55px;">
+              <h3 style="white-space: normal"><b>Rendez-Vous Pour </b>:{{item.note}}</h3>
+              <h3>Le {{item.numRdv.startDate | date:'dd/MM/yy HH:mm'}}</h3>
+            </div>
+          </div>
+          <hr/>
+        </ion-item>
+        </ion-item-group>
+
+    </div>
+  </ion-content>
+
+</ion-menu>
+<ion-nav  #mycontent [root]="rootPage"></ion-nav>

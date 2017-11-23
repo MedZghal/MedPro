@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <div data-role="header" data-position="fixed">
+      <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+      <div class="nav_center_logo">Gérer Dossiers Médical</div>
+      <ion-badge class="nblistbadge">{{consults.length}}</ion-badge>
+      <div class="clear"></div>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="getItems($event)" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar class="ion-searchbar"
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterItems($event.target.value)"
+    [showCancelButton]="showSearchCancelButton"
+    [placeholder]="Recherchebar"
+    [type]="typeSearch"
+    (ionCancel)="onCancelSearch()">
+  </ion-searchbar>
+
+  <div role="main" class="ui-content">
+    <div class="pages_maincontent">
+      <div class="page_content">
+
+        <ul class="features_list_detailed">
+
+
+          <li  *ngFor="let consult of consults.slice().reverse()">
+
+            <div class="feat_small_icon"><img style="margin: 0px;" src="./assets/img/unnamed.png" alt="" title="" />
+              <ion-badge class="numConsultBad" ><small>N°{{consult.numConsult}}</small></ion-badge></div>
+            <div class="feat_small_details">
+              <h4 style=" width: 120%; ">{{consult.typeConsult}} le {{consult.dateConsult.toString().substring(0,10)}}</h4>
+              <a  data-transition="slidefade" *ngIf="consult.numExamen!=null">
+                <span text-uppercase style="color:cornflowerblue;">Examen N°{{consult.numExamen.numExamen}}</span>
+                <div style="margin-left: 20px;">
+                  <p class="rowp"><span>Pouls :{{consult.numExamen.pouls}}</span>  <span>Temp :{{consult.numExamen.temp}}</span>  <span>TA :{{consult.numExamen.ta}}</span></p>
+                  <p class="rowp"><span>Aires_gangl :{{consult.numExamen.airesGangl}}</span> </p>
+                  <p class="rowp"><span>Auscu_cardi :{{consult.numExamen.auscuCardi}}</span> </p>
+                  <p class="rowp"><span>Auscu_pleuro :{{consult.numExamen.auscuPleuro}}</span></p>
+                  <p class="rowp"><span>Etat_general :{{consult.numExamen.etatGeneral}}</span>  </p>
+                  <p class="rowp"><span>Exam_phy :{{consult.numExamen.examPhy}}</span>  </p>
+                  <p class="rowp"><span>Examen_abdominal :{{consult.numExamen.examenAbdominal}}</span>  </p>
+                  <p class="rowp"><span>Examen_ORL :{{consult.numExamen.examen_ORL}}</span>  </p>
+                </div>
+              </a>
+              <button ion-button clear class="plusDet" (click)="openModal({consultObj: consult})" >Plus de détails</button>
+            </div>
+
+          </li>
+
+
+
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

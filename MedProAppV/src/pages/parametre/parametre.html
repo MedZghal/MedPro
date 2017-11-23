@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar>
+    <div data-role="header" data-position="fixed">
+      <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+      <div class="nav_center_logo">Gérer les Paramétres</div>
+      <div class="clear"></div>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <span>
+  <h2><img style=" width: 25px; margin-bottom: -6px; margin-left: -10px; " src="./assets/img/imageedit_25_8298659294.gif">
+    <span style="color: #387ef5;">CABINET N°{{num_cab}}</span></h2>
+  </span>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Nom de Médecin : </ion-label>
+      <ion-input placeholder="Nom de Médecin" [value]="nom_medecin" (input)="nom_medecin = $event.target.value"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prénom de Médecin : </ion-label>
+      <ion-input placeholder="Prénom de Médecin" [value]="prenom_medecin" (input)="prenom_medecin = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Num_inscp_ord_Médecin : </ion-label>
+      <ion-input placeholder="num_inscp_ord_med" [value]="num_inscp_ord_med" (input)="num_inscp_ord_med = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Date de Naissance : </ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="date_naiss"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Adresse : </ion-label>
+      <ion-input placeholder="Adresse" [value]="adresse" (input)="adresse = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Spécialite : </ion-label>
+      <ion-input placeholder="specialite" [value]="specialite" (input)="specialite = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Titre : </ion-label>
+      <ion-input placeholder="Titre" [value]="titre" (input)="titre = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Email : </ion-label>
+      <ion-input placeholder="Email" [value]="email" (input)="email = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fixe : </ion-label>
+      <ion-input placeholder="Fixe" [value]="Fixe" (input)="Fixe = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>GSM : </ion-label>
+      <ion-input placeholder="GSM" [value]="GSM" (input)="GSM = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Conventionné avec CNAM : </ion-label>
+      <ion-toggle  checked="true"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tiket Modérateur : </ion-label>
+      <ion-input placeholder="tiket_moder" [value]="tiket_moder" (input)="tiket_moder = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tva Consultation : </ion-label>
+      <ion-input placeholder="tva_consult" [value]="tva_consult" (input)="tva_consult = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Montant Consultation HT : </ion-label>
+      <ion-input placeholder="montant_consult" [value]="montant_consult" (input)="montant_consult = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Montant Consultation TTC : </ion-label>
+      <ion-input placeholder="mnt_consultSansConv" [value]="mnt_consultSansConv" (input)="mnt_consultSansConv = $event.target.value" item-right></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+
+
+</ion-content>

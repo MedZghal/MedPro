@@ -1,0 +1,59 @@
+page-rdv {
+
+  scroll-content{
+      padding: 0px;
+  }
+  .card-header-md{
+    background : #3a5999;
+    color:white;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  label{
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  button{
+    margin-bottom: 10px;
+  }
+
+  ion-card{
+    margin-bottom: 30px;
+  }
+
+  .nav_center_logo {
+    float: left;
+    width: 85%;
+    padding: 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    color: white;
+  }
+  .nblistbadge{
+    margin-left: -20px;
+    margin-top: 8px;
+    background-color: orangered;
+  }
+  .item-inner{
+    margin-top: -20px;
+  }
+
+  .fab-md{
+    background-color: transparent;
+  }
+
+  .item-md ion-thumbnail{
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 70px;
+  }
+  .item-md ion-thumbnail img{
+    width: 60px;
+    height: 60px;
+  }
+
+}

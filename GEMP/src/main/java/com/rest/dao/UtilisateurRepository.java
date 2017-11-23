@@ -6,12 +6,15 @@
 package com.rest.dao;
 
 import com.rest.entities.Utilisateur;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author ASUS
  */
-public interface UtilisateurRepository extends  JpaRepository<Utilisateur, String>{
- public Utilisateur findByUsername(String username); 
+public interface UtilisateurRepository extends  CrudRepository<Utilisateur, String>{
+    @Query("SELECT u FROM Utilisateur u WHERE u.username = :username and u.pass =:pass and u.type IN ('Administrateur','Medecin')")
+    public Utilisateur LoginUser(@Param("username") String username,@Param("pass") String pass);
 }

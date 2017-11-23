@@ -1,0 +1,49 @@
+<ion-header class="Header">
+  <ion-navbar >
+    <div data-role="header" data-position="fixed">
+      <div class="nav_left_button"><a menuToggle class="nav-toggle"><span></span></a></div>
+      <div class="nav_center_logo">Gérer les Rendez-Vous</div>
+      <ion-badge class="nblistbadge">{{rdvs.length}}</ion-badge>
+      <div class="clear"></div>
+    </div>
+  </ion-navbar>
+
+</ion-header>
+<ion-content >
+  <ion-refresher (ionRefresh)="getItems($event)" >
+    <ion-refresher-content
+      pullingText="Tirer pour rafraîchir"
+      refreshingText="Rafraîchissant..."></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-searchbar class="ion-searchbar"
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterItems($event.target.value)"
+    [showCancelButton]="showSearchCancelButton"
+    [placeholder]="Recherchebar"
+    [type]="typeSearch"
+    (ionCancel)="onCancelSearch()">
+  </ion-searchbar>
+
+  <ion-fab bottom right >
+    <button ion-fab (click)="openCalendar_()" >
+      <img style="width: 30px;" src="./assets/img/weekly-calendar.png">
+    </button>
+
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let rdv of rdvs.slice().reverse()">
+      <ion-thumbnail item-left style=" margin-top: -40px; ">
+        <img src="./assets/img/picto-rdv.png">
+      </ion-thumbnail>
+      <button ion-button clear STYLE="margin-top: 15px;" (click)="createEvent(rdv.numRDV)"><img style="width: 20px;" src="./assets/img/weekly-calendar.png"><h2 style="margin-left: 5px;"> {{rdv.typeRDV}}</h2></button>
+
+      <p> <small></small><label>Title : </label><span style="white-space: pre-wrap;">{{rdv.descpRDV}}</span></p>
+      <p> <label>Start date : </label>{{rdv.startDate | date:'dd/MM/yy HH:mm'}}</p>
+      <p><label>End date : </label>{{rdv.endDate | date:'dd/MM/yy HH:mm'}}</p>
+      <button ion-button clear item-right style="margin-bottom: -20px;" (click)="openModal({RdvObj: rdv})">Détails</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

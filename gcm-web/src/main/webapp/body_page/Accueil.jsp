@@ -11,6 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <jsp:include page="../body_page/css_declare.jsp"/>
+        
+        <link href="../css/pub.css" rel="stylesheet" type="text/css" />
         <link href="../css/style_Accueil.css" rel="stylesheet" type="text/css" />
         <style>
             /*Scroll hide*/
@@ -85,111 +87,68 @@
                     
                         
                         <div class="row">
+
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat2 ">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-green-sharp">
-                                                <span id="recette" data-counter="counterup" data-value="0">0</span>
-                                                <small class="font-green-sharp">DT</small>
-                                            </h3>
-                                            <small>Recette Pour Aujourd'hui</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-pie-chart"></i>
-                                        </div>
+                                <div class="dashboard-stat blue">
+                                    <div class="visual">
+                                        <img style="width:35px;filter: invert(100%); " src="../img/079-safebox.png" alt="">
                                     </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
-                                                <span class="sr-only">76% progress</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> progress </div>
-                                            <div class="status-number"> 76% </div>
-                                        </div>
+                                    <div class="details">
+                                        <div class="number"> <span id="recette" data-counter="counterup" data-value="0">0</span> </div>
+                                        <div class="desc"> Rendez-Vous </div>
                                     </div>
+                                    <a class="more" href="javascript:;"> Afficher plus
+                                        <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
                                 </div>
                             </div>
+
+                            
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat2 ">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-red-haze">
-                                                <span id="rdv" data-counter="counterup" data-value="0">0</span>
-                                            </h3>
-                                            <small>Rendez-Vous</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-like"></i>
-                                        </div>
+                                <div class="dashboard-stat blue">
+                                    <div class="visual">
+                                        <img style="width:35px;filter: invert(100%); " src="../img/001-clock-1.png" alt="">
                                     </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 85%;" class="progress-bar progress-bar-success red-haze">
-                                                <span class="sr-only">85% change</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> change </div>
-                                            <div class="status-number"> 85% </div>
-                                        </div>
+                                    <div class="details">
+                                        <div class="number"> <span id="rdv" data-counter="counterup" data-value="0">0</span> </div>
+                                        <div class="desc"> Rendez-Vous </div>
                                     </div>
+                                    <a class="more" href="javascript:;"> Afficher plus
+                                        <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
                                 </div>
                             </div>
+   
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat2 ">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-blue-sharp">
-                                                <span id="consult" data-counter="counterup" data-value="0">0</span>
-                                            </h3>
-                                            <small>Consultation(s)</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-chemistry"></i>
-                                        </div>
+                                <div class="dashboard-stat blue">
+                                    <div class="visual">
+                                        <img style="width:34px;filter: invert(100%); " src="../img/055-calendar-1.png" alt="">
                                     </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
-                                                <span class="sr-only">45% grow</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> grow </div>
-                                            <div class="status-number"> 45% </div>
-                                        </div>
+                                    <div class="details">
+                                        <div class="number"> <span id="consult" data-counter="counterup" data-value="0">0</span> </div>
+                                        <div class="desc"> Consultation(s) </div>
                                     </div>
+                                    <a class="more" href="javascript:;"> Afficher plus
+                                        <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
                                 </div>
                             </div>
+                            
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat2 ">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-purple-soft">
-                                                <span id="patients" data-counter="counterup" data-value="0">0</span>
-                                            </h3>
-                                            <small>Patient(s)</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-user"></i>
-                                        </div>
+                                <div class="dashboard-stat blue">
+                                    <div class="visual">
+                                         <img style="width:35px;filter: invert(100%); " src="../img/016-doctor-1.png" alt="">
                                     </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 57%;" class="progress-bar progress-bar-success purple-soft">
-                                                <span class="sr-only">56% change</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> change </div>
-                                            <div class="status-number"> 57% </div>
-                                        </div>
+                                    <div class="details">
+                                        <div class="number"><span id="patients" data-counter="counterup" data-value="0">0</span> </div>
+                                        <div class="desc"> Patient(s) </div>
                                     </div>
+                                    <a class="more" href="javascript:;"> Afficher plus
+                                        <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
                                 </div>
                             </div>
+
                         </div>
                         
                         <section class="row service_tab" style="background-color: white;">
@@ -224,37 +183,40 @@
       
                 <!-- Tab panes -->
                 <section class="col-md-12 col-sm-12 col-lg-12 row quick_blocks_row quick_blocks_row_home2 ">
-        <div class="col-md-12 col-sm-12 col-lg-12 ">
-            <div >
-                <div class="col-sm-4 quick_block emmergency">
-                    <div class=" m0 inner">
-                        <div class=" heading m0">
-                            <h5>Maintenance</h5>
-                            <h3>24/24 7/7</h3>
-                        </div>
-                        <a href="#">CONTACTEZ-NOUS MAINTENANT</a>
-                    </div>
-                </div>
-                <div class="col-sm-4 quick_block branches">
-                    <div class=" m0 inner">
-                        <div class=" heading m0">
-                            <h5>Documentation</h5>
-                            <h3>Manuelle d'utilisation </h3>
-                        </div>
-                        <a href="#">MEDPro Manuelle En Ligne</a>
-                    </div>
-                </div>
-                <div class="col-sm-4 quick_block bill_payments" >
-                    <div class=" m0 inner">
-                        <div class=" heading m0">
-                            <h5>med pro app</h5>
-                            <h3>pour tout médecin</h3>
-                        </div>
-                        <a href="#">Android /ios/windows phone</a>
-                    </div>
-                </div>
+
+
+<div class="cc-main home-panel">
+<div class="home-section-container home-how-container home-max-width" id="how">
+    <ul class="home-how-step-ul"> 
+        
+        <li class="col-sm-4" >
+            <div class="home-how-step-inner">
+            <div > <img style="width:150px; " src="../img/anim-ressources-bleu.gif" alt=""></div>
+            <p class="home-how-step-title"> Support </p>
+            <p class="home-how-step-desc">Bénéficiez en tout lieu et à toute heure d’une assistance technique et fonctionnelle.</p>
             </div>
-        </div>
+        </li>
+        
+        <li class="col-sm-4" >
+            <div class="home-how-step-inner">
+            <div > <img style="width:150px; " src="../img/anim-services-bleu.gif" alt=""></div>
+            <p class="home-how-step-title"> Services </p>
+            <p class="home-how-step-desc">Offrez-vous une nouvelle expérience utilisateur ,Une expérience de navigation nouvelle, une logique d’utilisation moderne et un usage adapté au tactile.</p>
+            </div>
+        </li>
+        
+        
+        
+        <li class="col-sm-4" >
+            <div class="home-how-step-inner">
+            <div > <img style="width:70px; " src="../img/Mymedapp.png" alt=""></div>
+            <p class="home-how-step-title"><span>Med Pro App</span> <small style=" font-size: 15px; "> (<a id="download">ANDROID</a>,<a>IOS</a>,<a>WindowsM</a>)</small></p>
+            <p class="home-how-step-desc">Une application mobile pour gérer le flux de demandes des patients en fonction de leur urgence, enregistrer des images et des comptes rendus sans quitter la table d’examen</p>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>
     </section>
                 </div>
          </section>

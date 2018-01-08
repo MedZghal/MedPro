@@ -83,13 +83,19 @@ function remplir_Gouvernorat(data){
 
 function remplir_Medicament(data){
     
-    var select_html="";
-    select_html+="<option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez </option>";
-    $.each(data , function(i){
-        select_html+="<option value='"+data[i].numMedic+"'>&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].desgMedic+"</option>";
-    });
+       $('[name="group-c[0][medic]"]').select2({
+            data :data,
+            placeholder: "Sélectionnez Un Médicament ",
+            width: '100%'
+        });
     
-    $('[name="group-c[0][medic]"]').empty().append(select_html);
+//    var select_html="";
+//    select_html+="<option value>&nbsp;&nbsp;&nbsp;&nbsp;sélectionnez </option>";
+//    $.each(data , function(i){
+//        select_html+="<option value='"+data[i].numMedic+"'>&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].desgMedic+"</option>";
+//    });
+//    
+//    $('[name="group-c[0][medic]"]').empty().append(select_html);
     
 }
 

@@ -14,10 +14,18 @@ $(function(){
             var ville =GetListVilleDistinct();
             remplir_VILLE(ville);
 
-            var Medic =GetListMedicament();
-            remplir_Medicament(Medic);
+            var Medic = GetListMedicament();
+            var medics=[];
+            $.each(Medic , function (i){
+                medics.push({
+                    id: Medic[i].numMedic,
+                    text:Medic[i].desgMedic
+                });
+            });
+            
+            
             $("#codecnam").inputmask({"mask": "99/99999999/99"});
-            $("#ident_unique").inputmask({"mask": "99/99999999/99"});
+            $("#ident_unique").inputmask({"mask": "99999999/99"});
             
             
 /*commande*/
@@ -184,7 +192,7 @@ $(function(){
 
                                    if($("#collapse_2").hasClass('in')){
                                            CptAssurCnam = GetCptParamByCode("CptAssurCnam");   
-                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),$("#ident_unique").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),""),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
+                                           Err = AjAssuranceCNAM($("#regime_affi").val(),$("#qualite").val(),format8_2($("#ident_unique").val().toString().split(' ')[0].replace(new RegExp('/', 'g'),"")),$("#rang_Assur").val(),$("#date_valid_cnam").val(),$("#type_cnam").val(),$("#medfamille").val(),$("#codecnam").val());
                                        }
                                        else
                                            Err="true";
@@ -308,10 +316,16 @@ $(function(){
              
              });
              
-            $('.mt-repeater').each(function(){
+            $('.mt-repeater').each(function(i){
                             $(this).repeater({
-                                    show: function () {
-                                            $(this).slideDown();
+                                show: function () {
+                                        $(this).slideDown();
+                                        $(this).find('[name="group-c['+ (++i) +'][medic]"]').select2({
+                                            data :medics,
+                                            placeholder: "Sélectionnez Un Médicament ",
+                                            width: '100%'
+                                        });
+                                        
 
                                 },
 
@@ -340,12 +354,12 @@ $(function(){
                                 },
 
                                 ready: function (setIndexes) {
-
                                 }
 
                             });
                     });
-                    
+            remplir_Medicament(medics);
+            
             $("#reset").click(function (){
                          if(localStorage.getItem('Consultation')==="true")
                          {
@@ -400,7 +414,7 @@ $(function(){
                                 $("#collapse_2").removeAttr('style');
                                 CptAssurCnam=patient.assurCnam.numAssur;
                                 $('#regime_affi').val(patient.assurCnam.regimeAffi);
-                                $('#ident_unique').val(patient.assurCnam.identUnique);
+                                $('#ident_unique').val(format8_2(patient.assurCnam.identUnique));
                                 $('#qualite').val(patient.assurCnam.qualite);
                                 $('#medfamille').val(patient.assurCnam.nomMedc);
                                 $('#codecnam').val(patient.assurCnam.codCnam);
@@ -423,7 +437,7 @@ $(function(){
                                 $('#date_valid_apci').val(VerifDateDD_MM_YYYY(D_valid_apci));
 
                                     $.each(TraitmentApci,function(i){
-                                            $("[name='group-c["+i+"][medic]']").val(TraitmentApci[i].medicament.numMedic);
+                                            $("select[name='group-c["+i+"][medic]']").val(TraitmentApci[i].medicament.numMedic).trigger("change");;
                                             var TraApciDescp =TraitmentApci[i].description.toString().split(' ');
 
                                             $("[name='group-c["+i+"][p1]']").val(TraApciDescp[0].trim());
@@ -444,6 +458,10 @@ $(function(){
                             }
                         }else
                             $("#fichelog").attr("src","../img/useradd.png");
+                        
+                        
+                        
+                        
               
 /*end*/
 });

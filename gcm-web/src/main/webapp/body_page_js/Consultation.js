@@ -283,7 +283,7 @@ $(function(){
             tree(patient,age) ; 
              /***cnam ***/
              if(patient.assurCnam !== null){
-                 $("#cnam").append('<img src="../img/cnam.png" style="width: 28px;" alt="cardiogram"> : <label id="id" class="label label-primary uppercase" >'+patient.assurCnam.identUnique+'</label> ');
+                 $("#cnam").append('<img src="../img/cnam.png" style="width: 28px;" alt="cardiogram"> : <label id="id" class="label label-primary uppercase" >'+format8_2(patient.assurCnam.identUnique.toString())+'</label> ');
                  var htmlbody='* Numero Asuurance : '+patient.assurCnam.numAssur;
                  $("#cnam").attr("data-content",htmlbody);
                  $("#cnam").attr("data-content",htmlbody);

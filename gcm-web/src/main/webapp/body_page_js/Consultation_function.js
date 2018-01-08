@@ -49,7 +49,7 @@ function tree(patient,age) {
                             },
                             "children": [
                                  {
-                                    "text": "Ident-Unique : "+patient.assurCnam.identUnique,
+                                    "text": "Ident-Unique : "+ format8_2(patient.assurCnam.identUnique.toString()),
                                     "icon": '../img/cnam-tree.png'
                                 }, {
                                     "text": "Qualite : "+patient.assurCnam.qualite ,

@@ -101,7 +101,7 @@
                                         <div class="number">
                                             <span id="nbconsult" data-counter="counterup" data-value="0">0</span>
                                         </div>
-                                        <div class="desc"> Nombre de Consultation </div>
+                                        <div class="desc"> Nombre de Consultations </div>
                                     </div>
                                 </a>
                             </div>

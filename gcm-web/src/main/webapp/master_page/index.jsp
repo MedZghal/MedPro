@@ -76,7 +76,7 @@
                                     <li class="external" style=" margin-top: -5px; ">
                                         <h3>
                                             <span class="bold"> Notes</span> &nbsp;</h3>
-                                        <a href="#">Voir tout</a>
+                                        <a href="javascript:toggleMenuRight();">Voir tout</a>
                                     </li>
                                     <li>
                                         <ul class="dropdown-menu-list scroller" id="ListeNotesMsg" style="height: 275px;" data-handle-color="#637283">
@@ -151,7 +151,7 @@
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="javascript:;" class="dropdown-toggle">
+                                <a id="rightmenutoggle" class="dropdown-toggle">
                                     <i class="icon-logout"></i>
                                 </a>
                             </li>
@@ -467,7 +467,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:;" onclick="toggleChat();" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Notes
+                                <a id="chatNotes" onclick="toggleChat();" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Notes
                                     <span id='nblisteNotes' class="badge badge-danger">0</span>
                                 </a>
                             </li>
@@ -517,7 +517,7 @@
                                         </div>
                                         <div class="page-quick-sidebar-chat-user-form">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Type a message here...">
+                                                <input type="text" class="form-control" placeholder="Tapez un message ici ...">
                                                 <div class="input-group-btn">
                                                     <button type="button" class="btn green">
                                                         <i class="icon-paper-clip"></i>
@@ -1384,7 +1384,10 @@
                           </ul>
                         </li>
                 </ul>
-
+    <!-- Notification sound -->
+    <div class="hide">
+            <p><audio src="sound/notification.mp3" controls id="NotificationSound"></audio></p>
+          </div>
        <jsp:include page="../body_page/js_declare.jsp"/>
         
         <script src="../js/plugin/other-plugin/mymenu.js"></script>

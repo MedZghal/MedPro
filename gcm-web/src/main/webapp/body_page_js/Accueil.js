@@ -57,7 +57,10 @@ $(function (){
    $("#Patient").click(function (){
       window.location.href="Patient.jsp"; 
    });
-   
+   $('#download').click(function(e) {
+        e.preventDefault();  //stop the browser from following
+        window.location.href = '../assets/Download/MedProApp.apk';
+    });
    $("#rdvs").click(function (){
       window.location.href="Rdv.jsp"; 
    });

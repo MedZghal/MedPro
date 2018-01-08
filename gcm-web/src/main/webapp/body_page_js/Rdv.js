@@ -47,7 +47,7 @@ $(function() {
             scheduler.config.readonly_form = true;
         
             var patients=[];
-            patients.push({key:"0", label:""});
+           // patients.push({key:"0", label:""});
             $.each(listePatient, function (i){
                 patients.push({key:listePatient[i].prenom+" "+listePatient[i].nom+" ("+listePatient[i].numFichPatient+")", label: listePatient[i].prenom+" "+listePatient[i].nom+" ("+listePatient[i].numFichPatient+")"});
             });
@@ -163,18 +163,21 @@ $(function() {
         
     $(document).on('change', '[name="radiobutton"]', function (e) {
             var type =$(e.currentTarget)[0].value;
-            if(type.toString() ==="Personnel" ||type.toString() ==="Séminaire")
+            if(type.toString() ==="Personnel" || type.toString() ==="Séminaire")
                 $(document).find('.select2-bootstrap-append').attr("disabled",true);
             else
                 $(document).find('.select2-bootstrap-append').attr("disabled",false);
+            $(document).find('.select2-bootstrap-append').val('').trigger('change');
         });
 
     scheduler.attachEvent("onLightbox", function (){
             $(document).find('.select2-bootstrap-append').select2({
+                placeholder: "Sélectionnez Un Patient ",
                 dropdownAutoWidth: true,
                 width: "100%"
             });
             $(document).find('.select2-bootstrap-append').attr("disabled",true);
+            $(document).find('.select2-bootstrap-append').val('').trigger('change');
             
     });
     

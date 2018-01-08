@@ -732,7 +732,7 @@
                                                                                                                                         </select>
                                                                                                                                     </div>
                                                                                                                                 
-                                                                                                                                    <div class="col-md-1">
+                                                                                                                                    <div class="col-md-1" style=" margin-top: -7px; ">
                                                                                                                                         <a id="SuppMedic" href="javascript:;" data-repeater-delete="" class="btn btn-danger mt-repeater-delete">
                                                                                                                                             <i class="fa fa-close"></i>
                                                                                                                                         </a>

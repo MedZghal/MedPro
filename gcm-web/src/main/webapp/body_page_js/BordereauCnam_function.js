@@ -79,7 +79,7 @@ function GetPrintBC()
     var dateEnd = $("#datedebutf").val();
     var medecin ="Dr."+paramater.prenomMedecin+" "+paramater.nomMedecin;
     var ch =paramater.codeConvent.toString();
-    var codeConv = format2_8_2(ch);
+    var codeConv = format8_2(ch);
     
     var html ='<embed width="100%" height="750px" name="plugin" id="plugin" src="/'+GetUrl()+'/gcm-web/BordereauCnam?codeMed='+paramater.codeMedTrit.codeMedTrit+'&amp;dateStart='+dateStart+'&amp;dateEnd='+dateEnd+'&amp;codeConv='+codeConv+'&amp;medecin='+medecin+'" type="application/pdf" internalinstanceid="96">';
     $('#firebrtxt')[0].click();
@@ -282,7 +282,7 @@ function createBackGridRecetteCnam(d1,d2) {
                 this.$el.empty();
                 var caisse =this.model.get("numConsult").numPatient.assurCnam.identUnique;
                 
-                    this.$el.html('<strong>'+format2_8_2(caisse.toString())+'</strong>');
+                    this.$el.html('<strong>N° '+caisse.toString()+'</strong>');
                 return this;
             }
            })

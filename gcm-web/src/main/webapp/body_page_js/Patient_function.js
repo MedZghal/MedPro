@@ -224,7 +224,7 @@ function createBackGrid() {
                     var assurCNAM =this.model.get("assurCnam");
                     this.$el.empty();
                     if(assurCNAM !== null)
-                        this.$el.append("N° "+assurCNAM.identUnique.toString().substr(0,2)+'/'+assurCNAM.identUnique.toString().substr(2,8)+'/'+assurCNAM.identUnique.toString().substr(8,2));
+                        this.$el.append("N° "+assurCNAM.identUnique.toString());
                     else
                         this.$el.append("");
 
@@ -805,10 +805,10 @@ function createBackGridDossierPar() {
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.StringCell.extend({
                    render: function (e) {
-                    var assurCnam =this.model.get("assurCnam");
+                    var assurCNAM =this.model.get("assurCnam");
                     this.$el.empty();
-                    if(assurCnam !== null)
-                        this.$el.append("N° "+assurCnam.identUnique);
+                    if(assurCNAM !== null)
+                         this.$el.append("N° "+assurCNAM.identUnique.toString());
                     else
                         this.$el.append("");
 
@@ -1346,10 +1346,10 @@ function createBackGridDossierPar() {
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like id above, or a string
             cell: Backgrid.StringCell.extend({
                    render: function (e) {
-                    var assurCnam =this.model.get("numPatient").assurCnam;
+                    var assurCNAM =this.model.get("numPatient").assurCnam;
                     this.$el.empty();
-                    if(assurCnam !== null)
-                        this.$el.append("N° "+assurCnam.identUnique);
+                    if(assurCNAM !== null)
+                         this.$el.append("N° "+ assurCNAM.identUnique.toString());
                     else
                         this.$el.append("");
 

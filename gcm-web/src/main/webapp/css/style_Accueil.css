@@ -124,32 +124,31 @@ section.row, header.row, footer.row {
   display: none;
 }
 .quick_blocks_row.quick_blocks_row_home2 {
-  margin-top: -40px;
-  margin-left: -15px;
+  margin-top: -90px;
+  /*margin-left: -15px;*/
   z-index: 2;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 }
 .quick_block .inner {
   padding: 30px;
 }
-.quick_block .inner .heading {
+/*.quick_block .inner .heading {
   text-transform: uppercase;
   color: #fff;
-}
+}*/
 .quick_block .inner .heading h5 {
+    font-weight: bolder;
   margin: 0;
   /*font-family: 'Lato', sans-serif;*/
-  font-weight: 300;
   font-size: 14px;
   line-height: 1;
 }
 .quick_block .inner .heading h3 {
-  margin-top: 5px;
-  margin-bottom: 20px;
-  /*font-family: 'Lato', sans-serif;*/
-  font-weight: bold;
-  font-size: 21px;
-  line-height: 1;
+    font-weight: bolder;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 18px;
+    line-height: 1;
 }
 .quick_block .inner p {
   margin-bottom: 25px;

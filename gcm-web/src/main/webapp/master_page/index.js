@@ -94,19 +94,19 @@ var Soket ={
                                         incriBadge("#nbNotesMsg");
                                         addListeNotesMsg(JSON.parse(notification.body).content);
                                     });
+                                    
                                     stompClient.subscribe('/user/queue/chatRecive', function(notification) {
                                         incriBadge("#nblisteNotes");
                                         var html="";
-                                        console.log(JSON.parse(notification.body).user.toString());
-                                        console.log(Utilisateur.user.toString());
+                                        
                                         var Secretaire =JSON.parse(localStorage.getItem("Secretaire"));
                                         if(JSON.parse(notification.body).user.toString() !== Utilisateur.user.toString())
                                         {
                                             html='<div class="post in">';
                                             if(Object.keys(Secretaire).length>0)
-                                                html+='<img class="avatar" src="../img/avatars/nurse.png" alt="...">';
-                                            else
                                                 html+=' <img class="avatar" src="../img/avatars/doctor-.png" alt="...">';
+                                            else
+                                                html+='<img class="avatar" src="../img/avatars/nurse.png" alt="...">';
                                             html+=' <div class="message">'+
                                                         '<span class="arrow"></span>'+
                                                         '<a href="javascript:;" class="name"> '+JSON.parse(notification.body).user +' </a>'+
@@ -765,7 +765,8 @@ function RefreshListeAttente(){
         addListeAttendeWS(listeAttente);
 }
 function toggleChat(){
-    window.parent.$("#quick_sidebar_tab_2").toggleClass("page-quick-sidebar-content-item-shown");
+    if(!window.parent.$("#quick_sidebar_tab_2").hasClass("page-quick-sidebar-content-item-shown"))
+        window.parent.$("#quick_sidebar_tab_2").toggleClass("page-quick-sidebar-content-item-shown");
 }
 function togglePatient(){
     window.parent.$("#quick_sidebar_tab_1")[0].click;
@@ -835,23 +836,39 @@ function addListeDossierPar(DossierPar){
 }
 
 function addListeNotesMsg(NotMsg){
+    var Secretaire =JSON.parse(localStorage.getItem("Secretaire"));
     var Notificaton="";
     var patientNum="",patientNomPrm="", note ="";
     var tab =NotMsg.toString().split(':');
     patientNum=tab[0];
     patientNomPrm=tab[1];
     note=tab[2];
-    Notificaton+='<li><a style=" margin-top: -10px; padding-bottom: 5px; " href="#">';
+    
+    Notificaton+='<li href="javascript:toggleMenuRight();"><a style=" margin-top: -10px; padding-bottom: 5px; " href="#">';
     Notificaton+='<span style=" margin-left: -10px; " class="photo">';
-    Notificaton+='<img src="../img/task-notes-icon.png" class="img-circle" alt=""> </span>';
+    if(Object.keys(Secretaire).length>0)
+        Notificaton+=' <img style=" height: 47px; " class="avatar" src="../img/avatars/doctor-.png" alt="...">';
+    else
+        Notificaton+='<img class="avatar" src="../img/avatars/nurse.png" alt="...">';
+    Notificaton+='</span>';
     Notificaton+='<span style=" margin-left: 34px; " class="subject">';
-    Notificaton+='<span  class="from"><div style=" word-wrap: break-word; width: 150px;" >Note Pour Patient '+patientNomPrm+' <small>N° '+patientNum+'</small></div></span>';                                          
-    Notificaton+='<span style=" margin-top: -40px;" class="time">'+heure()+'</span></span>';                                       
+    
+    if(patientNum !== "")
+        Notificaton+='<span  class="from"><div style=" word-wrap: break-word; width: 150px;" >Note Pour Patient '+patientNomPrm+' <small>N° '+patientNum+'</small></div></span>';
+    else
+        Notificaton+='<span  class="from"><div style=" word-wrap: break-word; width: 150px;" > Notification de messange !! </div></span>';
+         
+    Notificaton+='<span style=" margin-top: -40px;" class="time">'+heure()+'</span></span>'; 
     Notificaton+='<span style=" word-wrap: break-word; width: 200px;margin-left: 34px;" class="message"><b>Note</b>:'+note+'</span></a></li>';                                        
     
     
     window.parent.$("#ListeNotesMsg").append(Notificaton);
-                                        
+    window.parent.$("#NotificationSound")[0].play();                                    
+}
+
+function toggleMenuRight(){
+    $('#rightmenutoggle')[0].click();
+    $('#chatNotes')[0].click();
 }
 
 function GetListUtilisateur()
@@ -3367,7 +3384,18 @@ function BuildCourbeConsult(Consults ,containerPouls,containerTEMP,containerPOID
 function format2_8_2(ch){
     return ch.substr(0,2)+"/"+ch.substr(2,8)+"/"+ch.substr(8,2);
 }
+
+function format8_2(ch){
+    var length =ch.toString().replace(/_/gi, '').length;
+    console.log(ch +"  "+length);
+    var txt ="";
+    if (length <10)
+        for( i=0 ; i<10 -length ;i++)
+            txt+="0";
+    ch=txt+ch;
     
+    return ch.substr(0,8)+"/"+ch.substr(8,2);
+}
 
 // Extract some information from the cookies
 function showMeYourCookies(title) {

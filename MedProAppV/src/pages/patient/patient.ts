@@ -51,6 +51,10 @@ export class PatientPage {
     //this.showAlert("Soket", "toast");
   }
 
+  callChat() {
+    this.navCtrl.push(ChatRoomPage_,{patient:null,param:this.parameters});
+  }
+
     callConsult(num_patient) {
       this.navCtrl.push(ConsultPage,num_patient);
     }

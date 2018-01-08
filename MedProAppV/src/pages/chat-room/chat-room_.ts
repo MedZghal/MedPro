@@ -10,7 +10,6 @@ import { Http, Headers, RequestOptions,URLSearchParams } from '@angular/http';
   templateUrl: 'chat-room.html'
 })
 export class ChatRoomPage_ {
-  private subscription : any;
   parameters:any = [];
   public utilisateurs:any = [];
   messages = [];
@@ -22,11 +21,12 @@ export class ChatRoomPage_ {
 
   constructor( private http: Http,private navCtrl: NavController, private navParams: NavParams, private stomp: StompService, private toastCtrl: ToastController) {
     this.patient = this.navParams.get('patient');
+    if(this.patient != null)
+      this.nickname = this.patient.numFichPatient;
+
     this.parameters = this.navParams.get('param');
-    console.log(this.parameters);
     this.code_Med_Trit = this.navParams.get('param').codeMedTrit;
     this.username = this.navParams.get('param').username;
-    this.nickname = this.patient.numFichPatient;
     this.chargeListUtilisateur(this.code_Med_Trit);
 
     // start connection
@@ -70,15 +70,19 @@ export class ChatRoomPage_ {
   };
 
 
-  sendMessage(user) {
+  sendMessage(user,msgs) {
     var headers = new Headers();
     // Website you wish to allow to connect
     headers.append('Content-Type','application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers, withCredentials: true  });
-
-    let msg =this.patient.numFichPatient+':'+this.patient.prenom+' '+this.patient.nom+':'+this.message;
+    let msg ='';
+    if(this.patient != null)
+      msg = this.patient.numFichPatient+':'+this.patient.prenom+' '+this.patient.nom+':'+msgs;
+    else
+      msg = '::'+msgs;
     let urlSearchParams = new URLSearchParams();
-    urlSearchParams.append('msg',this.message);
+
+    urlSearchParams.append('msg',msgs);
     urlSearchParams.append('user', user);
 
     let urlSearchParams_ = new URLSearchParams();
@@ -136,8 +140,9 @@ export class ChatRoomPage_ {
   }
 
   public sendMessages(){
+    let ms =this.message;
     for(let user of this.utilisateurs){
-      this.sendMessage(user.username);
+      this.sendMessage(user.username,ms);
     }
   }
   ionViewWillLeave() {

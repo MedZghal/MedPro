@@ -1,0 +1,528 @@
+
+<ion-header>
+  <ion-navbar hideBackButton  class="nav-transparent" color="primary">
+    <ion-title>
+
+      <ion-avatar item-left style="width: 25px;margin-bottom: -23px;margin-left: -11px;">
+        <img  src="{{ImgProfile(patient.patient.datenaiss,patient.patient.sexe)}}">
+      </ion-avatar>
+      <span style=" margin-left: 17px; ">PATIENT N°{{patient.patient.numFichPatient}}</span>
+    </ion-title>
+    <span>
+      <span  text-uppercase style="color: white;margin-left: 30px;">{{patient.patient.prenom}} {{patient.patient.nom}}
+        <ion-badge><small>{{getAge(patient.patient.datenaiss)}}Ans</small></ion-badge>
+      </span>
+    </span>
+    <ion-segment style=" width: 100%;">
+
+      <ion-segment-button style="margin-left: -7px;" (click)="callConsult(patient.patient)" value="Archive">
+        <img style=" margin-bottom: -7px;width: 28px;" src="./assets/img/medical-history.png"> <span> Archive </span>
+      </ion-segment-button>
+
+      <ion-segment-button value="Rendez-Vous" (click)="callrdv(patient.patient.numFichPatient)" >
+        <img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/event.png"><span> Rdv </span>
+      </ion-segment-button>
+
+      <ion-segment-button value="Piece" (click)="callPiece(patient.patient)" >
+        <img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/attachment.png"> <span>Piece Jointe</span>
+      </ion-segment-button>
+
+      <ion-segment-button value="Notes" (click)="callChat(patient.patient)" >
+        <img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/chat.png"> <span> Notes</span>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+
+  <ion-fab top right class="toptop">
+    <button ion-fab mini round icon-only color="primary">
+      <ion-icon name="share-alt" class="text-white"></ion-icon>
+    </button>
+    <ion-fab-list>
+      <button ion-fab class="btn-facebook text-white" (click)="dismiss()"><ion-icon name="log-out"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-header>
+
+<!--<ion-header>-->
+  <!--<ion-toolbar style="height: auto;">-->
+    <!--<ion-title>-->
+
+      <!--<ion-avatar item-left style="width: 25px;margin-bottom: -23px;margin-left: -11px;">-->
+        <!--<img  src="{{ImgProfile(patient.patient.datenaiss,patient.patient.sexe)}}">-->
+      <!--</ion-avatar>-->
+      <!--<span style=" margin-left: 17px; ">PATIENT N°{{patient.patient.numFichPatient}}</span>-->
+    <!--</ion-title>-->
+    <!--<span>-->
+      <!--<span  text-uppercase style="color: white;margin-left: 30px;">{{patient.patient.prenom}} {{patient.patient.nom}}-->
+        <!--<ion-badge><small>{{getAge(patient.patient.datenaiss)}}Ans</small></ion-badge>-->
+      <!--</span>-->
+    <!--</span>-->
+    <!--<ion-buttons start style=" margin-top: -50px; ">-->
+      <!--<button ion-button (click)="dismiss()">-->
+        <!--<span color="primary" showWhen="ios">Cancel</span>-->
+        <!--<ion-icon name="md-close" showWhen="android,windows"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+    <!--<ion-segment style=" width: 111%;">-->
+      <!--<ion-segment-button style="margin-left: -7px;" (click)="callConsult()" value="Archive">-->
+        <!--<img style=" margin-bottom: -7px;width: 28px;" src="./assets/img/medical-history.png"> <span> Archive </span>-->
+      <!--</ion-segment-button>-->
+      <!--<ion-segment-button value="Rendez-Vous" (click)="callrdv(patient.numFichPatient)" >-->
+        <!--<img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/event.png"><span> Rendez-Vous</span>-->
+      <!--</ion-segment-button>-->
+      <!--<ion-segment-button value="Notes" (click)="callChat(patient)" >-->
+        <!--<img style=" margin-bottom: -7px;width: 28px; " src="./assets/img/chat.png"> <span> Notes</span>-->
+      <!--</ion-segment-button>-->
+    <!--</ion-segment>-->
+  <!--</ion-toolbar>-->
+
+
+
+<!--</ion-header>-->
+
+<ion-content class="hotel-detail">
+
+  <!--services-->
+  <ion-grid class="border-bottom detail-bg" style="margin-top: 100px;">
+    <ion-row>
+      <ion-col  text-center>
+        <ion-icon class="text-2x" name="medproicons-thermometer" color="primary"></ion-icon>
+        <span class="service-name" ion-text color="primary">Température</span>
+      </ion-col>
+      <ion-col  text-center>
+        <ion-icon class="text-2x" name="medproicons-rdv" color="primary"></ion-icon>
+        <span class="service-name" ion-text color="primary">Rendez_Vous</span>
+      </ion-col>
+      <ion-col  text-center>
+        <ion-icon class="text-2x" name="medproicons-health" color="primary"></ion-icon>
+        <span class="service-name" ion-text color="primary">Détails</span>
+      </ion-col>
+      <ion-col  text-center>
+        <ion-icon class="text-2x" name="medproicons-Antecedants" color="primary"></ion-icon>
+        <span class="service-name" ion-text color="primary">Antécedants</span>
+      </ion-col>
+      <ion-col  text-center>
+        <ion-icon class="text-2x" name="medproicons-apci" color="primary"></ion-icon>
+        <span class="service-name" ion-text color="primary">APCI</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!--<div class="border-bottom" padding>-->
+    <!--<ion-badge><span> Détails Patient  </span></ion-badge>-->
+    <!--<div >-->
+      <!--<ion-icon name="checkmark" class="text-green"></ion-icon>-->
+      <!--<span ion-text color="dark">All rooms include free wifi internet</span>-->
+    <!--</div>-->
+  <!--</div>-->
+<!---->
+  <!--Détails Patient-->
+  <div class="rooms">
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge><span> Détails Patient  </span></ion-badge>
+            </div>
+            <!--<div class="pull-right">-->
+            <!--<span class="bold" ion-text color="primary"> room.price </span>-->
+            <!--<span ion-text color="primary">/night</span>-->
+            <!--</div>-->
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                <ion-icon name="medproicons-health" item-left color="primary"></ion-icon>
+                <div>
+                  <p> <b>Date de Naissance :</b> {{to_DatesTRING(patient.patient.datenaiss)}}</p>
+                  <p><b>Numéro Fixe : </b>{{patient.patient.fixe}}</p>
+                  <p><b>Numéro Gsm : </b>{{patient.patient.gsm}}</p>
+                  <p><b>Poids (Kg) : </b>{{patient.patient.poids}} Kg</p>
+                  <p><b>Situation familiale : </b>{{patient.patient.sutFam}} </p>
+                  <p><b>Profession : </b>{{patient.patient.profession}} </p>
+                  <p><b>Adresee : </b>{{patient.patient.adresse}} </p>
+                </div>
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary">  Détails Patient </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+<!--Motifs de Consultation-->
+  <div class="rooms">
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge><span> Motifs de Consultation </span></ion-badge>
+            </div>
+            <!--<div class="pull-right">-->
+              <!--<span class="bold" ion-text color="primary"> room.price </span>-->
+              <!--<span ion-text color="primary">/night</span>-->
+            <!--</div>-->
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                <ion-icon name="medproicons-healths" item-left color="primary"></ion-icon>
+                <div>
+                    <p *ngFor="let motif of UpdateConsult.motifConsultCollection">
+                      <b>{{motif.motif.libelle}}</b>
+                    </p>
+                </div>
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary">  Motifs de Consultation </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!--Signes Vitaux-->
+  <div class="rooms">
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge><span> Signes Vitaux </span></ion-badge>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                <ion-icon name="medproicons-heart" item-left color="primary"></ion-icon>
+                <div>
+                  <p *ngIf="Examen.temp != '' "><b>Température : </b>
+                    {{Examen.temp}} °C Le {{to_DatesTRING(UpdateConsult.dateConsult)}}
+                  </p>
+                  <p *ngIf="Examen.pouls != '' "><b>pouls : </b>{{Examen.pouls}} bqM</p>
+                  <p *ngIf="Examen.ta != '' "><b>T.A : </b>{{Examen.ta}}</p>
+                  <p *ngIf="Examen.airesGangl != '' "><b>les détails de l'aires Ganglison-naires : </b>{{Examen.airesGangl}}</p>
+                  <p *ngIf="Examen.auscuCardi != '' "><b>les Détails de l'ausculation Caradiaque : </b>{{Examen.auscuCardi}}</p>
+                  <p *ngIf="Examen.auscuPleuro != '' "><b>les détails de l'ausculation Pleuro-plumonaire : </b>{{Examen.auscuPleuro}}</p>
+                  <p *ngIf="Examen.etatGeneral != '' "><b>les détails de l'etat Général : </b>{{Examen.etatGeneral}}</p>
+                  <p *ngIf="Examen.examenAbdominal != '' "><b>les détails de l'examen Abdominal : </b>{{Examen.examenAbdominal}}</p>
+                  <p *ngIf="Examen.examPhy != '' "><b>les Détails de l'examen physique : </b>{{Examen.examPhy}}</p>
+                  <p *ngIf="Examen.examenORL != '' "><b>les Détails de l'examen ORL : </b>{{Examen.examenORL}}</p>
+                </div>
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary">  Signes Vitaux </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--Antécedants-->
+  <div class="rooms">
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge><span> Antécedants </span></ion-badge>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                  <ion-icon name="medproicons-Antecedants" item-left color="primary"></ion-icon>
+
+                    <div>
+                      <ion-icon *ngIf="antecedentsCH.length == 0; else other_content" name="ios-close-circle-outline" color="danger"></ion-icon>
+                      <ng-template #other_content>
+                        <ion-icon name="checkmark" class="text-green"></ion-icon>
+                      </ng-template>
+                      <span>Traitements Chirurgicaux</span>
+                    </div>
+                    <div>
+                      <ion-icon *ngIf="antecedentsM.length == 0; else other_content" name="ios-close-circle-outline" color="danger"></ion-icon>
+                      <ng-template #other_content>
+                        <ion-icon name="checkmark" class="text-green"></ion-icon>
+                      </ng-template>
+                      <span>Traitements Médicaux</span>
+                    </div>
+                    <div>
+                      <ion-icon *ngIf="antecedentsF.length == 0; else other_content" name="ios-close-circle-outline" color="danger"></ion-icon>
+                      <ng-template #other_content>
+                        <ion-icon name="checkmark" class="text-green"></ion-icon>
+                      </ng-template>
+                      <span>Traitements Familiaux</span>
+                    </div>
+                    <div>
+
+                      <ion-icon *ngIf="antecedentsA.length == 0; else other_content" name="ios-close-circle-outline" color="danger"></ion-icon>
+                      <ng-template #other_content>
+                        <ion-icon name="checkmark" class="text-green"></ion-icon>
+                      </ng-template>
+
+                      <span>Traitements Allergies</span>
+                    </div>
+
+
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary">
+
+            <ion-item-group *ngIf="antecedentsCH.length > 0">
+              <ion-item-divider style=" font-style: oblique; ">
+                Traitements Chirurgicaux
+              </ion-item-divider>
+
+              <ion-item *ngFor="let ant of antecedentsCH">
+                <ion-icon style=" margin-left: -18px; margin-right: -15px; " name="medproicons-syringe" color="primary" item-start></ion-icon>
+                {{ant.descripAntced}}
+              </ion-item>
+            </ion-item-group>
+            <ion-item-group *ngIf="antecedentsM.length > 0">
+              <ion-item-divider style=" font-style: oblique; ">
+                Traitements Médicaux
+              </ion-item-divider>
+              <ion-item *ngFor="let ant of antecedentsM">
+                <ion-icon style=" margin-left: -18px; margin-right: -15px; " name="medproicons-syringe2" color="primary" item-start></ion-icon>
+                {{ant.descripAntced}}
+              </ion-item>
+            </ion-item-group>
+            <ion-item-group *ngIf="antecedentsF.length > 0">
+              <ion-item-divider style=" font-style: oblique; ">
+                Traitements Familiaux
+              </ion-item-divider>
+              <ion-item *ngFor="let ant of antecedentsF">
+                <ion-icon style=" margin-left: -18px; margin-right: -15px; " name="medproicons-stethoscope" color="primary" item-start></ion-icon>
+                {{ant.descripAntced}}
+              </ion-item>
+            </ion-item-group>
+            <ion-item-group *ngIf="antecedentsA.length > 0">
+              <ion-item-divider style=" font-style: oblique; ">
+                Traitements Allergies
+              </ion-item-divider>
+              <ion-item *ngFor="let ant of antecedentsA">
+                <ion-icon style=" margin-left: -18px; margin-right: -15px; " name="medproicons-transfusion" color="primary" item-start></ion-icon>
+                {{ant.descripAntced}}
+              </ion-item>
+            </ion-item-group>
+
+          </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--CNAM-->
+  <div class="rooms" *ngIf="patient.patient.assurCnam != null">
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge>CNAM <small>N°{{patient.patient.assurCnam.numAssur}}</small></ion-badge>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                <ion-icon name="medproicons-cnam" style=" font-size: 3em; " item-left color="primary"></ion-icon>
+
+                  <div  *ngIf="patient.patient.assurCnam != null">
+                    <p><b> Code CNAM : </b>{{patient.patient.assurCnam.codCnam}}</p>
+                    <p><b> Date de Validation : </b>{{to_DatesTRING(patient.patient.assurCnam.dateValid)}}</p>
+                    <p><b>Ident_unique : </b>{{patient.patient.assurCnam.identUnique}}</p>
+                    <p><b>Qualite : </b>{{patient.patient.assurCnam.qualite}}</p>
+                    <p><b>Rang_Assur : </b>{{patient.patient.assurCnam.rangAssur}}</p>
+                    <p><b>Regime_affi : </b>{{patient.patient.assurCnam.regimeAffi}}</p>
+                    <p><b>Type : </b>{{patient.patient.assurCnam.type}} </p>
+                  </div>
+
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary"> détails CNAM </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--APCI-->
+  <div class="rooms" >
+    <div class="border-bottom detail-bg" padding >
+      <div class="room-info card" >
+        <div class="border-bottom" padding>
+          <div>
+            <div class="pull-left">
+              <ion-badge> Traitement APCI </ion-badge>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="room-features">
+            <div class="pull-left">
+              <ion-item class="no-border">
+                <ion-icon name="medproicons-stethoscope"  item-left color="primary"></ion-icon>
+
+                <div  *ngIf="patient.patient.codeApci != ''">
+                  <p> <b>Code APCI :</b> {{patient.patient.codeApci}}</p>
+                  <p><b> Date de Validation : </b>{{to_DatesTRING(patient.patient.datenaiss)}}</p>
+                  <p><b> Type : </b>{{patient.patient.typeApci}}</p>
+                </div>
+
+              </ion-item>
+            </div>
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div padding>
+          <span ion-text color="primary" class="bold">Plus de détails</span>
+          <span class="pull-right" [hidden]="openUl" tappable (click)="openUl = true">
+            <ion-icon name="ios-arrow-down" color="primary"></ion-icon>
+          </span>
+          <p  ion-text [hidden]="!openUl"  color="primary">
+            <!--<ion-grid class="border-bottom detail-bg">-->
+              <!--<ion-row>-->
+                <!--<ion-col  text-center>-->
+                  <!--<ion-icon class="text-2x" name="medproicons-thermometer" color="primary"></ion-icon>-->
+                  <!--<span class="service-name" ion-text color="primary">numActe</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<ion-icon class="text-2x" name="medproicons-rdv" color="primary"></ion-icon>-->
+                  <!--<span class="service-name" ion-text color="primary">libelle</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<ion-icon class="text-2x" name="medproicons-Antecedants" color="primary"></ion-icon>-->
+                  <!--<span class="service-name" ion-text color="primary">tiketModer</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<ion-icon class="text-2x" name="medproicons-apci" color="primary"></ion-icon>-->
+                  <!--<span class="service-name" ion-text color="primary">montant</span>-->
+                <!--</ion-col>-->
+                <!--&lt;!&ndash;<ion-col  text-center>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<ion-icon class="text-2x" name="medproicons-apci" color="primary"></ion-icon>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<span class="service-name" ion-text color="primary">description</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
+                <!--<ion-col  text-center>-->
+                  <!--<ion-icon class="text-2x" name="medproicons-apci" color="primary"></ion-icon>-->
+                  <!--<span class="service-name" ion-text color="primary">cotation</span>-->
+                <!--</ion-col>-->
+              <!--</ion-row>-->
+
+              <!--<ion-row *ngFor="let acte of actes">-->
+                <!--<ion-col  text-center>-->
+                  <!--<span class="service-name" ion-text color="primary">{{acte.numActe}}</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<span class="service-name" ion-text color="primary">{{acte.libelle}}</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<span class="service-name" ion-text color="primary">{{acte.tiketModer}}</span>-->
+                <!--</ion-col>-->
+                <!--<ion-col  text-center>-->
+                  <!--<span class="service-name" ion-text color="primary">{{acte.montant}}</span>-->
+                <!--</ion-col>-->
+                <!--&lt;!&ndash;<ion-col  text-center>&ndash;&gt;-->
+                  <!--&lt;!&ndash;<span class="service-name" ion-text color="primary">{{acte.description}}</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
+                <!--<ion-col  text-center>-->
+                  <!--<span class="service-name" ion-text color="primary">{{acte.cotation}}</span>-->
+                <!--</ion-col>-->
+              <!--</ion-row>-->
+            <!--</ion-grid>-->
+            <expandable-layout-1
+              [data]="params.data"
+              [events]="params.events">
+            </expandable-layout-1>
+          </p>
+          <span class="pull-right" [hidden]="!openUl"  tappable (click)="openUl = false" >
+            <ion-icon name="ios-arrow-up" color="primary"></ion-icon>
+          </span>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

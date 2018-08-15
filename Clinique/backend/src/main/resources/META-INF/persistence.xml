@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.perfectsolution_Clinique_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.perfectsolution.Clinique.Entities.Patient</class>
+    <class>com.perfectsolution.Clinique.Entities.AssuranceCNAM</class>
+    <class>com.perfectsolution.Clinique.Entities.Utilisateur</class>
+    <class>com.perfectsolution.Clinique.Entities.Ville</class>
+    <class>com.perfectsolution.Clinique.Entities.Messanger</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost\SQL2008R2;databaseName=gcm"/>
+      <property name="javax.persistence.jdbc.user" value="ADMIN"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+    </properties>
+  </persistence-unit>
+</persistence>

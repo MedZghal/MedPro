@@ -1,0 +1,59 @@
+<!--Theme Swipe To Dismiss - Small item + header-->
+<ion-grid no-padding>
+  <ion-row *ngIf="data != null">
+    <ion-col col-12>
+      <!--Header Small item + header-->
+      <!--<ion-list-header  header-section padding-bottom padding-horizontal>-->
+        <!--Header Big Title-->
+        <!--<h1 header-title>{{data.header}}</h1>-->
+        <!--&lt;!&ndash;<ion-item no-lines>&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash; Title &ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;<h2 item-title text-capitalize margin-top text-wrap>{{data.title}}</h2>&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash; Subtitle &ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;<p item-subtitle no-margin text-wrap>{{data.subtitle}}</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button item-end ion-button button-clear-outline outline round (click)="onEvent('onButtonGetClick', '', $event)">{{data.button}}</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+      <!--</ion-list-header>-->
+      <!-- Content -->
+      <ion-list no-margin>
+        <ion-item-sliding *ngFor="let item of data.items" #slidingItem>
+          <ion-item class="item-ribbon" border no-lines (click)="onEvent('onItemClick', item, $event)">
+
+            <ion-icon style="width: 50px;margin-right: -10px;" item-left>
+              <img src="{{item.img}}">
+              <span *ngIf="item.Partage === 'oui' " class="ribbon cruzeiro">
+                <span>Partagé</span>
+              </span>
+            </ion-icon>
+
+            <!-- Title -->
+            <h2 item-title>{{item.title}}</h2>
+            <!-- Subtitle -->
+            <h3 item-subtitle><b>N°</b>{{item.subtitle}}<b> Age:</b>{{item.textIcon}}</h3>
+            <!-- Details Item-->
+            <!--<ion-note item-end>{{item.textIcon}}</ion-note>-->
+            <!-- Icon -->
+            <!--<ion-icon item-end color="primary" name="{{item.icon}}"></ion-icon>-->
+            <ion-note item-right
+                      class="partage"
+                      [class.ok]=" item.Partage === 'oui' "
+                      [class.no]=" item.Partage === 'non' ">
+              <span *ngIf="item.icon.assurCnam != null"><img style="width: 20px;height: 20px;margin-bottom: -2px;" src="assets/img/cnam.png"></span>
+              <span *ngIf="item.icon.codeApci != ''"><img style="width: 19px; height: 14px; margin-top: -16px; " src="assets/img/apci_logo_600w.png"></span>
+              <span *ngIf="item.icon.autreAssur != ''"><img style="width: 23px; height: 15px; margin-top: -17px; " src="{{AutreAssurImg(item.AutreAssur)}}"></span>
+            </ion-note>
+          </ion-item>
+          <!--Action Button-->
+          <ion-item-options no-lines>
+            <button ion-button color="green" text-capitalize (click)="undo(slidingItem)" padding>
+              {{item.reply}}
+            </button>
+            <button ion-button color="red" text-capitalize (click)="delete(item)" (tap)="onEvent('onDelete', item, $event)" padding>
+              {{item.delate}}
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

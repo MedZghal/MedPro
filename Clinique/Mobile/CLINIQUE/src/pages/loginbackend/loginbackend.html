@@ -1,0 +1,93 @@
+<!--
+  Generated template for the LoginbackendPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">-->
+
+  <!--<div class="flb">-->
+    <!--<div class="Aligner-item Aligner-item&#45;&#45;top"></div>-->
+    <!--<img class="animation-target" src="./assets/img/logo_mymedapp.png">-->
+    <!--<div class="Aligner-item Aligner-item&#45;&#45;bottom"></div>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+<!--<login-layout-1-->
+  <!--[data]="params.data"-->
+  <!--[events]="params.events">-->
+<!--</login-layout-1>-->
+<!-- -->
+<ion-content padding class="login-6 animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <img style="width: 160px;" src="assets/img/logo_mymedapp.png">
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form" [formGroup]="UsrPass" (ngSubmit)="loginUser(username,password)">
+
+      <div padding>
+
+        <ion-list>
+          <ion-item>
+            <ion-icon name="ios-mail" item-left></ion-icon>
+            <ion-input type="email" placeholder="E-mail" formControlName="USER" [value]="username" (input)="username = $event.target.value"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="ios-lock" item-left></ion-icon>
+            <ion-input type="password" placeholder="Password" formControlName="PASS"  [value]="password" (input)="password = $event.target.value" type="password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+
+
+    <p text-right ion-text color="primary" tappable (click)="forgotPass()"><strong>Mot de passe oublié?</strong></p>
+
+    <div>
+      <button ion-button icon-start block color="primary" tappable type="submit" [disabled]="!UsrPass.valid" >
+        <ion-icon name="log-in"></ion-icon>
+        SE CONNECTER
+      </button>
+
+      <p text-center ion-text color="primary">Ou visitez nos pages</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="primary" tappable (click)="LinkUrl()">Nouveau ici ? <strong>visitez notre site</strong></span>
+    </div>
+
+    </form>
+  </div>
+
+</ion-content>

@@ -1,0 +1,17 @@
+<!-- Theme Image Sub-Gallery for Thumb grid -->
+<ion-grid *ngIf="data != null">
+    <ion-row *ngIf=" data.items.length > 0; else other_content">
+        <ion-col no-padding col-4 col-sm-3 col-md-6 col-lg-4 col-xl-3 *ngFor="let item of data.items;let i = index;">
+            <ion-card background-size (click)="openImageSlider(item, i)" [ngStyle]="{'background-image': 'url(' + item.img + ')'}">
+            </ion-card>
+        </ion-col>
+    </ion-row>
+  <ng-template #other_content>
+      <ion-row class="AucuneData" >
+        <ion-icon class="center" >
+          <img  src="./assets/img/attachment.png" style=" width: 80px; ">
+        </ion-icon>
+        <h3 class="fulltext">Pas d'attachements </h3>
+      </ion-row>
+  </ng-template>
+</ion-grid>
